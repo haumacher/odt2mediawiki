@@ -275,13 +275,17 @@
             <text> </text>
             <value-of select="$token"/>
             <value-of select="$NL"/>
+            <value-of select="$NL"/>
         </if>
     </template>
 
     <template match="text:index-title">
+        <text>__NOTOC__</text>
+        <value-of select="$NL"/>
         <text>== </text>
         <apply-templates/>
         <text> ==</text>
+        <value-of select="$NL"/>
         <value-of select="$NL"/>
     </template>
 

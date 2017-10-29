@@ -1,7 +1,9 @@
 = References =
+
 This is an example page for [[#Bookmarks|Bookmarks]], [[#Reference Marks|Reference Marks]], and [[#Bibliography references|Bibliography references]].
 
 == Bookmarks ==
+
 A definition of a bookmark.
 
 Some regular text.
@@ -9,6 +11,7 @@ Some regular text.
 A reference to the bookmark defined on page 1 in the paragraph above.
 
 == Reference Marks ==
+
 A definition of a reference mark. 
 
 Some regular text.
@@ -18,9 +21,12 @@ A reference to the reference mark defined on page 1 above.
 Some regular text.
 
 == Bibliography references ==
+
 BTW, this format is defined in .
 
 Some regular text
 
+__NOTOC__
 == '''Literaturverzeichnis''' ==
+
 ODF1.1: , Open Document Format for Office Applications, 2007

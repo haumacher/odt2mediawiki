@@ -1,4 +1,5 @@
 = Test for WikiMath format =
+
 The following three formulas should produce essentially the same result after transformation to MediaWiki format:
 
 <math>{s}_{n}=\sum_{k=0}^{n}{a}_{0}\cdot {q}^{k}={a}_{0}\frac{{q}^{n+1}-1}{q-1}</math>

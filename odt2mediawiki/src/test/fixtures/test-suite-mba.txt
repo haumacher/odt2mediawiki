@@ -1,4 +1,5 @@
 = Download and install MS compiler and tools  =
+
 Currently building on Windows needs a Microsoft Visual Studio C++ compiler. The “regular” builds are done with Visual Studio 2003 that is available from Microsoft at a price. Building using the free (as in “free beer”) compiler Visual Studio 2005 Express works fine and is explained here. 
 
 You can download the compiler from [http://msdn.microsoft.com/vstudio/express/visualc Microsoft]. The download is a setup.exe with a 2.8 MB. If the setup is started it downloads additional content from the Web. You only need to select the Graphical IDE. More can be downloaded later if you want, but for building and debugging OOo you will not need more than the basic package. The download and installation took me roughly 10 minutes and 220 MB on my hard disk.

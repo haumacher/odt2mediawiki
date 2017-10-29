@@ -1,26 +1,35 @@
 = Header level 1 =
+
 Even if headings are numbered in the OpenDocument document, the numbering is not expected to be exported to WikiMedia, because the wiki engine defines numbering of headings by itself.
 
 == Header level 2 ==
+
 Some regular text.
 
 == Header level 2 ==
+
 Some regular text.
 
 === Header level 3 ===
+
 Some regular text.
 
 === Header level 3 ===
+
 Some regular text.
 
 == Header level 2 ==
+
 Some regular text.
 
 = Header level 1 =
+
 Some regular text.
 
 == Header level 2 ==
+
 Some regular text.
 
 == Header level 2 ==
+
 Some regular text.

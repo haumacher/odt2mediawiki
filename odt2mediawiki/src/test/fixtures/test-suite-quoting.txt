@@ -1,4 +1,5 @@
 '''Hilfe:Textgestaltung'''=== aus Wikipedia, der freien Enzyklopädie ===
+
 Bitte beachte die [/wiki/Wikipedia:Formatierung Wikipedia-Richtlinien zur Formatierung]<nowiki>, insbesondere: Kleiner- und größergeschriebenen Text, harte Zeilenumbrüche mit <br />-Tags, Absätze durch doppelte oder mehrfache Leerzeilen, </nowiki>[/wiki/Hilfe:Farben Farben] und ähnliche Spezialformatierungen solltest du nicht in Artikeln, sondern nur in [/wiki/Hilfe:Tabellen Tabellen] oder [/wiki/Hilfe:Vorlagen Textbausteinen] verwenden, um ein einheitliches Aussehen der Artikel zu gewährleisten. Ansonsten bietet die Wikiauszeichnungssprache genügend Möglichkeiten, den Text zu formatieren.
 {| style="border-spacing:0;"
 | colspan="2"  style="background-color:#8db6cd;border:none;padding:0.049cm;"| <center>'''Textgestaltung'''</center>
@@ -46,9 +47,13 @@ erzeugst du einen Absatz.
 
 <tt><nowiki>===== Überschrift 4 =====</nowiki></tt>
 | style="border:none;padding:0.049cm;"| == Überschrift 1 ==
+
 === Überschrift 2 ===
+
 ==== Überschrift 3 ====
+
 ===== Überschrift 4 =====
+
 
 
 |-
@@ -168,4 +173,5 @@ geschütztes Leerzeichen („no-break-space“): 10&nbsp;kg, 50&nbsp;%, Dr.&nbsp
 
 |}
 Von „[http://de.wikipedia.org/wiki/Hilfe:Textgestaltung http://de.wikipedia.org/wiki/Hilfe:Textgestaltung]“===== [/wiki/Spezial:Categories Kategorie]: [/wiki/Kategorie:Wikipedia:Hilfe Wikipedia:Hilfe] =====
+
 

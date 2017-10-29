@@ -43,37 +43,47 @@ Start with 2 equals signs not 1 because 1 creates H1 tags which should be reserv
 
 
 = Level1 =
+
 '''OpenOffice.org''' is ''a [http://www.openoffice.org/dev_docs/source/sys_reqs.html multiplatfor][http://www.openoffice.org/dev_docs/source/sys_reqs.html m] and''' [http://www.openoffice.org/project/projects/native-lang.html multilingual] [http://www.openoffice.org/product/index.html office suite] and''''' an [http://www.opensource.org/docs/definition.php open-source] project.'' '''Compatible''' with all '''''other''''' '''''major''''' ''office'' ''suites'', the product is free to download, use, and distribute. To help build the community,''''' [http://contributing.openoffice.org/index.html join us]. '''''
 
 == Level2 ==
+
 '''OpenOffice.org''' is ''a [http://www.openoffice.org/dev_docs/source/sys_reqs.html multiplatfor][http://www.openoffice.org/dev_docs/source/sys_reqs.html m] and''' [http://www.openoffice.org/project/projects/native-lang.html multilingual] [http://www.openoffice.org/product/index.html office suite] and''''' an [http://www.opensource.org/docs/definition.php open-source] project.'' '''Compatible''' with all '''''other''''' '''''major''''' ''office'' ''suites'', the product is free to download, use, and distribute. To help build the community,''''' [http://contributing.openoffice.org/index.html join us]. '''''
 
 == Level2 ==
+
 '''OpenOffice.org''' is ''a [http://www.openoffice.org/dev_docs/source/sys_reqs.html multiplatfor][http://www.openoffice.org/dev_docs/source/sys_reqs.html m] and''' [http://www.openoffice.org/project/projects/native-lang.html multilingual] [http://www.openoffice.org/product/index.html office suite] and''''' an [http://www.opensource.org/docs/definition.php open-source] project.'' '''Compatible''' with all '''''other''''' '''''major''''' ''office'' ''suites'', the product is free to download, use, and distribute. To help build the community,''''' [http://contributing.openoffice.org/index.html join us]. '''''
 
 '''OpenOffice.org''' is ''a [http://www.openoffice.org/dev_docs/source/sys_reqs.html multiplatfor][http://www.openoffice.org/dev_docs/source/sys_reqs.html m] and''' [http://www.openoffice.org/project/projects/native-lang.html multilingual] [http://www.openoffice.org/product/index.html office suite] and''''' an [http://www.opensource.org/docs/definition.php open-source] project.'' '''Compatible''' with all '''''other''''' '''''major''''' ''office'' ''suites'', the product is free to download, use, and distribute. To help build the community,''''' [http://contributing.openoffice.org/index.html join us]. '''''
 
 === Level3 ===
+
 '''OpenOffice.org''' is ''a [http://www.openoffice.org/dev_docs/source/sys_reqs.html multiplatfor][http://www.openoffice.org/dev_docs/source/sys_reqs.html m] and''' [http://www.openoffice.org/project/projects/native-lang.html multilingual] [http://www.openoffice.org/product/index.html office suite] and''''' an [http://www.opensource.org/docs/definition.php open-source] project.'' '''Compatible''' with all '''''other''''' '''''major''''' ''office'' ''suites'', the product is free to download, use, and distribute. To help build the community,''''' [http://contributing.openoffice.org/index.html join us]. '''''
 
 '''OpenOffice.org''' is ''a [http://www.openoffice.org/dev_docs/source/sys_reqs.html multiplatfor][http://www.openoffice.org/dev_docs/source/sys_reqs.html m] and''' [http://www.openoffice.org/project/projects/native-lang.html multilingual] [http://www.openoffice.org/product/index.html office suite] and''''' an [http://www.opensource.org/docs/definition.php open-source] project.'' '''Compatible''' with all '''''other''''' '''''major''''' ''office'' ''suites'', the product is free to download, use, and distribute. To help build the community,''''' [http://contributing.openoffice.org/index.html join us]. '''''
 
 === Level3 ===
+
 '''OpenOffice.org''' is ''a [http://www.openoffice.org/dev_docs/source/sys_reqs.html multiplatfor][http://www.openoffice.org/dev_docs/source/sys_reqs.html m] and''' [http://www.openoffice.org/project/projects/native-lang.html multilingual] [http://www.openoffice.org/product/index.html office suite] and''''' an [http://www.opensource.org/docs/definition.php open-source] project.'' '''Compatible''' with all '''''other''''' '''''major''''' ''office'' ''suites'', the product is free to download, use, and distribute. To help build the community,''''' [http://contributing.openoffice.org/index.html join us]. '''''
 
 ==== Level4 ====
+
 '''OpenOffice.org''' is ''a [http://www.openoffice.org/dev_docs/source/sys_reqs.html multiplatfor][http://www.openoffice.org/dev_docs/source/sys_reqs.html m] and''' [http://www.openoffice.org/project/projects/native-lang.html multilingual] [http://www.openoffice.org/product/index.html office suite] and''''' an [http://www.opensource.org/docs/definition.php open-source] project.'' '''Compatible''' with all '''''other''''' '''''major''''' ''office'' ''suites'', the product is free to download, use, and distribute. To help build the community,''''' [http://contributing.openoffice.org/index.html join us]. '''''
 
 === Level3 ===
+
 '''Left: OpenOffice.org''' is ''a [http://www.openoffice.org/dev_docs/source/sys_reqs.html multiplatfor][http://www.openoffice.org/dev_docs/source/sys_reqs.html m] and''' [http://www.openoffice.org/project/projects/native-lang.html multilingual] [http://www.openoffice.org/product/index.html office suite] and''''' an [http://www.opensource.org/docs/definition.php open-source] project.'' '''Compatible''' with all '''''other''''' '''''major''''' ''office'' ''suites'', the product is free to download, use, and distribute. To help build the community,''''' [http://contributing.openoffice.org/index.html join us]. '''''
 
 == Level2 ==
+
 '''Justified: OpenOffice.org''' is ''a [http://www.openoffice.org/dev_docs/source/sys_reqs.html multiplatfor][http://www.openoffice.org/dev_docs/source/sys_reqs.html m] and''' [http://www.openoffice.org/project/projects/native-lang.html multilingual] [http://www.openoffice.org/product/index.html office suite] and''''' an [http://www.opensource.org/docs/definition.php open-source] project.'' '''Compatible''' with all '''''other''''' '''''major''''' ''office'' ''suites'', the product is free to download, use, and distribute. To help build the community,''''' [http://contributing.openoffice.org/index.html join us]. '''''
 
 === Level3 ===
+
 <center>'''Center: OpenOffice.org''' is ''a [http://www.openoffice.org/dev_docs/source/sys_reqs.html multiplatfor][http://www.openoffice.org/dev_docs/source/sys_reqs.html m] and''' [http://www.openoffice.org/project/projects/native-lang.html multilingual] [http://www.openoffice.org/product/index.html office suite] and''''' an [http://www.opensource.org/docs/definition.php open-source] project.'' '''Compatible''' with all '''''other''''' '''''major''''' ''office'' ''suites'', the product is free to download, use, and distribute. To help build the community,''''' [http://contributing.openoffice.org/index.html join us]. '''''</center>
 
 = Level1 =
+
 <div align="right">'''Right: OpenOffice.org''' is ''a [http://www.openoffice.org/dev_docs/source/sys_reqs.html multiplatfor][http://www.openoffice.org/dev_docs/source/sys_reqs.html m] and''' [http://www.openoffice.org/project/projects/native-lang.html multilingual] [http://www.openoffice.org/product/index.html office suite] and''''' an [http://www.opensource.org/docs/definition.php open-source] project.'' '''Compatible''' with all '''''other''''' '''''major''''' ''office'' ''suites'', the product is free to download, use, and distribute. To help build the community,''''' [http://contributing.openoffice.org/index.html join us]. '''''</div>
 
 

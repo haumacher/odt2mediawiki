@@ -1,4 +1,5 @@
 = Test of inline images =
+
 [[Image:10000000000001E0000002804298C38B.jpg]]This paragraph contains an image at the right.
 
 [[Image:10000000000001E0000002804298C38B.jpg|thumb|]]This paragraph contains an image in a frame at the left.
