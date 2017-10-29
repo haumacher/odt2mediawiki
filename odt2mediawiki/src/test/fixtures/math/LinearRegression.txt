@@ -1,0 +1,11 @@
+<math>\begin{array}{c}\text{Linear Regression}\\ 
+\\ 
+\text{Measure of gradient}a=\frac{N\left(\sum \mathrm{xy}\right)-\left(\sum y\right)\left(\sum x\right)}{N\left(\sum {x}^{2}\right)-{\left(\sum x\right)}^{2}}\\ 
+\\ 
+\text{Intersection point of the straight line with the y-axis}b=\frac{\sum y-a\sum x}{N}\\ 
+\\ 
+\text{Coefficient of correlation}r=\frac{a{\sigma }_{x}}{{\sigma }_{y}}\\ 
+\\ 
+\text{Standard error of the regression line}{S}_{y/x}={\left\lbrack {(1-r)}^{2}{\sigma }_{y}^{2}\cdot N\cdot \frac{1}{N}-2\right\rbrack }^{1/2}\\ 
+\\ 
+\text{Standard error of the gradient}{S}_{b}=\frac{{S}_{y/x}}{{\left\lbrack {\sigma }_{X}^{2}\cdot N\right\rbrack }^{1/2}}\end{array}</math>

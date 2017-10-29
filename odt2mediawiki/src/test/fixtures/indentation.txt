@@ -1,0 +1,25 @@
+Some regular text
+
+Some text starting with a TAB.
+
+Some more starting with a TAB.
+
+Some text indented with two TABs.
+
+Another text with one level of indentation
+
+Some regular text.
+
+Some text with aTABas content.
+
+Some regular text.
+
+Some indented text
+
+Another indented paragraph.
+
+A paragraph indented twice
+
+Again, only one level of indentation.
+
+Some regular text.

@@ -1,0 +1,67 @@
+[[ aaa [[ bbb ]] ccc ]]
+
+[[ aaa | [[ bbb ]] ccc ]]
+
+[[ aaa | 111 [[ bbb ]] ccc ]]
+
+[[ aaa | 111 [[ bbb | 222 ]] ccc ]]
+
+----
+
+[[: aaa [[ bbb ]] ccc ]]
+
+[[: aaa | [[ bbb ]] ccc ]]
+
+[[: aaa | 111 [[ bbb ]] ccc ]]
+
+[[: aaa | 111 [[ bbb | 222 ]] ccc ]]
+
+----
+
+http://nowhere.com
+
+[http://nowhere.com]
+
+[http://nowhere.com|aaa]
+
+[http://nowhere.com| aaa]
+
+[http://nowhere.com |aaa]
+
+[http://nowhere.com | aaa]
+
+[http://nowhere.com http://nowhere.com]
+
+----
+
+[http://nowhere.com [[ bbb ]] ccc ]
+
+[http://nowhere.com | [[ bbb ]] ccc ]
+
+[http://nowhere.com | 111 [[ bbb ]] ccc ]
+
+[http://nowhere.com | 111 [[ bbb | 222 ]] ccc ]
+
+----
+
+[[ http://nowhere.com [[ bbb ]] ccc ]]
+
+[[ http://nowhere.com [[ bbb ]] ccc ]]
+
+[[ http://nowhere.com 111 [[ bbb ]] ccc ]]
+
+[[ http://nowhere.com 111 [[ bbb | 222 ]] ccc ]]
+
+----
+
+[ http://nowhere.com]
+
+[ http://nowhere.com|http://nowhere.com]
+
+[ http://nowhere.com [[ bbb ]] ccc ]
+
+[ http://nowhere.com | [[ bbb ]] ccc ]
+
+[ http://nowhere.com | 111 [[ bbb ]] ccc ]
+
+[ http://nowhere.com | 111 [[ bbb | 222 ]] ccc ]

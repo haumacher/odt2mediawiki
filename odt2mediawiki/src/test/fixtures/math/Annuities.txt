@@ -1,0 +1,6 @@
+<math>\begin{array}{c}\text{Initial value of an annuity:}\\ 
+\\ 
+\mathrm{PV}=\left\lbrack 1+\frac{\text{\%i}}{100}\cdot K\right\rbrack \cdot \mathrm{PMT}\left\lbrack \frac{1-{\left(1+\frac{\text{\%i}}{100}\right)}^{-N}}{\frac{\text{\%i}}{100}}\right\rbrack +\mathrm{FV}{\left\lbrack 1+\left(\frac{\text{\%i}}{100}\right)\right\rbrack }^{-N}\\ 
+\text{where:}\\ 
+K=0\text{annuity in arrears}\\ 
+K=1\text{annuity in advance}\end{array}</math>

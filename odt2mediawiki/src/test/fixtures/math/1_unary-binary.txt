@@ -1,0 +1,6 @@
+<math>\begin{array}{c}\underline{\text{1. Unary/binary operators}}\\ 
+\\ 
++a,-b,\pm c,\mp d,\neg e\\ 
+a+b,a\cdot b,a\times b,a\ast b\\ 
+a-b,\frac{a}{b},a\div b,a/b,a\vee b\\ 
+a\circ b\end{array}</math>

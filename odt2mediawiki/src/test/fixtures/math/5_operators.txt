@@ -1,0 +1,6 @@
+<math>\begin{array}{c}\underline{\text{5. Operators}}\\ 
+\\ 
+\lim x,\prod x,\coprod x,\sum _{5}^{6}7\\ 
+\int x,\iint x,\iiint x,\\ 
+\oint x,\backslash oiint x,\backslash oiiint x\\ 
+\sum x,\sum _{x=0}\mathrm{...},\sum ^{n=+\infty }\mathrm{...},\sum _{x=0}^{n=+\infty }\mathrm{...}\end{array}</math>

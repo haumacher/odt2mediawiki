@@ -1,0 +1,9 @@
+<math>\begin{array}{c}\text{Standard deviation with N weighting:}\\ 
+\sigma ={\left\lbrack \frac{\sum {x}^{2}-\frac{{\left(\sum x\right)}^{2}}{N}}{N}\right\rbrack }^{1/2}\\ 
+\text{Standard deviation with N-1 weighting:}\\ 
+\\ 
+\sigma ={\left\lbrack \frac{\sum {x}^{2}-\frac{{\left(\sum x\right)}^{2}}{N}}{N-1}\right\rbrack }^{1/2}\\ 
+\\ 
+\text{Variance}={\sigma }^{2}\\ 
+\\ 
+\text{Average}=\bar{X}=\frac{\left(\sum x\right)}{N}\end{array}</math>

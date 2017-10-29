@@ -1,0 +1,28 @@
+<center>Centered</center>
+
+<center>paragraphs</center>
+
+Regular text.
+
+<div align="right">Right justified</div>
+
+<div align="right">paragraphs</div>
+
+
+{| class="wikitable"
+|| <center>'''Centered heading'''</center>
+|| '''Left justified heading'''
+|| <div align="right">'''Right justified heading'''</div>
+
+|-
+|| <center>Centered content</center>
+|| Left justified content
+|| <div align="right">Right justified content</div>
+
+|-
+|| Left justified content
+|| <div align="right">Right justified content</div>
+|| <center>Centered content</center>
+
+|}
+

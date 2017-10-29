@@ -1,0 +1,52 @@
+Some regular text.
+
+ Some preformatted text.
+ 
+ Another preformatted paragraph
+  with
+   some
+    continued
+     lines.
+ 
+      New paragraphs
+ 
+       starting with
+ 
+        „indentation“!
+
+An example using tabs for indentation in preformatted text follows:
+
+ Some
+ 
+     block
+     of code
+ 
+ with {
+ 
+     an
+         indented
+             block
+         of
+     code
+ 
+ }
+
+Some regular text.
+
+Some regular text also starting with spaces.
+
+Some regular text also starting with spaces.
+
+Some regular text also starting with spaces.
+
+Some regular text.
+
+A paragraph containing a <tt>code fragment in typewriter style</tt>. 
+
+<tt>Some paragraph being completely formatted... </tt>
+
+<tt>...in typewriter style, but the format itself is a...</tt>
+
+<tt>...character style, not a paragraph style. </tt>
+
+Some regular text.

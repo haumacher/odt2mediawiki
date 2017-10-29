@@ -1,0 +1,12 @@
+Some regular text.
+
+Some text with a footnote appended.<ref name="ftn1">Some footnote.</ref> Continued with more regular text.
+
+A new paragraph with a another footnote.<ref name="ftn0">Placed at the very end of the paragraph.</ref>
+
+The next paragraph also refers to the first footnote.<ref name="ftn1"/>
+
+Some regular text.
+
+----
+<references/>

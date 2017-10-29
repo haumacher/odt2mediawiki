@@ -1,0 +1,6 @@
+<math>\begin{array}{c}\underline{\text{7. Others}}\\ 
+\\ 
+\infty ,\partial ,\mathrm{nablal},\exists ,\forall \\ 
+\hslash ,\lambda\!\!\!{}^{-},\Re ,\Im ,\wp \\ 
+\leftarrow ,\rightarrow ,\uparrow ,\downarrow \\ 
+\dots ,\cdots ,\vdots ,\backslash adots ,\ddots \end{array}</math>

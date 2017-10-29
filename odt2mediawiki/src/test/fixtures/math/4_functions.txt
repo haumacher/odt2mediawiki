@@ -1,0 +1,7 @@
+<math>\begin{array}{c}\underline{\text{4. Functions}}\\ 
+\\ 
+b,a{e}^{x},\ln (x),\exp (x),\log (x),{x}^{y}\\ 
+\sin (x),\cos (x),\tan (x),\cot (x),\sqrt{x}\\ 
+\arcsin (x),\arccos (x),\arctan (x),\mathrm{arccot}(x),\sqrt[x]{y}\\ 
+\sinh (x),\cosh (x),\tanh (x),\coth (x),\left|x\right|\\ 
+\mathrm{arsinh}(x),\mathrm{arcosh}(x),\mathrm{artanh}(x),\mathrm{arcoth}(x),x!\end{array}</math>

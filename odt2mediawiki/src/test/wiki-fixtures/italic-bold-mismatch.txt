@@ -1,0 +1,130 @@
+aaa ''' bbb 
+aaa '' bbb
+
+----
+
+aaa ''''' bbb '''''x''''' ccc ''''' ddd
+
+aaa ''''' bbb '''''''''' ccc ''''' ddd ''' eee '' fff
+
+----
+
+aaa ''' bbb '' ccc
+
+aaa ''' bbb ''' ccc
+
+aaa ''' bbb '''' ccc
+
+aaa ''' bbb ''''' ccc
+
+aaa ''' bbb '''''' ccc
+
+----
+
+aaa '' bbb '' ccc
+
+aaa '' bbb ''' ccc
+
+aaa '' bbb '''' ccc
+
+aaa '' bbb ''''' ccc
+
+aaa '' bbb '''''' ccc
+
+----
+
+aaa ''' bbb '' ccc '' ddd
+
+aaa ''' bbb '' ccc ''' ddd
+
+aaa ''' bbb '' ccc '''' ddd
+
+aaa ''' bbb '' ccc ''''' ddd
+
+aaa ''' bbb '' ccc '''''' ddd
+
+----
+
+aaa '''' bbb '' ccc '' ddd
+
+aaa '''' bbb '' ccc ''' ddd
+
+aaa '''' bbb '' ccc '''' ddd
+
+aaa '''' bbb '' ccc ''''' ddd
+
+aaa '''' bbb '' ccc '''''' ddd
+
+----
+
+aaa ''''' bbb '' ccc '' ddd
+
+aaa ''''' bbb '' ccc ''' ddd
+
+aaa ''''' bbb '' ccc '''' ddd
+
+aaa ''''' bbb '' ccc ''''' ddd
+
+aaa ''''' bbb '' ccc '''''' ddd
+
+----
+
+aaa '''''' bbb '' ccc '' ddd
+
+aaa '''''' bbb '' ccc ''' ddd
+
+aaa '''''' bbb '' ccc '''' ddd
+
+aaa '''''' bbb '' ccc ''''' ddd
+
+aaa '''''' bbb '' ccc '''''' ddd
+
+----
+
+aaa ''' bbb ''' ccc '' ddd
+
+aaa ''' bbb ''' ccc ''' ddd
+
+aaa ''' bbb ''' ccc '''' ddd
+
+aaa ''' bbb ''' ccc ''''' ddd
+
+aaa ''' bbb ''' ccc '''''' ddd
+
+----
+
+aaa '''' bbb ''' ccc '' ddd
+
+aaa '''' bbb ''' ccc ''' ddd
+
+aaa '''' bbb ''' ccc '''' ddd
+
+aaa '''' bbb ''' ccc ''''' ddd
+
+aaa '''' bbb ''' ccc '''''' ddd
+
+----
+
+aaa ''''' bbb ''' ccc '' ddd
+
+aaa ''''' bbb ''' ccc ''' ddd
+
+aaa ''''' bbb ''' ccc '''' ddd
+
+aaa ''''' bbb ''' ccc ''''' ddd
+
+aaa ''''' bbb ''' ccc '''''' ddd
+
+----
+
+aaa '''''' bbb ''' ccc '' ddd
+
+aaa '''''' bbb ''' ccc ''' ddd
+
+aaa '''''' bbb ''' ccc '''' ddd
+
+aaa '''''' bbb ''' ccc ''''' ddd
+
+aaa '''''' bbb ''' ccc '''''' ddd
+
+----

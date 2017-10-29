@@ -1,0 +1,9 @@
+Some text with '''character style A declaring bold'''.
+
+Some text with ''character style B declaring italics''.
+
+Some text with '''character style A ''and nested character style B'''''.
+
+Some text with ''character style B '''and nested character style A'''''.
+
+Some text with ''character style B and '''nested character style A''', continued with B only''.

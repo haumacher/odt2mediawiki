@@ -1,0 +1,9 @@
+Style '''A declaring bold'''. 
+
+Style <tt>'''B based on A declaring typewriter'''</tt>.
+
+Style <tt>'''''C based on B declaring bold and italics'''''</tt>.
+
+Style D based on C declaring normal font face.
+
+Style '''E based on D, again declaring bold'''.

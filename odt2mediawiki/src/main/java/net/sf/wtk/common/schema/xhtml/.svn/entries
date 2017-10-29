@@ -1,0 +1,59 @@
+10
+
+dir
+581
+https://wtk.svn.sourceforge.net/svnroot/wtk/trunk/net.sf.wtk.common/src/main/java/net/sf/wtk/common/schema/xhtml
+https://wtk.svn.sourceforge.net/svnroot/wtk
+
+
+
+2009-02-07T12:43:19.861973Z
+523
+haui
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+10698008-6e24-0410-927d-9dd2e1166882
+
+XHTMLConstants.java
+file
+
+
+
+
+2007-10-13T19:12:13.000000Z
+a1b4351f9757b74cdd851c800d8078e4
+2007-08-25T21:57:10.772259Z
+466
+haui
+has-props
+
+XHTMLDTD.java
+file
+
+
+
+
+2007-10-13T19:12:13.000000Z
+84acda03f960a6a5fc938d51eb6c51be
+2007-08-25T21:57:10.772259Z
+466
+haui
+
+frameset
+dir
+
+transitional
+dir
+

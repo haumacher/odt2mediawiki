@@ -1,0 +1,8 @@
+Converting 'pages-001.odt'... 719ms., ok.
+Converting 'pages-002.odt'... 1016ms., ok.
+Converting 'pages-004.odt'... 3781ms., ok.
+Converting 'pages-008.odt'... 12344ms., ok.
+Converting 'pages-016.odt'... 38000ms., ok.
+Converting 'pages-032.odt'... 142078ms., ok.
+Converting 'pages-064.odt'... 539343ms., ok.
+Converting 'pages-128.odt'...

@@ -1,0 +1,30 @@
+= Download and install MS compiler and tools  =
+Currently building on Windows needs a Microsoft Visual Studio C++ compiler. The “regular” builds are done with Visual Studio 2003 that is available from Microsoft at a price. Building using the free (as in “free beer”) compiler Visual Studio 2005 Express works fine and is explained here. 
+
+You can download the compiler from [http://msdn.microsoft.com/vstudio/express/visualc Microsoft]. The download is a setup.exe with a 2.8 MB. If the setup is started it downloads additional content from the Web. You only need to select the Graphical IDE. More can be downloaded later if you want, but for building and debugging OOo you will not need more than the basic package. The download and installation took me roughly 10 minutes and 220 MB on my hard disk.
+
+Next step when you plan to use the Express IDE is installing the [http://www.microsoft.com/downloads/details.aspx?familyid=7A1C9DA0-0510-44A2-B042-7EF370530C64&displaylang=en Microsoft Macro Assembler] (MASM). MASM is part of the paid version of Visual Studio (so you can skip that part if you are using it) but for the “Express” version you have to download it separately. It's only a very small download. This step can be omitted if you already have a paid version of Visual Studio as it is contained in it.
+
+I had a problem with the MASM installer on all machines where I used it: the setup started but then suddenly disappeared from the screen. I found a hanging msiexec.exe in the task manager and had to kill it manually. Fortunately the MASM was obviously installed correctly. It appeared in the “Add and remove software” dialog and the “ml.exe” was installed to “Vc/Bin” folder of VC8.
+
+You also must download and install the Microsoft Windows Platform SDK. The usual instructions recommend to download it from [http://www.microsoft.com/downloads/details.aspx?FamilyId=A55B6B43-E24F-4EA3-A93E-40C0EC4F68E5&displaylang=en here] but I followed the recommendations from the [http://msdn.microsoft.com/vstudio/express/visualc/usingpsdk/ Visual C++ site]. There you can find a link (download requires Genuine Windows Validation). The setup is again web based. You can either user the “Typical” installation or select “Custom” setup deselect the packages you don't need. You need at least the following packages:
+
+* Microsoft Windows Core SDK
+* Microsoft Web Workshop (IE) SDK 
+* Microsoft Internet Information Server (IIS) SDK 
+* Microsoft Data Access Services (MDAC) SDK
+* Microsoft DirectShow SDK
+
+You can deselect all 64Bit parts, all samples, all source code modules and (if you want) every documentation. In total the installation filled 438 MB of my harddisk space (including the documentation, but without all other optional parts).
+
+Warning: the first installation option is called “Register Environment Variables” and it is deselected by default. You shouldn't change this as selecting it will add directories with blanks to your PATH variable. This (or more precisely the quotes surrounding them) will cause troubles in Cygwin (see below). It is also possible that other installed Windows programs can't cope with the changed PATH variable as the installer of the Platform SDK explicitly warns.
+
+The only drawback of not selecting this option is that if you wanted to use the platform SDK for other projects except OOo you would have to take care for the correct environment yourself. The platform SDK creates some start menu entries for suitable configured shells so that shouldn't be a problem.
+
+There is a library called “libcp.lib” in the “Lib” directory of the SDK; when I made the configuration step the configure tool complained about it and I had to delete/move it. I couldn't find any information or documentation about that but the instructions from configure to remove the lib worked for me (as all other hints from that tool also BTW!). So I strongly recommend that you remove this library also (you can of course create a backup copy before in case you might need it later for other projects). 
+
+There is another thing you have to change in the SDK: you have to apply a small patch to one of the Platform SDK header files as described [http://tools.openoffice.org/servlets/ReadMsg?listName=dev&msgNo=6024 here].
+
+Another SDK that could be downloaded and installed is the Direct X9 SDK. If you don't want to download it you can disable DirectX support in the configuration step (“--disable-directx”). The current regular builds of OOo are done with a version of the DirectX SDK that is no longer available for download so it's necessary to search for a download link in the Web. The OOo pages mention several links, outdated as well as working links. I took the one from [http://www.microsoft.com/downloads/details.aspx?FamilyId=D625324C-59B4-4951-849E-640B508DC442&displaylang=en here] (Genuine Windows Validation required). This is a 509 MB download. Downloading, unpacking and installing took 30 minutes. As I deselected the sources and sample the resulting installation only was 189 MB.
+
+

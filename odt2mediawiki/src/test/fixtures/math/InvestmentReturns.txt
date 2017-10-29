@@ -1,0 +1,11 @@
+<math>\begin{array}{c}\text{Investment returns}\\ 
+E(R)=\sum _{i=1}^{n}{R}_{i}{P}_{i}\\ 
+\\ 
+{\sigma }_{R}=\sqrt{\sum _{i=1}^{n}{({R}_{i}-R(R))}^{2}}{P}_{i}\\ 
+\\ 
+\text{where:}\\ 
+E(R)=\text{expected value of the planned return}\\ 
+{R}_{i}=\text{planned return, if condition appears in period i}\\ 
+{P}_{i}=\text{probability that condition has been fulfilled in period i}\\ 
+{\sigma }_{R}=\text{standard deviation of the expected value of the return}\\ 
+n=\text{number of possible conditions within the period in question}\end{array}</math>

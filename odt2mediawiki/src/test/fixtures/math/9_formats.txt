@@ -1,0 +1,16 @@
+<math>\begin{array}{c}\underline{\text{9. Formats}}\\ 
+\\ 
+{}^{b}x,\stackrel{b}{x},{x}^{b},\begin{array}{c}x+y=0\\ 
+x-y=1\end{array}\\ 
+{}_{b}x,\underset{b}{x},{x}_{b},\begin{array}{c}x+y=0\\ 
+x-y=1\\ 
+x-z=2\end{array}\\ 
+\text{aligned left}\\ 
+\text{also aligned left}\\ 
+\mathrm{centered}\\ 
+r\\ 
+\mathrm{also}\mathrm{aligned}r\\ 
+\begin{array}{cc}a& 	x\\ 
+b& 	y\end{array}\\ 
+a\mathrm{small}\mathrm{gap}\\ 
+a\mathrm{gap}\end{array}</math>

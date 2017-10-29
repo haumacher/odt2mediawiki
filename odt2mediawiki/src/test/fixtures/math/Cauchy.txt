@@ -1,0 +1,4 @@
+<math>\begin{array}{c}\text{General Cauchy-Convergence-Criterion}\\ 
+\\ 
+\text{If}{({a}_{n})}_{n\in \mathbb{N}}\text{is a sequence of real numbers. The array}\sum _{n=0}^{\infty }{a}_{n}\text{converges exactly at the point when the following applies}\\ 
+\forall \epsilon > 0\exists N\in \mathbb{N}\text{:}\left|\sum _{k=m}^{n}{a}_{k}\right|< \epsilon \text{to all}n\ge m\ge N\text{.}\end{array}</math>

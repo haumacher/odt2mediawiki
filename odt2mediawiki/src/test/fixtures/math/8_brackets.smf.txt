@@ -1,0 +1,7 @@
+<math>\begin{array}{c}\underline{\text{8. Brakets}}\\ 
+\\ 
+(a),\lbrack a\rbrack ,[\![a]\!],|a|,\parallel a\parallel \\ 
+\lbrace a\rbrace ,\langle a\rangle ,\langle a|b\rangle \\ 
+\left(\frac{a}{b}\right),\left\lbrack \frac{a}{b}\right\rbrack ,[\![\frac{a}{b}]\!],\left|\frac{a}{b}\right|,\parallel \frac{a}{b}\parallel \\ 
+\left\lbrace \frac{a}{b}\right\rbrace ,\langle \frac{a}{b}\rangle ,\langle \frac{a}{b}|\frac{x}{y}\rangle \\ 
+\stackrel{\mathrm{xy}}{\overbrace{a}},\underset{\mathrm{xy}}{\underbrace{a}}\end{array}</math>

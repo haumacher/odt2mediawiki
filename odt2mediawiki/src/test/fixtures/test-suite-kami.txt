@@ -1,0 +1,387 @@
+http://meta.wikimedia.org/wiki/Help:Wikitext_examples
+
+
+You can ''italicize text'' by putting 2 apostrophes on each side.
+
+3 apostrophes will bold '''the text'''.
+
+5 apostrophes will bold and italicize '''''the text'''''.
+
+(Using 4 apostrophes doesn't do anything special --there are just ' '''left over ones'''' that are included as part of the text.)
+
+
+A single newline generally has n<tt>o effect on the layout. Thes</tt>e can be used to separate sen''tences within a paragraph. Some ed'''itors find tha''t this aids editing a'''nd improves the ''diff'' function (used internally to compare different versions of a page).
+
+But an empty line starts a new paragraph.
+
+
+You can break lineswithout a new paragraph.Please use this sparingly.
+
+Please do not start a link or ''italics'' or '''bold''' on one line and close it on the next.
+
+
+ Put text in a typewriter font. The same font is generally used for computer code.
+ Strike out or underline text, or write it in small caps. 
+
+<center>Centered text</center>
+
+* Please note the American spelling of "center". 
+
+Section headings
+
+''Headings'' organize your writing into sections. The Wiki software can automatically generate a [http://meta.wikimedia.org/wiki/Help:Table_of_contents table of contents] from them.
+
+'''Subsection'''
+
+Using more "equals" (=) signs creates a subsection.
+
+'''A smaller subsection'''
+
+Don't skip levels, like from two to four equals signs.
+
+Start with 2 equals signs not 1 because 1 creates H1 tags which should be reserved for page title.
+
+
+= Level1 =
+'''OpenOffice.org''' is ''a [http://www.openoffice.org/dev_docs/source/sys_reqs.html multiplatfor][http://www.openoffice.org/dev_docs/source/sys_reqs.html m] and''' [http://www.openoffice.org/project/projects/native-lang.html multilingual] [http://www.openoffice.org/product/index.html office suite] and''''' an [http://www.opensource.org/docs/definition.php open-source] project.'' '''Compatible''' with all '''''other''''' '''''major''''' ''office'' ''suites'', the product is free to download, use, and distribute. To help build the community,''''' [http://contributing.openoffice.org/index.html join us]. '''''
+
+== Level2 ==
+'''OpenOffice.org''' is ''a [http://www.openoffice.org/dev_docs/source/sys_reqs.html multiplatfor][http://www.openoffice.org/dev_docs/source/sys_reqs.html m] and''' [http://www.openoffice.org/project/projects/native-lang.html multilingual] [http://www.openoffice.org/product/index.html office suite] and''''' an [http://www.opensource.org/docs/definition.php open-source] project.'' '''Compatible''' with all '''''other''''' '''''major''''' ''office'' ''suites'', the product is free to download, use, and distribute. To help build the community,''''' [http://contributing.openoffice.org/index.html join us]. '''''
+
+== Level2 ==
+'''OpenOffice.org''' is ''a [http://www.openoffice.org/dev_docs/source/sys_reqs.html multiplatfor][http://www.openoffice.org/dev_docs/source/sys_reqs.html m] and''' [http://www.openoffice.org/project/projects/native-lang.html multilingual] [http://www.openoffice.org/product/index.html office suite] and''''' an [http://www.opensource.org/docs/definition.php open-source] project.'' '''Compatible''' with all '''''other''''' '''''major''''' ''office'' ''suites'', the product is free to download, use, and distribute. To help build the community,''''' [http://contributing.openoffice.org/index.html join us]. '''''
+
+'''OpenOffice.org''' is ''a [http://www.openoffice.org/dev_docs/source/sys_reqs.html multiplatfor][http://www.openoffice.org/dev_docs/source/sys_reqs.html m] and''' [http://www.openoffice.org/project/projects/native-lang.html multilingual] [http://www.openoffice.org/product/index.html office suite] and''''' an [http://www.opensource.org/docs/definition.php open-source] project.'' '''Compatible''' with all '''''other''''' '''''major''''' ''office'' ''suites'', the product is free to download, use, and distribute. To help build the community,''''' [http://contributing.openoffice.org/index.html join us]. '''''
+
+=== Level3 ===
+'''OpenOffice.org''' is ''a [http://www.openoffice.org/dev_docs/source/sys_reqs.html multiplatfor][http://www.openoffice.org/dev_docs/source/sys_reqs.html m] and''' [http://www.openoffice.org/project/projects/native-lang.html multilingual] [http://www.openoffice.org/product/index.html office suite] and''''' an [http://www.opensource.org/docs/definition.php open-source] project.'' '''Compatible''' with all '''''other''''' '''''major''''' ''office'' ''suites'', the product is free to download, use, and distribute. To help build the community,''''' [http://contributing.openoffice.org/index.html join us]. '''''
+
+'''OpenOffice.org''' is ''a [http://www.openoffice.org/dev_docs/source/sys_reqs.html multiplatfor][http://www.openoffice.org/dev_docs/source/sys_reqs.html m] and''' [http://www.openoffice.org/project/projects/native-lang.html multilingual] [http://www.openoffice.org/product/index.html office suite] and''''' an [http://www.opensource.org/docs/definition.php open-source] project.'' '''Compatible''' with all '''''other''''' '''''major''''' ''office'' ''suites'', the product is free to download, use, and distribute. To help build the community,''''' [http://contributing.openoffice.org/index.html join us]. '''''
+
+=== Level3 ===
+'''OpenOffice.org''' is ''a [http://www.openoffice.org/dev_docs/source/sys_reqs.html multiplatfor][http://www.openoffice.org/dev_docs/source/sys_reqs.html m] and''' [http://www.openoffice.org/project/projects/native-lang.html multilingual] [http://www.openoffice.org/product/index.html office suite] and''''' an [http://www.opensource.org/docs/definition.php open-source] project.'' '''Compatible''' with all '''''other''''' '''''major''''' ''office'' ''suites'', the product is free to download, use, and distribute. To help build the community,''''' [http://contributing.openoffice.org/index.html join us]. '''''
+
+==== Level4 ====
+'''OpenOffice.org''' is ''a [http://www.openoffice.org/dev_docs/source/sys_reqs.html multiplatfor][http://www.openoffice.org/dev_docs/source/sys_reqs.html m] and''' [http://www.openoffice.org/project/projects/native-lang.html multilingual] [http://www.openoffice.org/product/index.html office suite] and''''' an [http://www.opensource.org/docs/definition.php open-source] project.'' '''Compatible''' with all '''''other''''' '''''major''''' ''office'' ''suites'', the product is free to download, use, and distribute. To help build the community,''''' [http://contributing.openoffice.org/index.html join us]. '''''
+
+=== Level3 ===
+'''Left: OpenOffice.org''' is ''a [http://www.openoffice.org/dev_docs/source/sys_reqs.html multiplatfor][http://www.openoffice.org/dev_docs/source/sys_reqs.html m] and''' [http://www.openoffice.org/project/projects/native-lang.html multilingual] [http://www.openoffice.org/product/index.html office suite] and''''' an [http://www.opensource.org/docs/definition.php open-source] project.'' '''Compatible''' with all '''''other''''' '''''major''''' ''office'' ''suites'', the product is free to download, use, and distribute. To help build the community,''''' [http://contributing.openoffice.org/index.html join us]. '''''
+
+== Level2 ==
+'''Justified: OpenOffice.org''' is ''a [http://www.openoffice.org/dev_docs/source/sys_reqs.html multiplatfor][http://www.openoffice.org/dev_docs/source/sys_reqs.html m] and''' [http://www.openoffice.org/project/projects/native-lang.html multilingual] [http://www.openoffice.org/product/index.html office suite] and''''' an [http://www.opensource.org/docs/definition.php open-source] project.'' '''Compatible''' with all '''''other''''' '''''major''''' ''office'' ''suites'', the product is free to download, use, and distribute. To help build the community,''''' [http://contributing.openoffice.org/index.html join us]. '''''
+
+=== Level3 ===
+<center>'''Center: OpenOffice.org''' is ''a [http://www.openoffice.org/dev_docs/source/sys_reqs.html multiplatfor][http://www.openoffice.org/dev_docs/source/sys_reqs.html m] and''' [http://www.openoffice.org/project/projects/native-lang.html multilingual] [http://www.openoffice.org/product/index.html office suite] and''''' an [http://www.opensource.org/docs/definition.php open-source] project.'' '''Compatible''' with all '''''other''''' '''''major''''' ''office'' ''suites'', the product is free to download, use, and distribute. To help build the community,''''' [http://contributing.openoffice.org/index.html join us]. '''''</center>
+
+= Level1 =
+<div align="right">'''Right: OpenOffice.org''' is ''a [http://www.openoffice.org/dev_docs/source/sys_reqs.html multiplatfor][http://www.openoffice.org/dev_docs/source/sys_reqs.html m] and''' [http://www.openoffice.org/project/projects/native-lang.html multilingual] [http://www.openoffice.org/product/index.html office suite] and''''' an [http://www.opensource.org/docs/definition.php open-source] project.'' '''Compatible''' with all '''''other''''' '''''major''''' ''office'' ''suites'', the product is free to download, use, and distribute. To help build the community,''''' [http://contributing.openoffice.org/index.html join us]. '''''</div>
+
+
+Test
+
+
+* ''Unordered [http://meta.wikimedia.org/wiki/Help:List lists] are easy to do: 
+** Start every line with a star. 
+*** More stars indicate a deeper level. Previous item continues. 
+** A newline 
+* in a list 
+
+marks the end of the list.
+
+* Of course you can start again. 
+
+# ''Numbered lists'' are: 
+## Very organized 
+## Easy to follow 
+
+A newline marks the end of the list.
+
+# New numbering starts with 1. 
+
+Here's a ''definition list'':
+
+# Word<br/> Definition of the word 
+# A longer phrase needing definition 
+# Phrase defined 
+# A word
+# Which has a definition 
+# Also a second one 
+# And even a third 
+
+Begin with a semicolon. One item per line; a newline can appear before the colon, but using a space before the colon improves parsing.
+
+
+You can even do mixed lists 
+
+# and nest them 
+# inside each other 
+#* or break linesin lists. definition lists <br/> can be <br/> nested<br/> too 
+
+You can even do mixed lists 
+
+# and nest them 
+# inside each other 
+#* or break linesin lists. definition lists <br/> can be <br/> nested<br/> too
+# ee
+# ee
+#* eee
+#* eeee
+#** eeeee
+#** eeee
+#* kjjkjk
+# klklklkl
+
+# aslasasl
+# salkklas
+## slsdlsdl
+## dslksdlksdkl
+## sdklsdlksd
+### dsklsdlksdkl
+### sdklsdlksd
+#### kdsklsdklsd
+##### sdklsdklsdkl
+##### sdklsdlksd
+#### cdkldfkldf
+## fdkldflkdfkl
+## dkldflkdf
+## fdkldfkldf
+# dfjkdfjkdf
+# dfjkdfjk
+# 
+
+You can add footnotes to sentences using the ''ref'' tag -- this is especially good for citing a source.
+
+There are over six billion people in the world.<ref name="ftn1"># [http://meta.wikimedia.org/wiki/Help:Wikitext_examples#_ref-0 ↑] CIA World Factbook, 2006. 
+
+For details, see [http://en.wikipedia.org/wiki/Footnotes Wikipedia:Footnotes] and [http://meta.wikimedia.org/wiki/Help:Footnotes Help:Footnotes].</ref>
+
+
+ Here's a link to a page named [http://meta.wikimedia.org/wiki/Official_position Official position]. You can even say [http://meta.wikimedia.org/wiki/Official_position official positions] and the link will show<ref name="ftn2"> More information</ref> up correctly. 
+
+ You can put formatting around a link. Example: [http://meta.wikimedia.org/wiki/Wikipedia Wikipedia]. 
+
+ The ''first letter'' of articles is automatically capitalized, so [http://meta.wikimedia.org/wiki/Wikipedia wikipedia] goes to the same place as [http://meta.wikimedia.org/wiki/Wikipedia Wikipedia]. Capitalization matters after the first letter. 
+
+ [http://meta.wikimedia.org/w/index.php?title=The_weather_in_London&action=edit The weather in London] is a page that doesn't exist yet. You could create it by clicking on the link. 
+
+You can link to a page section by its title:
+
+* [http://meta.wikimedia.org/w/index.php?title=List_of_cities_by_country&action=edit List of cities by country#Morocco]. 
+
+If multiple sections have the same title, add a number. [http://meta.wikimedia.org/wiki/Help:Wikitext_examples#Example_section_3 #Example section 3] goes to the third section named "Example section".
+
+
+You can make a link point to a different place with a [http://meta.wikimedia.org/wiki/Help:Piped_link piped link]. Put the link target first, then the pipe character "|", then the link text.
+
+* [http://meta.wikimedia.org/wiki/Help:Link About Links] 
+* [http://meta.wikimedia.org/w/index.php?title=List_of_cities_by_country&action=edit Cities in Morocco] 
+
+Or you can use the "pipe trick" so that text in parentheses or text after a comma does not appear.
+
+* [http://meta.wikimedia.org/w/index.php?title=Spinning_%28textiles%29&action=edit Spinning] 
+* [http://meta.wikimedia.org/w/index.php?title=Boston%2C_Massachusetts&action=edit Boston] 
+
+You can make an external link just by typing a URL: [http://www.nupedia.com/ http://www.nupedia.com]
+
+You can give it a title: [http://www.nupedia.com/ Nupedia]
+
+Or leave the title blank: [http://www.nupedia.com/ [1]]
+
+
+ Linking to an e-mail address works the same way: [mailto:someone@example.com mailto:someone@example.com] or [mailto:someone@example.com someone] 
+
+ You can [http://meta.wikimedia.org/wiki/Help:Redirect redirect] the user to another page. 
+
+[http://meta.wikimedia.org/wiki/Help:Category Category links] do not show up in line but instead at page bottom ''and cause the page to be'' listed in the category.
+
+Add an extra colon to ''link'' to a category in line without causing the page to be listed in the category: [http://meta.wikimedia.org/wiki/Category:English_documentation Category:English documentation]
+
+
+The Wiki reformats linked dates to match the reader's date preferences. These three dates will show up the same if you choose a format in your [http://meta.wikimedia.org/wiki/Special:Preferences Preferences]:
+
+* [http://meta.wikimedia.org/w/index.php?title=1969&action=edit 1969]-[http://meta.wikimedia.org/w/index.php?title=July_20&action=edit 07-20] 
+* [http://meta.wikimedia.org/w/index.php?title=July_20&action=edit July 20], [http://meta.wikimedia.org/w/index.php?title=1969&action=edit 1969] 
+* [http://meta.wikimedia.org/w/index.php?title=July_20&action=edit 20 July] [http://meta.wikimedia.org/w/index.php?title=1969&action=edit 1969] 
+
+A picture, including alternate text:
+
+[[Image:Wiki.png]]
+
+You can put the image in a frame with a caption:
+
+
+<div align="right">[[Image:Wiki.png]]</div>
+
+<div align="right">This Wiki's logo</div>
+
+
+ [[Image:Wiki.png|thumb|<center></center> <center>This Wiki's logo</center> A link to Wikipedia's page for the image: [http://meta.wikimedia.org/wiki/Image:Wiki.png Image:Wiki.png] Or a link directly to the image itself: [http://upload.wikimedia.org/wikipedia/meta/b/bc/Wiki.png Media:Wiki.png]]]
+
+A link to Wikipedia's page for the image: [http://meta.wikimedia.org/wiki/Image:Wiki.png Image:Wiki.png]
+
+Or a link directly to the image itself: [http://upload.wikimedia.org/wikipedia/meta/b/bc/Wiki.png Media:Wiki.png]
+
+
+ Use '''media:''' links to link directly to sounds or videos: [http://upload.wikimedia.org/wikipedia/meta/9/97/Sg_mrob.ogg A sound file] 
+
+ Here's a link to a page named [http://meta.wikimedia.org/wiki/Official_position Official position]. You can even say [http://meta.wikimedia.org/wiki/Official_position official positions] and the link will show<ref name="ftn3"> More information</ref> up correctly. 
+
+ You can put formatting around a link. Example: [http://meta.wikimedia.org/wiki/Wikipedia Wikipedia]. 
+
+ The ''first letter'' of articles is automatically capitalized, so [http://meta.wikimedia.org/wiki/Wikipedia wikipedia] goes to the same place as [http://meta.wikimedia.org/wiki/Wikipedia Wikipedia]. Capitalization matters after the first letter. 
+
+ [http://meta.wikimedia.org/w/index.php?title=The_weather_in_London&action=edit The weather in London] is a page that doesn't exist yet. You could create it by clicking on the link. Here's a link to a page named [http://meta.wikimedia.org/wiki/Official_position Official position]. You can even say [http://meta.wikimedia.org/wiki/Official_position official positions] and the link will show<ref name="ftn4"> More information</ref> up correctly. 
+
+ You can put formatting around a link. Example: [http://meta.wikimedia.org/wiki/Wikipedia Wikipedia]. 
+
+ The ''first letter'' of articles is automatically capitalized, so [http://meta.wikimedia.org/wiki/Wikipedia wikipedia] goes to the same place as [http://meta.wikimedia.org/wiki/Wikipedia Wikipedia]. Capitalization matters after the first letter. 
+
+ [http://meta.wikimedia.org/w/index.php?title=The_weather_in_London&action=edit The weather in London] is a page that doesn't exist yet. You could create it by clicking on the link. Here's a link to a page named [http://meta.wikimedia.org/wiki/Official_position Official position]. You can even say [http://meta.wikimedia.org/wiki/Official_position official positions] and the link will show<ref name="ftn5"> More information</ref> up correctly. 
+
+ You can put formatting around a link. Example: [http://meta.wikimedia.org/wiki/Wikipedia Wikipedia]. 
+
+ The ''first letter'' of articles is automatically capitalized, so [http://meta.wikimedia.org/wiki/Wikipedia wikipedia] goes to the same place as [http://meta.wikimedia.org/wiki/Wikipedia Wikipedia]. Capitalization matters after the first letter. 
+
+ [http://meta.wikimedia.org/w/index.php?title=The_weather_in_London&action=edit The weather in London] is a page that doesn't exist yet. You could create it by clicking on the link. 
+
+
+{| style="border-spacing:0;"
+| style="border-top:0.0007in solid #000000;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:none;padding:0.0382in;"| Textural 1:1
+| style="border:0.0007in solid #000000;padding:0.0382in;"| <tt>Textural </tt>1:2
+
+|-
+| style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:none;padding:0.0382in;"|  Textural 2:1
+| style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:0.0007in solid #000000;padding:0.0382in;"| <center>Textural 2''':2'''</center>
+
+|}
+ Table
+
+
+{| style="border-spacing:0;"
+! Textural 1:1
+! Textural 1:2
+! Textural 1:3
+! Textural 1:4
+
+|-
+| style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:none;padding:0.0382in;"|  Textural 2:1
+| style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:none;padding:0.0382in;"| <center>Textural 2''':2'''</center>
+| style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:none;padding:0.0382in;"| <div align="right">Textural 2'':3''</div>
+| style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:0.0007in solid #000000;padding:0.0382in;"|  Textural 2:4
+
+|-
+| style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:none;padding:0.0382in;"|  Textural 3:1
+| style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:none;padding:0.0382in;"| <center>'''Textural 3'':2'''''</center>
+| style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:none;padding:0.0382in;"| <div align="right">''Textural 3''':3'''''</div>
+| style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:0.0007in solid #000000;padding:0.0382in;"|  Textural 3''''':4'''''
+
+|-
+| style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:none;padding:0.0382in;"|  Textural 4:1
+| style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:none;padding:0.0382in;"| <center>Textural 4:2</center>
+| style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:none;padding:0.0382in;"| <div align="right">Textural 4:3</div>
+| style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:0.0007in solid #000000;padding:0.0382in;"|  Textural 4:4
+
+|}
+ Table
+
+
+{| style="border-spacing:0;"
+!  Textural 1:1
+! <center>Textural 1:2</center>
+<div align="right">1:3</div>
+!  Textural 1:4
+
+|-
+| colspan="2" | 
+{| style="border-spacing:0;"
+| style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:none;padding:0.0382in;"|  Textural 2:1
+| style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:none;padding:0.0382in;"| <center>[http://wikipedia.org/ Textural] 2''':2'''</center>
+| style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:none;padding:0.0382in;"| <div align="right">Textural 2'':3''</div>
+
+|-
+| style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:none;padding:0.0382in;"|  Textural 3:1 4:1
+| colspan="2" | 
+{| style="border-spacing:0;"
+| style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:none;padding:0.0382in;"| <center>'''Textural 3'':2'''''</center>
+| style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:none;padding:0.0382in;"| <div align="right">[http://wikipedia.org/ Textural] 3''':3'''''</div>
+
+|-
+| style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:none;padding:0.0382in;"| <center>Textural 4:2</center>
+| style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:none;padding:0.0382in;"| <div align="right">Textural 4:3</div>
+
+|}
+
+
+|}
+
+| style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:0.0007in solid #000000;padding:0.0382in;"|  Textural 2:4 3''''':4 4:4'''''
+
+|}
+ Table2
+
+
+{| style="border-spacing:0;"
+! colspan="6" |  Textural 1:1
+! 
+{| style="border-spacing:0;"
+! <center>Textural 1:2</center>
+
+|-
+! <center>[http://wikipedia.org/ Textural] A</center>
+
+|}
+
+! colspan="4" | <div align="right">[http://wikipedia.org/ Textural] 1:3</div>
+!  Textural 1:4
+
+|-
+| colspan="6"  style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:none;padding:0.0382in;"|  Textural 2:1
+| style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:none;padding:0.0382in;"| <center>Textural 2''':2'''</center>
+| style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:none;padding:0.0382in;"| <div align="right">Textural 2'':3''</div>
+| style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:none;padding:0.0382in;"|  '''Textural '''
+| style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:none;padding:0.0382in;"|  '''Textural '''
+| style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:none;padding:0.0382in;"|  '''Textural '''
+| style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:0.0007in solid #000000;padding:0.0382in;"|  [http://wikipedia.org/ Textural] 2:4
+
+|-
+| colspan="6"  style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:none;padding:0.0382in;"|  Textural 3:1
+| style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:none;padding:0.0382in;"| <center>'''Textural 3'':2'''''</center>
+| colspan="4"  style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:none;padding:0.0382in;"| <div align="right">''Textural 3''':3'''''</div>
+| style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:0.0007in solid #000000;padding:0.0382in;"|  [http://wikipedia.org/ Textural] 3''''':4'''''
+
+|-
+| style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:none;padding:0.0382in;"|  Textural 4:1
+| style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:none;padding:0.0382in;"|  '''Textural '''
+| style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:none;padding:0.0382in;"|  '''Textural '''
+| style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:none;padding:0.0382in;"|  '''Textural '''
+| style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:none;padding:0.0382in;"|  '''Textural '''
+| style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:none;padding:0.0382in;"|  '''Textural '''
+| style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:none;padding:0.0382in;"| <center>Textural 4:2</center>
+| colspan="4"  style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:none;padding:0.0382in;"| <div align="right">Textural 4:3</div>
+|| 
+{| style="border-spacing:0;"
+| style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:0.0007in solid #000000;padding:0.0382in;"|  Textural 4:4
+
+|-
+| style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:0.0007in solid #000000;padding:0.0382in;"|  '''Textural '''
+
+|-
+| style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:0.0007in solid #000000;padding:0.0382in;"|  '''Textural '''
+
+|-
+| style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:0.0007in solid #000000;padding:0.0382in;"|  '''Textural '''
+
+|-
+| style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:0.0007in solid #000000;padding:0.0382in;"|  '''Textural '''
+
+|-
+| style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:0.0007in solid #000000;padding:0.0382in;"|  '''Textural '''
+
+|}
+
+
+|}
+ Table3
+
+----
+<references/>

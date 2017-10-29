@@ -1,0 +1,3 @@
+<math>\begin{array}{c}a> 0\text{and}{x}_{0}> 0\text{are real numbers. The sequence}{({x}_{n})}_{n\in \mathbb{N}}\text{is recursively defined by}\\ 
+{x}_{n+1}=\frac{1}{2}\left({x}_{n}+\frac{a}{{x}_{n}}\right)\\ 
+\text{Then}\underset{n\rightarrow \infty }{\lim }{x}_{n}=\sqrt{a}\text{applies.}\end{array}</math>

@@ -1,0 +1,19 @@
+aaa <b> test <math> a_b </b> c_d </math> bbb </b> ccc
+
+aaa ''' test <math> a_b ''' c_d </math> bbb ''' ccc
+
+aaa ''' bbb <ref> ccc ''' ddd </ref> eee ''' fff
+
+aaa ''' bbb <ref> ccc </b> ddd </ref> eee ''' fff
+
+aaa ''' bbb <ref> ccc <math> a_b </math> ddd </ref> eee ''' fff
+
+aaa <ref name="xxx"> bbb </ref> ccc <ref name="xxx"/> ddd
+
+aaa <ref name=yyy> bbb </ref> ccc <ref name="yyy"/> ddd
+
+aaa <ref name='zzz'> bbb </ref> ccc <ref name="zzz"/> ddd
+
+aaa <ref > bbb </ref> ccc
+
+aaa <ref name> bbb </ref> ccc <ref name/> ddd

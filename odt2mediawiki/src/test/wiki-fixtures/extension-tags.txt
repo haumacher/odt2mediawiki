@@ -1,0 +1,41 @@
+aaa <math> a_b </math> bbb
+
+aaa <math > a_b </math> bbb
+
+aaa <math x> a_b </math> bbb
+
+aaa <math x=y d="e" p='q'> a_b </math> bbb
+
+----
+
+aaa <nowiki> a_b </nowiki> bbb
+
+aaa <nowiki > a_b </nowiki> bbb
+
+aaa <nowiki x> a_b </nowiki> bbb
+
+aaa <nowiki x=y d="e" p='q'> a_b </nowiki> bbb
+
+aaa <nowiki x = y d = "e" p = 'q'> a_b </nowiki> bbb
+
+aaa <nowiki x = y d xxx yyy zzz> a_b </nowiki> bbb
+
+----
+
+aaa <b> a_b </b> bbb
+
+aaa <b > a_b </b> bbb
+
+aaa <b x> a_b </b> bbb
+
+aaa <b x=y d="e" p='q'> a_b </b> bbb
+
+aaa <b x=y d="e" p='q'> a_b </b x=y d="e" p='q'> bbb
+
+aaa <b x=y xxx yyy zzz > a_b </b x=y d="e" p='q'> bbb
+
+aaa < b x=y xxx yyy zzz > a_b </b x=y d="e" p='q'> bbb
+
+aaa <b x=y xxx yyy zzz a_b </b x=y d="e" p='q'> bbb
+
+----

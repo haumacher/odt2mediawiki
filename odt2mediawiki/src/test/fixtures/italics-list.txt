@@ -1,0 +1,7 @@
+* ''Some italics text with an embedded text in a list''
+* ''which is continued in the next list item''
+** ''and even in a subitem''
+** ''and its sibbling.''
+* ''Almost the whole list is italics''
+
+

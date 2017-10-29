@@ -1,0 +1,1 @@
+This&nbsp;is&nbsp;a&nbsp;paragraph&nbsp;with&nbsp;many&nbsp;non-breaking&nbsp;spaces. The&nbsp;only&nbsp;regular&nbsp;space&nbsp;is&nbsp;the&nbsp;one&nbsp;separting&nbsp;sentences. 

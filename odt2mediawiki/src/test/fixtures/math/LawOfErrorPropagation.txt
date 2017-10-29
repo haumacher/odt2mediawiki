@@ -1,0 +1,7 @@
+<math>\begin{array}{c}\text{The law of error propagation}\\ 
+\\ 
+\\ 
+\text{If}\Delta x={x}_{a}-{x}_{r}\text{is the}\text{absolute error}\text{between the measured value}{x}_{a}\text{and the real value}{x}_{r}\text{.}\\ 
+\text{Furthermore, if}y=f({x}_{1}\text{,}{x}_{2}\text{,}\dots \text{,}{x}_{k})\text{is a function of several}{x}_{i}\text{, variables and the error}\Delta {x}_{i}\text{is much less than}{x}_{i}\\ 
+\text{therefore}\Delta {x}_{i}\ll {x}_{i}\text{. Then you have the error}\Delta y\text{from}y\text{according to the}\text{law of error propagation}\\ 
+\Delta y=\sum _{i=1}^{k}\left|\frac{\partial f}{\partial {x}_{i}}\right|\Delta {x}_{i}\text{.}\end{array}</math>

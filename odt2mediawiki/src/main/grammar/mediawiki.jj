@@ -1,0 +1,576 @@
+/**
+ * MediaWiki grammar ported from flexbisonparse/wikilex.l contained the 
+ * MediaWiki repository. 
+ *
+ * The source is located at:
+ * http://svn.wikimedia.org/svnroot/mediawiki/trunk/flexbisonparse/wikilex.l
+ *
+ * It is not yet clear, whether the original grammar represents the current 
+ * MediaWiki syntax. 
+ *
+ * This source file is licensed under the GNU General Public License
+ *               http://www.gnu.org/copyleft/gpl.html
+ */
+
+options {
+  JAVA_UNICODE_ESCAPE = true;
+  ERROR_REPORTING = true;
+  STATIC = false;
+  JDK_VERSION = "1.5";
+}
+
+PARSER_BEGIN(MediaWikiParser)
+
+package haui.office.wiki.parser;
+
+import java.util.ArrayList;
+
+public class MediaWikiParser extends MediaWikiParserBase {
+	private ArrayList<Token> lineBuffer = new ArrayList<Token>();
+	
+}
+
+PARSER_END(MediaWikiParser)
+
+<*>
+TOKEN: {
+	<#ANY:        ~[] >
+|	<#EMPTY:      ([])? >
+|	<#SPACE_CHAR: [" ", "\t"] >
+|	<#SPACE:      (<SPACE_CHAR>)* >
+|	<#IDENTIFIER_START_CHAR: ["a" - "z", "A" - "Z", "_"] >
+|	<#IDENTIFIER_CHAR: 
+		<IDENTIFIER_START_CHAR> 
+	|	["0" - "9", "-", ":"] 
+	>
+|	<#IDENTIFIER: <IDENTIFIER_START_CHAR> (<IDENTIFIER_CHAR>)* >
+|	<#QUOTED_STRING: "\"" (~["\"", "\n", "\r"])* "\"" >
+|	<#APOSTROPHED_STRING: "'"  (~["'",  "\n", "\r"])* "'" >
+|	<#STRING_CONSTANT: <QUOTED_STRING> |	<APOSTROPHED_STRING> > 
+|	<#SINGLE_SPECIAL:
+		"'"
+	|	"{"
+	|	"}"
+	>
+|	<#URL_SUFFIX: (["a"-"z", "A"-"Z", "0"-"9", ".", "/", "?", "&", "=", "#", ":", "@"])* >
+|	<#NEWLINE: "\r\n" | "\n\r" | "\n" | "\r"> 
+}
+
+// Note: Table cell attributes cannot be handled within the scanner. 
+// a) The scanner cannot decide whether it is currently within a table 
+//    at all, because tables may nest and nesting cannot be handled by
+//    a regular grammar.   
+// b) In a table cell without attributes (if there is no other pipe in 
+//    the same line), the cell contents immediately follows the initial 
+//    pipe and must be parsed with the line contents rules.
+// From a) and b) follows that the scanner cannot assume to parse 
+// attributes, when seeing a pipe at the beginning of a line, because it 
+// is neither sure, that a table is being parsed at all and whether there 
+// is a second pipe on that line due to missing lookahead (there is only
+// lookahead, during parsing of a single token, which would require to 
+// return all attributes as a single token that has to be parsed again). 
+<DEFAULT>
+TOKEN: {
+	<TABLE_BEGIN:   <SPACE> "{|"       <SPACE> > : ATTRIBUTE_CONTENTS
+|	<TABLE_ROW:     <SPACE> "|" ("-")+ <SPACE> > : ATTRIBUTE_CONTENTS
+|	<TABLE_HEAD_I:  <SPACE> "!" ("!")? <SPACE> > : LINE_CONTENTS
+|	<TABLE_CELL_I:  <SPACE> "|"        <SPACE> > : LINE_CONTENTS
+|	<TABLE_CAPTION: <SPACE> "|+"       <SPACE> > : LINE_CONTENTS
+|	<TABLE_END:     <SPACE> "|}"               > : LINE_CONTENTS
+|	<HEADING_START: ("=")+ <SPACE>             > : LINE_CONTENTS
+|	<PRE:           " "                        > : LINE_CONTENTS
+}
+
+<ATTRIBUTE_CONTENTS>
+TOKEN: {
+	<ATTRIBUTE_NAME:  <IDENTIFIER>                           > : ATTRIBUTE_CONTENTS
+|	<ASSIGN:          "="                                    > : ATTRIBUTE_CONTENTS
+|	<ATTRIBUTE_VALUE: <QUOTED_STRING> | <APOSTROPHED_STRING> > : ATTRIBUTE_CONTENTS
+}
+
+<ATTRIBUTE_CONTENTS>
+SKIP: {
+	<ATTRIBUTE_SEPARATOR: (<SPACE_CHAR>)+ > : ATTRIBUTE_CONTENTS
+|	<END_OF_ATTRIBUTES:   <NEWLINE>       > : DEFAULT
+}
+
+<DEFAULT,LIST_PREFIX>
+TOKEN: {
+	<BULLET: "*" > : LIST_PREFIX
+|	<HASH:   "#" > : LIST_PREFIX
+|	<INDENT: ":" > : LIST_PREFIX
+}
+
+<LIST_PREFIX>
+SKIP: {
+	<LIST_PREFIX_END: <EMPTY> > : LINE_CONTENTS
+}
+
+<DEFAULT>
+TOKEN: {
+	<PARAGRAPH_TEXT: 
+		( ~["<", "'", "[", "]", "{", "}", "=", "|", "!", "*", "#", ":", " ", "\r", "\n"] (<LINE_TEXT>)? ) 
+	| <SINGLE_SPECIAL> 
+	> : LINE_CONTENTS
+}
+
+<LINE_CONTENTS>
+TOKEN: {
+	<LINE_TEXT: 
+		(~["<", "'", "[", "]", "{", "}", "'", "=", "|", "\r", "\n"])+
+	| <SINGLE_SPECIAL> 
+	>
+}
+
+<DEFAULT,LINE_CONTENTS>
+TOKEN: {
+	<OPEN_WIKI_LINK_RAW:   "[[:"   > : LINE_CONTENTS
+|	<OPEN_WIKI_LINK:       "[["    > : LINE_CONTENTS
+|	<OPEN_EXTERNAL_LINK:   "["     > : LINE_CONTENTS
+|	<CLOSE_WIKI_LINK:      "]]"    > : LINE_CONTENTS
+|	<CLOSE_EXTERNAL_LINK:  "]"     > : LINE_CONTENTS
+|	<OPEN_PENTUPLE_CURLY:  "{{{{{" > : LINE_CONTENTS
+|	<OPEN_TEMPLATE4:       "{{{{"  > : LINE_CONTENTS
+|	<OPEN_TEMPLATE_VAR:    "{{{"   > : LINE_CONTENTS
+|	<OPEN_TEMPLATE2:       "{{"    > : LINE_CONTENTS
+|	<CLOSE_PENTUPLE_CURLY: "}}}}}" > : LINE_CONTENTS
+|	<CLOSE_TEMPLATE4:      "}}}}"  > : LINE_CONTENTS
+|	<CLOSE_TEMPLATE_VAR:   "}}}"   > : LINE_CONTENTS
+|	<CLOSE_TEMPLATE2:      "}}"    > : LINE_CONTENTS
+|	<BOLD_ITALICS:         "'''''" > : APOSTROHE_CATASTROPHE
+|	<BOLD:                 "'''"   > : APOSTROHE_CATASTROPHE
+|	<ITALICS:              "''"    > : LINE_CONTENTS
+|	<BEGIN_EXTENSION:      "<"     > : EXTENSION
+|	<END_EXTENSION:        "</"    > : LINE_CONTENTS
+|	<BEGIN_COMMENT:        "<!--"  >  : COMMENT
+|	<URL:
+		"http://" <URL_SUFFIX>
+	|	"ftp://" <URL_SUFFIX>
+	>
+}
+
+<LINE_CONTENTS>
+TOKEN: {
+	<HEADING_END:          ("=")+ <SPACE> > : LINE_CONTENTS
+|	<TABLE_CELL:           "||"   <SPACE> > : LINE_CONTENTS
+|	<TABLE_HEAD:           "!!"   <SPACE> > : LINE_CONTENTS
+|	<PIPE:                 "|"            > : LINE_CONTENTS
+}
+
+<COMMENT>
+TOKEN: {
+	<COMMENT_TEXT:  
+			( (<ANY>)? (~["-"])+ )
+		|	( "-"      (~["-"])+ ) 
+		|	( "--"     (~[">"])+ )
+		>
+|	<END_COMMENT: "-->" > : LINE_CONTENTS
+}
+
+<EXTENSION>
+TOKEN: {
+	<EXTENSION_NAME:       <IDENTIFIER>         > 
+|	<EXTENSION_ASSIGN:     "="                  > 
+|	<EXTENSION_VALUE:      <STRING_CONSTANT>    >
+|	<EXTENSION_SPACE:      (<SPACE_CHAR>)+      > 
+|	<EXTENSION_CLOSE:      ">"                  > : LINE_CONTENTS 
+|	<EXTENSION_CANCEL:     <EMPTY>              > : LINE_CONTENTS 
+}
+
+<APOSTROHE_CATASTROPHE>
+TOKEN: {
+	<APOSTROHE_TEXT: ("'")+ >
+}
+
+<APOSTROHE_CATASTROPHE>
+SKIP: {
+	<APOSTROHE_END: <EMPTY> > : LINE_CONTENTS
+}
+
+<LINE_CONTENTS>
+TOKEN: {
+	<END_OF_LINE_CONTENTS: <NEWLINE>> : DEFAULT
+}
+
+<DEFAULT>
+TOKEN: {
+	<BLANK_LINE: ([" ", "\t"])* <NEWLINE> >
+}
+
+
+public void table(): {}
+{
+	<TABLE_BEGIN> {push("table"); } rowAttributes()
+	(
+		<TABLE_CAPTION> {push("caption"); } wikiLineContents() eol() {pop("caption"); } 
+		wikiCellText()
+	|	<TABLE_ROW> {popExcluding("table"); push("row"); } rowAttributes()
+	|	tableCell()
+	)*	
+	(<TABLE_END> | <EOF>) {pop("table"); }
+}
+
+void tableCell(): {}
+{
+	tableLine() eol()
+	wikiCellText()
+}
+
+public void tableLine(): {}
+{
+	(
+		(
+			tableLineHead()
+			tableInlineCell()
+		)
+	|	(
+			tableCellSeparator()
+			cellText()
+		)
+	)
+	(
+		tableCellSeparator()
+		tableInlineCell()
+	)*
+}
+
+void tableInlineCell(): {}
+{
+(	LOOKAHEAD( attributes() <PIPE> )
+	attributes() <PIPE> cellText()
+|	cellText()
+)
+}
+
+Token paragraphClasses(): {
+	Token r;
+}
+{
+(	r=<TABLE_BEGIN>
+|	r=tableContentClasses()
+|	r=<TABLE_END>
+|	r=<HEADING_START>
+|	r=<PRE>
+|	r=listClasses()
+|	r=textClasses()
+)	{return r; }
+}
+
+Token tableContentClasses(): {
+	Token r;
+}
+{
+(	r=<TABLE_CAPTION>
+|	r=<TABLE_ROW>
+|	r=<TABLE_HEAD>
+|	r=<TABLE_HEAD_I>
+|	r=<TABLE_CELL>
+|	r=<TABLE_CELL_I>
+)	{return r; }
+}
+
+Token listClasses(): {
+	Token r;
+}
+{
+(	r=<BULLET>
+|	r=<HASH>
+|	r=<INDENT>
+)	{return r; }
+}
+
+public void attributes(): {} 
+{
+	(attributeContentClasses())*
+}
+
+void rowAttributes(): {
+	Token n, v;
+} 
+{
+(
+	n=<ATTRIBUTE_NAME> {push("attribute"); set("name", n.image); }
+	(
+		<ASSIGN>
+		v=<ATTRIBUTE_VALUE> {set("value", v.image.substring(1, v.image.length() - 1)); }
+	)?
+	{pop(); }
+)*
+}
+
+Token textClasses(): {
+	Token r;
+}
+{
+(	r=<PARAGRAPH_TEXT>
+|	r=textContentClasses()
+)	{return r; }
+}
+
+Token textContentClasses(): {
+	Token r;
+}
+{
+(	r=attributeContentClasses()
+|	r=attributeSeparator()
+)	{return r; }
+}
+
+Token attributeContentClasses(): {
+	Token r; 
+}
+{
+(	r=<LINE_TEXT>
+|	r=<URL>
+|	r=<OPEN_WIKI_LINK_RAW>
+|	r=<OPEN_WIKI_LINK>
+|	r=<OPEN_EXTERNAL_LINK>
+|	r=<CLOSE_WIKI_LINK>
+|	r=<CLOSE_EXTERNAL_LINK>
+|	r=<OPEN_PENTUPLE_CURLY>
+|	r=<OPEN_TEMPLATE4>
+|	r=<OPEN_TEMPLATE_VAR>
+|	r=<OPEN_TEMPLATE2>
+|	r=<CLOSE_PENTUPLE_CURLY>
+|	r=<CLOSE_TEMPLATE4>
+|	r=<CLOSE_TEMPLATE_VAR>
+|	r=<CLOSE_TEMPLATE2>
+|	r=<BOLD_ITALICS>
+|	r=<BOLD>
+|	r=<ITALICS>
+|	r=<BEGIN_EXTENSION>
+|	r=<END_EXTENSION>
+|	r=<BEGIN_COMMENT>
+|	r=<HEADING_END>
+|	r=<COMMENT_TEXT>
+|	r=<END_COMMENT>
+|	r=<EXTENSION_NAME>
+|	r=<EXTENSION_ASSIGN>
+|	r=<EXTENSION_VALUE>
+|	r=<EXTENSION_SPACE>
+|	r=<EXTENSION_CLOSE>
+|	r=<EXTENSION_CANCEL>
+|	r=<APOSTROHE_TEXT>
+)	{return r; }
+}
+
+
+void tableCellSeparator(): {}
+{
+(	<TABLE_HEAD> {pushSimple("table", "row", "cell"); set("heading", "true"); }
+|	<TABLE_CELL> {pushSimple("table", "row", "cell"); }
+)
+}
+
+void tableLineHead(): {}
+{
+(	<TABLE_HEAD_I> {pushSimple("table", "row", "cell"); set("heading", "true"); } 
+|	<TABLE_CELL_I> {pushSimple("table", "row", "cell"); }
+)
+}
+
+
+void cellText(): {}
+{
+	(textContentClasses())*	
+}
+
+Token attributeSeparator(): {
+	Token r;
+}
+{
+(	r=<PIPE>
+)	{return r; }
+}
+
+void listLine(): {}
+{
+	{push("list"); }
+	(
+		LOOKAHEAD(listClasses()) 
+	
+		(	<BULLET> {push("bullet"); }
+		|	<HASH>   {push("number"); }
+		|	<INDENT> {push("indent"); }
+		)
+	)+
+	wikiLineContents()
+	eol()
+	{pop("list"); }
+}
+
+void preformattedLine(): {}
+{
+	{push("code"); }
+	<PRE>
+	wikiLineContents()
+	eol()
+	{pop("code"); }
+}
+
+void headingLine(): {}
+{
+	{push("heading"); }
+	<HEADING_START>
+	wikiLineContents()
+	eol()
+	{pop("heading"); }
+}
+
+void textLine(): {}
+{
+	{push("paragraph"); }
+	textClasses()
+	wikiLineContents()
+	eol()
+	{pop("paragraph"); }
+}
+
+void misplacedTableLine(): {}
+{
+	{push("paragraph"); }
+	tableContentClasses()
+	wikiLineContents()
+	eol()
+	{pop("paragraph"); }
+}
+
+void wikiParagraph(): {}
+{
+	wikiCellParagraph()
+|	table()
+|	misplacedTableLine()
+}
+
+// "wikiParagraph excluding table() and tableLine()"
+void wikiCellParagraph(): {}
+{
+	textLine()
+|	headingLine()
+|	listLine()
+|	preformattedLine()
+}
+
+void wikiLineContents(): {
+	Token k;
+}
+{
+	(
+		k=paragraphClasses()
+		{
+			lineBuffer.add(k); 
+		}
+	)*
+//	{
+//		switch (k.kind) {
+//		case BOLD:
+//		case ITALICS:
+//		case BOLD_ITALICS:
+//		
+//		}
+//	}
+}
+
+void wikiLink(): {}
+{
+	(
+		<OPEN_WIKI_LINK_RAW>
+	|	<OPEN_WIKI_LINK>
+	)
+	<LINE_TEXT>
+	<PIPE>
+}
+
+void externalLink(): {}
+{
+	<OPEN_EXTERNAL_LINK>
+	<URL>
+}
+
+ExtensionTag extension(): {
+	Token type;
+	Token name;
+	Token attName;
+	Token attValue;
+	
+	Token t;
+	int sizeBefore = lineBuffer.size();
+	ExtensionTag result;
+}
+{
+	(
+		type=<BEGIN_EXTENSION>
+	|	type=<END_EXTENSION>
+	)
+	{lineBuffer.add(type); }
+
+	name=<EXTENSION_NAME>
+	{lineBuffer.add(name); }
+	
+	{result = new ExtensionTag(type.kind == BEGIN_EXTENSION, name.image); }
+	
+	// MediaWiki "allows" and ignores attributes in end tags.
+	(
+		t=<EXTENSION_SPACE>
+		{lineBuffer.add(t); }
+		
+		attName=<EXTENSION_NAME>
+		{lineBuffer.add(attName); }
+		
+		(
+			t=<EXTENSION_SPACE>
+			{lineBuffer.add(t); }
+		)?
+
+		t=<EXTENSION_ASSIGN>
+		{lineBuffer.add(t); }
+		
+		(
+			t=<EXTENSION_SPACE>
+			{lineBuffer.add(t); }
+		)?
+		(
+			attValue=<EXTENSION_VALUE>
+		|	attValue=<EXTENSION_NAME>
+		)
+		{lineBuffer.add(attValue); }
+
+		{result.addAttribute(attName.image, attValue.image); }
+	)*
+	t=<EXTENSION_CLOSE>
+	{lineBuffer.add(t); }
+
+	{return result; }
+}
+
+JAVACODE
+void abortExtension() {}
+
+void wikiCellText(): {}
+{
+	(<BLANK_LINE>)*
+	(
+		wikiCellParagraph()
+		(<BLANK_LINE>)*
+	)*
+}
+
+void wikiText(): {}
+{
+	{push("document"); }
+	(<BLANK_LINE>)*
+	(
+		wikiParagraph()
+		(<BLANK_LINE>)*
+	)*
+	{pop("document"); }
+}
+
+public void eol(): {
+	lineBuffer.clear();
+}
+{
+	<END_OF_LINE_CONTENTS>
+|	<EOF>
+}
+

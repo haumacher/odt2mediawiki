@@ -1,0 +1,57 @@
+aaa [[: bbb ]] ddd
+
+aaa [[ : bbb ]] ddd
+
+aaa [[:: bbb ]] ddd
+
+aaa [[: bbb
+]] ddd
+
+aaa [[: 
+bbb ]] ddd
+
+----
+
+aaa [[: bbb | ccc ]] ddd
+
+aaa [[: bbb | ccc 
+]] ddd
+
+aaa [[: bbb | 
+ccc ]] ddd
+
+aaa [[: bbb 
+| ccc ]] ddd
+
+aaa [[: 
+bbb | ccc ]] ddd
+
+----
+
+aaa [[: bbb | 
+
+ccc ]] ddd
+
+----
+
+aaa [[: bbb | 
+
+ ccc 
+
+* 111
+: 222
+# 333
+
+{| class=prettytable
+|| a || b || c
+|}
+
+444
+ 555
+ 666 ] 777
+
+ ]] ddd ] ]] ]]] eee
+
+ fff
+
+----

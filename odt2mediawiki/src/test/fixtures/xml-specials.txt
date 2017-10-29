@@ -1,0 +1,3 @@
+<nowiki>< This < is < a < paragraph & with & multiple & xml > specials. ></nowiki>
+
+<nowiki>&lt; This &lt; is &lt; another &lt; paragraph & with &lt;/nowiki> & &lt;/nowiki> & multiple & xml > specials. ></nowiki>

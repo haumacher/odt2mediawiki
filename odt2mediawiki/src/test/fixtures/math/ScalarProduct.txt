@@ -1,0 +1,10 @@
+<math>\begin{array}{c}\text{Definition of the scalar product in}{\mathbb{R}}^{n}\\ 
+\\ 
+\text{Definition:}\text{if}v\text{,}w\in {\mathbb{R}}^{n}\text{, then the scalar product}\langle v\text{,}w\rangle \text{of}v\text{and}w\text{is defined}\\ 
+\langle v\text{,}w\rangle =\parallel v\parallel \cdot \parallel w\parallel \cdot \cos \theta \text{,}\\ 
+\theta \text{denotes the angle between both vectors.}\\ 
+\\ 
+\\ 
+\text{The Cauchy-Schwarz inequality applies}\\ 
+\\ 
+\left|\langle v\text{,}w\rangle \right|\le \parallel v\parallel \cdot \parallel w\parallel \end{array}</math>

@@ -1,0 +1,5 @@
+Some regular text.
+
+A text with <sup>superscript</sup> and <sub>subscript</sub>.
+
+Some pseudo formula: f<sub>s</sub><sup>i</sup>(t) := 2s t<sup>2</sup> - f<sub>s</sub><sup>i-1</sup>(t/2)

@@ -1,0 +1,3 @@
+''Some italics text as single text of the document.''
+
+''With a second paragraph that is also italics.''

@@ -1,0 +1,2 @@
+<math>\begin{array}{c}\text{Depiction of a chemical element:}\\ 
+{}_{30}{}^{63}\mathrm{Zn}^{2+}\end{array}</math>

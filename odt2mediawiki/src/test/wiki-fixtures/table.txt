@@ -1,0 +1,20 @@
+ {| class="prettytable"
+ ! AAA | BBB !! CCC | DDD !! EEE | FFF
+ |-
+ | AAA | BBB || CCC | DDD || EEE | FFF
+ |-
+ !! AAA | BBB !! CCC | DDD !! EEE | FFF
+ |-
+ || AAA | BBB || CCC | DDD || EEE | FFF
+ |-
+ | aaa | bbb 
+ | '''ccc'''
+ || xxx || yyy | zzz
+ |- 
+ | a=b | ddd
+ | 
+ eee
+
+ggg
+ | fff
+ |}

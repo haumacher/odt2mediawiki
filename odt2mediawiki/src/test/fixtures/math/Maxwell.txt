@@ -1,0 +1,11 @@
+<math>\begin{array}{c}\text{The fundamentals of electrodynamics are based on Maxwell Equations}\\ 
+\nabla \cdot \overrightarrow{B}=0\\ 
+\nabla \cdot \overrightarrow{E}=\frac{\rho }{{\epsilon }_{0}}\\ 
+\nabla \times \overrightarrow{E}=-\frac{\partial \overrightarrow{B}}{\partial t}\\ 
+\nabla \times \overrightarrow{B}={m}_{0}j+\frac{1}{{c}^{2}}\frac{\partial \overrightarrow{E}}{\partial t}\\ 
+\text{As an alternative to the differentiated form of the Maxwell equations represented,}\\ 
+\text{an integral form may be given:}\\ 
+\underset{V}{\backslash oiint }\overrightarrow{E}\cdot d\overrightarrow{A}=\frac{1}{{\epsilon }_{0}}\underset{V}{\int }\rho \mathrm{dV}\\ 
+\underset{V}{\backslash oiint }\overrightarrow{B}\cdot d\overrightarrow{A}=0\\ 
+\underset{F}{\oint }\overrightarrow{E}\cdot d\overrightarrow{s}=-\frac{d}{\mathrm{dt}}\underset{F}{\int }\overrightarrow{B}\cdot d\overrightarrow{A}\\ 
+\underset{F}{\oint }\overrightarrow{B}\cdot d\overrightarrow{s}={m}_{0}\underset{F}{\int }\left(\overrightarrow{j}+{\epsilon }_{0}\frac{\partial \overrightarrow{E}}{\partial t}\right)\cdot d\overrightarrow{A}\end{array}</math>

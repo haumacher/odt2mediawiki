@@ -1,0 +1,9 @@
+Some normal text.
+
+'''Some paragraph with paragraph style A declaring bold.'''
+
+Some normal text.
+
+'''Some paragraph with style A and '''some text content with ''normal'' font face'''.'''
+
+Text content having paragraph style A but a character style with normal font face.

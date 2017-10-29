@@ -1,0 +1,171 @@
+'''Hilfe:Textgestaltung'''=== aus Wikipedia, der freien Enzyklopädie ===
+Bitte beachte die [/wiki/Wikipedia:Formatierung Wikipedia-Richtlinien zur Formatierung]<nowiki>, insbesondere: Kleiner- und größergeschriebenen Text, harte Zeilenumbrüche mit <br />-Tags, Absätze durch doppelte oder mehrfache Leerzeilen, </nowiki>[/wiki/Hilfe:Farben Farben] und ähnliche Spezialformatierungen solltest du nicht in Artikeln, sondern nur in [/wiki/Hilfe:Tabellen Tabellen] oder [/wiki/Hilfe:Vorlagen Textbausteinen] verwenden, um ein einheitliches Aussehen der Artikel zu gewährleisten. Ansonsten bietet die Wikiauszeichnungssprache genügend Möglichkeiten, den Text zu formatieren.
+{| style="border-spacing:0;"
+| colspan="2"  style="background-color:#8db6cd;border:none;padding:0.049cm;"| <center>'''Textgestaltung'''</center>
+
+|-
+| style="border:none;padding:0.049cm;"| <center>'''Was du schreibst'''</center>
+| style="border:none;padding:0.049cm;"| <center>'''Wie es dargestellt wird'''</center>
+
+|-
+| style="border:none;padding:0.049cm;"| <tt>Normaler Text wird so dargestellt, wie du ihn eingibst. Mit einer Leerzeileerzeugst du einen Absatz.</tt>
+| style="border:none;padding:0.049cm;"| Normaler Text wird so dargestellt, wie du ihn eingibst. Mit einer Leerzeile
+
+erzeugst du einen Absatz.
+
+|-
+| style="border:none;padding:0.049cm;"| <tt><nowiki>Ein Zeilenumbruch ohne neuen Absatzbeginn wird durch die Eingabe von <br /> realisiert. <br /> Zur (sparsamen) Verwendung siehe oben.</nowiki></tt>
+| style="border:none;padding:0.049cm;"| Ein Zeilenumbruch ohne neuen Absatzbeginn wird durch die Eingabe vonrealisiert.Zur (sparsamen) Verwendung siehe oben.
+
+|-
+| style="border:none;padding:0.049cm;"| <tt>''kursiv''</tt>
+| style="border:none;padding:0.049cm;"| ''kursiv''
+
+|-
+| style="border:none;padding:0.049cm;"| <tt>'''fett'''</tt>
+| style="border:none;padding:0.049cm;"| '''fett'''
+
+|-
+| style="border:none;padding:0.049cm;"| <tt>'''''fett und kursiv'''''</tt>
+| style="border:none;padding:0.049cm;"| '''''fett und kursiv'''''
+
+|-
+| style="border:none;padding:0.049cm;"| <tt><nowiki><sup>hochgestellt</sup></nowiki></tt>
+| style="border:none;padding:0.049cm;"| Text hochgestellt (''Brüche bitte mit [/wiki/Hilfe:TeX <math>])
+
+|-
+| style="border:none;padding:0.049cm;"| <tt><nowiki><sub>tiefgestellt</sub></nowiki></tt>
+| style="border:none;padding:0.049cm;"| Text tiefgestellt (''Brüche bitte mit [/wiki/Hilfe:TeX <math>])
+
+|-
+| style="border:none;padding:0.049cm;"| <tt><nowiki>== Überschrift 1 ==</nowiki></tt>
+
+<tt><nowiki>=== Überschrift 2 ===</nowiki></tt>
+
+<tt><nowiki>==== Überschrift 3 ====</nowiki></tt>
+
+<tt><nowiki>===== Überschrift 4 =====</nowiki></tt>
+| style="border:none;padding:0.049cm;"| == Überschrift 1 ==
+=== Überschrift 2 ===
+==== Überschrift 3 ====
+===== Überschrift 4 =====
+
+
+|-
+| style="border:none;padding:0.049cm;"| <tt><nowiki>* eins</nowiki><nowiki>* zwei</nowiki><nowiki>** zwei-eins</nowiki><nowiki>** zwei-zwei</nowiki><nowiki>* drei</nowiki></tt>
+| style="border:none;padding:0.049cm;"| * eins 
+* zwei 
+** zwei-eins 
+** zwei-zwei 
+* drei 
+
+
+
+|-
+| style="border:none;padding:0.049cm;"| <tt><nowiki># eins</nowiki><nowiki># zwei</nowiki><nowiki>## zwei-eins</nowiki><nowiki>## zwei-zwei</nowiki><nowiki># drei</nowiki></tt>
+| style="border:none;padding:0.049cm;"| # eins 
+# zwei 
+## zwei-eins 
+## zwei-zwei 
+# drei 
+
+
+
+|-
+| style="border:none;padding:0.049cm;"| <tt>Vom normalen Text: eingerückt:: doppelt eingerückt<nowiki># In Kombination</nowiki><nowiki>#: mit Listen</nowiki><nowiki>#:* verschachtelt</nowiki></tt>
+| style="border:none;padding:0.049cm;"| Vom normalen Text
+
+eingerückt 
+
+doppelt eingerückt 
+
+# In Kombination <br/> mit Listen 
+#* verschachtelt 
+
+
+
+|-
+| style="border:none;padding:0.049cm;"| <tt><nowiki>;Definitionsliste</nowiki>:Eine Definition:Eine andere Definition<nowiki>;Begriff</nowiki>:Definition des Begriffs</tt>
+| style="border:none;padding:0.049cm;"| Definitionsliste 
+
+Eine Definition 
+
+Eine andere Definition 
+
+Begriff 
+
+Definition des Begriffs 
+
+|-
+| style="border:none;padding:0.049cm;"| <tt>&nbsp;vorformatierter Text&nbsp;&nbsp;mit einem Leerzeichen&nbsp;# am Zeilenanfang</tt>
+| style="border:none;padding:0.049cm;"|  vorformatierter Text
+   mit einem Leerzeichen 
+ <nowiki># am Zeilenanfang</nowiki>
+
+|-
+| style="border:none;padding:0.049cm;"| <tt>Für Gedichte und ähnliche Texte:<nowiki><poem></nowiki>Ob ich Biblio- was bin?phile? „Freund von Büchern“ meinen Sie?Na, und ob ich das bin!Ha! und wie!<nowiki></poem></nowiki></tt>
+| style="border:none;padding:0.049cm;"| Ob ich Biblio- was bin?phile? „Freund von Büchern“ meinen Sie?Na, und ob ich das bin!Ha! und wie!
+
+|-
+| style="border:none;padding:0.049cm;"| <tt>Eine<nowiki>----</nowiki>Linie</tt>
+| style="border:none;padding:0.049cm;"| Eine
+
+
+Linie
+
+|-
+| style="border:none;padding:0.049cm;"| <tt><nowiki><!-- unsichtbarer Kommentar--></nowiki></tt>
+| style="border:none;padding:0.049cm;"| 
+
+|-
+| style="border:none;padding:0.049cm;"| <tt>Automatischen Zeilenumbruch zwischen logisch zusammengehörenden Elementen verhindern: geschütztes Leerzeichen („no-break-space“): 10&nbsp;kg, 50&nbsp;%, Dr.&nbsp;Best oder geschützten Bindestrich (unicode-Zeichen Nummer 8209 bzw. (hex) 2011): Müller&#x2011;Lüdenscheid, Regenhose und &#8209;jacke verwenden.</tt>
+| style="border:none;padding:0.049cm;"| Automatischen Zeilenumbruch zwischen logisch zusammengehörenden Elementen verhindern: 
+
+geschütztes Leerzeichen („no-break-space“): 10&nbsp;kg, 50&nbsp;%, Dr.&nbsp;Best oder geschützten Bindestrich (unicode-Zeichen Nummer 8209 bzw. (hex) 2011): Müller‑Lüdenscheid, Regenhose und ‑jacke verwenden.
+
+|-
+| colspan="2"  style="background-color:#8db6cd;border:none;padding:0.049cm;"| <center>'''Formatierungen, die nicht in normalen Wikipedia-Artikeln verwendet werden sollten'''</center>
+
+|-
+| style="border:none;padding:0.049cm;"| <tt><nowiki><div align="center">zentriert</div></nowiki></tt> oder <tt><nowiki><center>zentriert</center></nowiki></tt>
+| style="border:none;padding:0.049cm;"| <center>zentriert</center>
+
+|-
+| style="border:none;padding:0.049cm;"| <tt><nowiki><div align="right">rechtsbündig</div></nowiki></tt>
+| style="border:none;padding:0.049cm;"| <div align="right">rechtsbündig</div>
+
+|-
+| style="border:none;padding:0.049cm;"| <tt><nowiki><big>groß</big></nowiki></tt>
+| style="border:none;padding:0.049cm;"| Text groß
+
+|-
+| style="border:none;padding:0.049cm;"| <tt><nowiki><small>klein</small></nowiki></tt>
+| style="border:none;padding:0.049cm;"| Text klein
+
+|-
+| style="border:none;padding:0.049cm;"| <tt><nowiki><s>durchgestrichen</s></nowiki></tt>
+| style="border:none;padding:0.049cm;"| Text durchgestrichen
+
+|-
+| style="border:none;padding:0.049cm;"| <tt><nowiki><u>unterstrichen</u></nowiki></tt>
+| style="border:none;padding:0.049cm;"| Text unterstrichen
+
+|-
+| style="border:none;padding:0.049cm;"| <tt><nowiki>Text <br />neue Zeile</nowiki></tt>
+| style="border:none;padding:0.049cm;"| Textneue Zeile
+
+|-
+| style="border:none;padding:0.049cm;"| <tt><nowiki>&lt;nowiki>keine ''Wiki-[[Syntax]]''&lt;/nowiki></nowiki></tt>
+| style="border:none;padding:0.049cm;"| <nowiki>keine ''Wiki-[[Syntax]]''</nowiki>
+
+|-
+| style="border:none;padding:0.049cm;"| <tt><nowiki><tt>Teletyper, Schreibmaschinenstil</tt></nowiki></tt>
+| style="border:none;padding:0.049cm;"| <tt>Teletyper, Schreibmaschinenstil</tt>
+
+|-
+| style="border:none;padding:0.049cm;"| <tt><nowiki><code>Markiert Text als Quelltext</code></nowiki></tt>
+| style="border:none;padding:0.049cm;"| <tt>Markiert Text als Quelltext</tt>
+
+|}
+Von „[http://de.wikipedia.org/wiki/Hilfe:Textgestaltung http://de.wikipedia.org/wiki/Hilfe:Textgestaltung]“===== [/wiki/Spezial:Categories Kategorie]: [/wiki/Kategorie:Wikipedia:Hilfe Wikipedia:Hilfe] =====
+

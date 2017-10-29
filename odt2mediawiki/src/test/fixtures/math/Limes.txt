@@ -1,0 +1,15 @@
+<math>\begin{array}{c}\text{Limiting value superior, limiting value inferior}\\ 
+\\ 
+\text{Definition:}\text{if}{({a}_{n})}_{n\in \mathbb{N}}\text{is a sequence of real numbers. Then you define}\\ 
+\underset{n\rightarrow \infty }{\mathrm{lim\; sup}}{a}_{n}=\underset{n\rightarrow \infty }{\lim }(\text{sup}\lbrace {a}_{k}\text{:}k\ge n\rbrace )\\ 
+\underset{n\rightarrow \infty }{\mathrm{lim\; inf}}{a}_{n}=\underset{n\rightarrow \infty }{\lim }(\text{inf}\lbrace {a}_{k}\text{:}k\ge n\rbrace )\\ 
+\\ 
+\\ 
+\text{We see the sequence}{a}_{n}={(-1)}^{n}(1+\frac{1}{n})\text{,}n\ge 1\text{. Here is}\\ 
+\text{sup}\lbrace {a}_{k}\text{:}k\ge n\rbrace =\lbrace \begin{array}{cc}1+\frac{1}{n}\text{,}& 	\text{if}n\text{is odd,}\\ 
+1+\frac{1}{n+1}\text{,}& 	\text{if}n\text{is even.}\end{array}\\ 
+\text{Thus}\underset{n\rightarrow \infty }{\mathrm{lim\; sup}}{a}_{n}=1\text{applies.}\\ 
+\text{Correspondingly, you have}\\ 
+\text{inf}\lbrace {a}_{k}\text{:}k\ge n\rbrace =\lbrace \begin{array}{cc}-(1+\frac{1}{n})\text{,}& 	\text{if}n\text{is odd,}\\ 
+-(1+\frac{1}{n+1})\text{,}& 	\text{if}n\text{is even.}\end{array}\\ 
+\text{Therefore,}\underset{n\rightarrow \infty }{\mathrm{lim\; inf}}{a}_{n}=-1\text{.}\end{array}</math>

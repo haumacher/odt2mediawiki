@@ -1,0 +1,4 @@
+= Test of WikiLink character style =
+This [[http://wikipedia.org|link]] points to Wikipedia through an absolute (external) link after exporting to Mediawiki format.
+
+The following link points to a wiki page named „OpenOffice.org“ ([[OpenOffice.org]]) that is local to the wiki in which the translation result is being deployed.

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project basedir="." default="odt2wiki:all" name="odt2wiki" xmlns:artifact="urn:maven-artifact-ant"><property name="odt2wiki:basedir" value="${basedir}/../odt2wiki"/><property name="odt2wiki:ant.file" value="build.xml"/><property name="odt2wiki:ant.project.name" value="odt2wiki"/>
+
+	<!-- Local settings -->
+	<!--
+	<import file="${basedir}/build.properties.xml"/>
+	-->
+	
+	<!-- Dependencies -->
+	<import file="../net.sf.wtk.ant.maven/build.import.xml"/>
+	<import file="../haui.office/build.import.xml"/>
+	
+	<basename file="${odt2wiki:basedir}" property="odt2wiki:project.name"/>
+	
+	<property name="odt2wiki:src" value="${odt2wiki:basedir}/src/main/java"/>
+	<property name="odt2wiki:grammar" value="${odt2wiki:basedir}/src/main/grammar"/>
+	<property name="odt2wiki:test" value="${odt2wiki:basedir}/src/test"/>
+	<property name="odt2wiki:build" value="${odt2wiki:basedir}/build"/>
+	<property name="odt2wiki:classes" value="${odt2wiki:build}/classes"/>
+
+	<property name="odt2wiki:jar" value="${odt2wiki:build}/${odt2wiki:project.name}.jar"/>
+	<property name="odt2wiki:jar-all" value="${odt2wiki:build}/${odt2wiki:project.name}-all.jar"/>
+
+	<artifact:dependencies filesetid="dependency.jars" pathId="dependency.cp">
+		<dependency artifactId="xalan" groupId="xalan" version="2.7.0"/>
+	</artifact:dependencies>
+	
+	<artifact:dependencies filesetid="javacc.jars" pathId="javacc.cp">
+		<dependency artifactId="javacc" groupId="net.java.dev.javacc" version="4.0"/>
+	</artifact:dependencies>
+	
+	<path id="odt2wiki:cp">
+		<pathelement location="${odt2wiki:classes}"/>
+		<pathelement location="${haui.office:jar-all}"/>
+		<path refid="odt2wiki:dependency.cp"/>
+	</path>
+
+	<target name="odt2wiki:init">
+		<tstamp>
+			<format pattern="dd.MM.yyyy" property="odt2wiki:build.time"/>
+		</tstamp>
+	</target>
+
+	<target depends="namespace4ant:taskdef-namespace4ant, haui.office:jar, odt2wiki:init" name="odt2wiki:prepare">
+		<namespace4ant/>
+		<mkdir dir="${odt2wiki:classes}"/>
+	</target>
+
+	<target depends="odt2wiki:init" description="Cleans the build environment" name="odt2wiki:clean">
+		<delete dir="${odt2wiki:build}"/>
+	</target>
+
+	<target depends="haui.office:clean-all, odt2wiki:clean" description="Cleans the build environment and all dependencies." name="odt2wiki:clean-all"/>
+
+	<target name="odt2wiki:generate-parser-check">
+		<uptodate property="odt2wiki:parser.uptodate" srcfile="${odt2wiki:grammar}/mediawiki.jj" targetfile="${odt2wiki:src}/haui/office/wiki/parser/MediaWikiParser.java"/>
+	</target>
+
+	<target depends="odt2wiki:generate-parser-check" name="odt2wiki:generate-parser" unless="odt2wiki:parser.uptodate">
+		<java classname="javacc" classpathref="odt2wiki:javacc.cp" failonerror="true" fork="true">
+			<arg value="-OUTPUT_DIRECTORY=${odt2wiki:src}/haui/office/wiki/parser"/>
+			<arg value="-JDK_VERSION=1.5"/>
+			<arg value="${odt2wiki:grammar}/mediawiki.jj"/>
+		</java>
+	</target>
+	
+	<target depends="odt2wiki:prepare, odt2wiki:generate-parser" description="Compile the sources." name="odt2wiki:compile">
+		<javac debug="on" deprecation="on" destdir="${odt2wiki:classes}" source="1.5">
+			<src path="${odt2wiki:src}"/>
+			<classpath refid="odt2wiki:cp"/>
+		</javac>
+		<copy todir="${odt2wiki:classes}">
+			<fileset dir="${odt2wiki:src}">
+				<exclude name="**/*.java"/>
+			</fileset>
+		</copy>
+	</target>
+
+	<target depends="odt2wiki:compile" description="Produces the library jar result." name="odt2wiki:jar">
+		<jar destfile="${odt2wiki:jar}">
+			<fileset dir="${odt2wiki:classes}">
+				<include name="**"/>
+			</fileset>
+		</jar>
+		<jar destfile="${odt2wiki:jar-all}">
+			<zipgroupfileset file="${odt2wiki:jar}"/>
+			<zipgroupfileset file="${haui.office:jar-all}"/>
+			<zipgroupfileset refid="odt2wiki:dependency.jars"/>
+		</jar>
+	</target>
+
+	<target depends="odt2wiki:jar" description="Transforms all test case documents." name="odt2wiki:test-transform">
+		<path id="odt2wiki:fixtures">
+			<fileset dir="${odt2wiki:test}/fixtures">
+				<include name="**/*.odt"/>
+				<include name="**/*.odf"/>
+			</fileset>
+			<fileset dir="${odt2wiki:basedir}/doc">
+				<include name="*.odt"/>
+			</fileset>
+		</path>
+		<java classname="haui.office.wiki.ODT2Wiki" classpathref="odt2wiki:cp" failonerror="true" fork="true" output="${odt2wiki:test}/fixtures/00timings.txt">
+			<arg value="-time"/>
+			<!--
+			<arg value="-alternative"/>
+			-->
+			<arg value="-path"/>
+			<arg pathref="fixtures"/>
+		</java>
+	</target>
+
+	<target depends="odt2wiki:jar" description="Transforms all test case documents." name="odt2wiki:benchmark-transform">
+		<path id="odt2wiki:benchmark">
+			<fileset dir="${odt2wiki:test}/benchmark-data">
+				<include name="*.odt"/>
+			</fileset>
+		</path>
+		<java classname="haui.office.wiki.ODT2Wiki" classpathref="odt2wiki:cp" fork="true" output="${odt2wiki:test}/benchmark-data/00timings.txt">
+			<arg value="-time"/>
+			<!--
+			<arg value="-alternative"/>
+			-->
+			<arg value="-path"/>
+			<arg pathref="benchmark"/>
+		</java>
+	</target>
+	
+	<target depends="odt2wiki:prepare" name="odt2wiki:dist-transformation">
+		<zip destfile="${odt2wiki:build}/odt2wiki-transformation.zip">
+			<zipfileset dir="${odt2wiki:src}/haui/office/wiki/transform" prefix="odt2wiki/src">
+			</zipfileset>
+		</zip>
+	</target>
+
+	<target depends="odt2wiki:jar, odt2wiki:dist-transformation" name="odt2wiki:all"/>
+</project>

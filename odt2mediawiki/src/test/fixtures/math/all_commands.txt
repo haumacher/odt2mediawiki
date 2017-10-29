@@ -1,0 +1,77 @@
+<math>\begin{array}{c}\underline{\text{1. Unary/binary operators}}\\ 
+\\ 
++a,-b,\pm c,\mp d,\neg e\\ 
+a+b,a\cdot b,a\times b,a\ast b\\ 
+a-b,\frac{a}{b},a\div b,a/b,a\vee b\\ 
+a\circ b\\ 
+\\ 
+\underline{\text{2. Relations}}\\ 
+\\ 
+a=b,a\ne b,a\approx b,a|b,a\nmid b\\ 
+a< b,a> b,a\simeq b,a\parallel b,a\perp b\\ 
+a\le b,a\ge b,a\sim b,a\equiv b\\ 
+a\le b,a\ge b,a\propto b,a\rightarrow b\\ 
+a\Leftarrow b,a\Leftrightarrow b,a\Rightarrow b\\ 
+\\ 
+\underline{\text{3. Set Operations}}\\ 
+\\ 
+a\in b,a\notin b,a\ni b,\varnothing \\ 
+a\cap b,a\cup b,a\setminus b,a/b,\aleph \\ 
+a\subset b,a\subseteq b,a\supset b,a\supseteq b\\ 
+a\not\subset b,a\nsubseteq b,a\not\supset b,a\nsupseteq b\\ 
+\mathbb{N}\mathbb{Z}\mathbb{Q}\mathbb{R}\mathbb{C}\\ 
+\\ 
+\underline{\text{4. Functions}}\\ 
+\\ 
+b,a{e}^{x},\ln (x),\exp (x),\log (x),{x}^{y}\\ 
+\sin (x),\cos (x),\tan (x),\cot (x),\sqrt{x}\\ 
+\arcsin (x),\arccos (x),\arctan (x),\mathrm{arccot}(x),\sqrt[x]{y}\\ 
+\sinh (x),\cosh (x),\tanh (x),\coth (x),\left|x\right|\\ 
+\mathrm{arsinh}(x),\mathrm{arcosh}(x),\mathrm{artanh}(x),\mathrm{arcoth}(x),x!\\ 
+\\ 
+\underline{\text{5. Operators}}\\ 
+\\ 
+\lim x,\prod x,\coprod x,\sum _{5}^{6}7\\ 
+\int x,\iint x,\iiint x,\\ 
+\oint x,\backslash oiint x,\backslash oiiint x\\ 
+\sum x,\sum _{x=0}\mathrm{...},\sum ^{n=+\infty }\mathrm{...},\sum _{x=0}^{n=+\infty }\mathrm{...}\\ 
+\\ 
+\underline{\text{6. Attributes}}\\ 
+\\ 
+\acute{a},\grave{a},\check{a},\breve{a},\overset{\circ}{a}\\ 
+\overrightarrow{a},\tilde{a},\widehat{a},\bar{a},\dot{a},\ddot{a},\stackrel{\cdots }{a}\\ 
+\overrightarrow{a},\overrightarrow{\mathrm{abc}},\tilde{a},\tilde{\mathrm{abc}},\widehat{a},\widehat{\mathrm{abc}}\\ 
+\overline{a},\overline{\mathrm{abc}},\underline{a},\underline{\mathrm{abc}},a,\mathrm{abc}\\ 
+\text{phantom},\text{bold},,\text{Risized to 5 pts},\text{Sans Serif}-\text{Serif}-\text{Fixed}\\ 
+\\ 
+\underline{\text{7. Others}}\\ 
+\\ 
+\infty ,\partial ,\mathrm{nablal},\exists ,\forall \\ 
+\hslash ,\lambda\!\!\!{}^{-},\Re ,\Im ,\wp \\ 
+\leftarrow ,\rightarrow ,\uparrow ,\downarrow \\ 
+\dots ,\cdots ,\vdots ,\backslash adots ,\ddots \\ 
+\\ 
+\underline{\text{8. Brakets}}\\ 
+\\ 
+(a),\lbrack a\rbrack ,[\![a]\!],|a|,\parallel a\parallel \\ 
+\lbrace a\rbrace ,\langle a\rangle ,\langle a|b\rangle \\ 
+\left(\frac{a}{b}\right),\left\lbrack \frac{a}{b}\right\rbrack ,[\![\frac{a}{b}]\!],\left|\frac{a}{b}\right|,\parallel \frac{a}{b}\parallel \\ 
+\left\lbrace \frac{a}{b}\right\rbrace ,\langle \frac{a}{b}\rangle ,\langle \frac{a}{b}|\frac{x}{y}\rangle \\ 
+\stackrel{\mathrm{xy}}{\overbrace{a}},\underset{\mathrm{xy}}{\underbrace{a}}\\ 
+\\ 
+\underline{\text{9. Formats}}\\ 
+\\ 
+{}^{b}x,\stackrel{b}{x},{x}^{b},\begin{array}{c}x+y=0\\ 
+x-y=1\end{array}\\ 
+{}_{b}x,\underset{b}{x},{x}_{b},\begin{array}{c}x+y=0\\ 
+x-y=1\\ 
+x-z=2\end{array}\\ 
+\text{aligned left}\\ 
+\text{also aligned left}\\ 
+\mathrm{centered}\\ 
+r\\ 
+\mathrm{also}\mathrm{aligned}r\\ 
+\begin{array}{cc}a& 	x\\ 
+b& 	y\end{array}\\ 
+a\mathrm{small}\mathrm{gap}\\ 
+a\mathrm{gap}\end{array}</math>

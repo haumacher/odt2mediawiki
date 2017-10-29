@@ -1,0 +1,253 @@
+= ODT2Wiki: OpenDocument to MediaWiki conversion =
+There are two main open formats for storing knowledge and information in a future-proof way. The one format is [http://www.oasis-open.org/committees/tc_home.php?wg_abbrev=office OpenDocument], which is used by [http://www.openoffice.org/ OpenOffice.org] and many other contemporary office suites. The other one is the format used for editing the [http://wikipedia.org/ Wikipedia] global knowledge base. The later format is defined by the [http://wikipedia.org/ MediaWiki] wiki engine. 
+
+This document in combination with the odt2wiki transformation demonstrates how to establish interoperability between these formats.
+
+'''Note:''' The OpenDocument source of this document is attached to [http://www.openoffice.org/issues/show_bug.cgi?id=48409 Issue 48409] of OpenOffice.org as [http://www.openoffice.org/nonav/issues/showattachment.cgi/45499/odt2wiki-features.odt odt2wiki-features.odt]. The transformation result can be viewed online at [http://wiki.services.openoffice.org/wiki/Odt2Wiki/Features Odt2Wiki/Features] of the OpenOffice.org wiki.
+
+== Supported Features ==
+OpenDocument and MediaWiki are by now way equivalent. While OpenDocument has its main focus on sophisticated presentation and styling, MediaWiki format is designed to be collaboratively editable in a non-wysiwyg fashion using minimal markup. Due to this differences in the objective, one cannot expect a perfect result, when converting from OpenDocument to MediaWiki. However, there is a common subset of formatting that can be reliably converted from OpenDocument to MediaWiki. At the one hand, this document describes this portable subset. On the other hand, it serves as a benchmark document for the transformation, since it is written itself in OpenDocument and can therefore be transformed to MediaWiki. 
+
+=== Headings ===
+While headings can be thoroughly formatted in OpenDocument, their format is defined by the style applied by the wiki engine. During export to MediaWiki format, style information of headings is lost and the default heading style is applied by the wiki engine. The headings of this document serve as example for the transformation of headings.
+
+=== Hyperlinks ===
+Native OpenDocument hyperlinks are transformed into “external” wiki links during the transformation. Therefore, the built-in linking facility of OpenDocument should only be used, when generating links pointing to other sites outside the wiki web. For generating wiki links that point to other subjects of the same wiki domain (e.g. [http://en.wikipedia.org/wiki/Main_Page Wikipedia]), use wiki links explained below.
+
+=== Lists ===
+To have lists reliably exported, you must make sure, that the whole list has assigned a consistent list style.
+
+==== Bullet Lists ====
+An example for an unordered list with bullets:
+
+* The first item.
+* The second item
+* The third item
+** A sub-item.
+** Another sub-item
+*** A sub-sub-item
+** Level two continued
+* Level one continued
+
+==== Pure Indented Lists ====
+The list bullets may also be omitted. To have those lists exported reliably, make sure to really use a list style instead of several paragraph styles with increasing indentation.
+
+: The first list item
+: The second list item
+:: A sub-item
+:: Another sub-item
+::: A sub-sub-item
+:: Continued with level two.
+: Continued with level one.
+
+==== Numbered Lists ====
+An example for a numbered list:
+
+# The first item.
+# The second item
+# The third item
+## A sub-item.
+## Another sub-item
+### A sub-sub-item
+## Level two continued
+# Level one continued
+
+==== Mixed lists ====
+Numbered and unordered lists can be mixed within separate levels of the same list:
+
+* The first item.
+* The second item
+* The third item
+*# A sub-item.
+*# Another sub-item
+*#: A sub-sub-item without bullet or numbering
+*#: Another sub-sub-item
+*# Level two continued
+* Level one continued
+
+=== Paragraphs ===
+==== Alignment ====
+Explicit text alignment should not be used in regular Wikipedia articles. Nevertheless, text alignment is supported by the odt2wiki transformation. An example follows:
+
+Regular text aligned to the left.
+
+<center>Centered text.</center>
+
+<div align="right">Text aligned to the right.</div>
+
+==== Pre-formatted text ====
+A paragraph style with a fixed-width font face is interpreted as pre-formatted text by the transformation. As opposed to the typewriter character style, pre-formatted text is rendered with a border in the wiki engine like in the example below:
+
+ Some code example.
+ 
+ A paragraph with
+ explicit line breaks
+ to get better structuring
+ 
+ <nowiki># Some comment</nowiki>
+ Some paragraphs
+ 
+  with
+ 
+   indentation
+ 
+    by
+ 
+     preceeding
+ 
+      spaces.
+
+'''Note:''' Normally, paragraphs in pre-formatted text are not separated by an empty line to have the result appear as single code block. To add structure and separate blocks of lines belonging together, you must insert empty paragraphs between blocks (by pressing return twice). In contrast, the above example uses both, line breaks (inserted with shift+return) for separating lines belonging to the same block and paragraph breaks (inserted with return) for separating blocks. The different margins are declared in the paragraph format for the style “WikiCode”. You can request to transform this mixed-mode pre-formatted text in a way that paragraph breaks generated double newlines and line breaks generate only single newlines. To accomplish this, declare a document user info variable with the name <tt>CODE_JOIN_PARAGRAPHS</tt> and set its value to <tt>false</tt>. An example can be found in this document. Open the menu “File/Properties” and select the “User” tab.
+
+=== Character styles ===
+Character styles modify the appearance of only parts of a paragraph. The character styles supported by the transformation are discussed next.
+
+==== Bold ====
+Some text within a paragraph may be set in '''bold style'''.
+
+==== Italics ====
+Like '''bold''', ''italics'' is also supported. Especially, the combination of '''''both styles''''' works as well. 
+
+Being of no special use in real text, the complexity of the transformation increases noticeably by supporting text that joins these styles without intermediate space:
+
+* '''bold'''''italics'', 
+* ''italics'''''bold''', 
+* '''bold'''''italics'''''bold''', 
+* ''italics'''''bold'''''italics'', 
+* ''italics'''boldanditalics'''italics'', 
+* '''bold''boldanditalics''bold''', 
+* '''''boldanditalics''bold''boldanditalics''''', and
+* '''''boldanditalics'''italics'''boldanditalics'''''.
+
+==== Named, Linked and Nested Styles ====
+OpenDocument styles can be linked together and multiple styled elements may be nested. The resulting formatting is the union of all these styles, where the innermost definition of a property wins.
+
+* Style '''A declaring bold'''. 
+* Style <tt>'''B based on A declaring typewriter'''</tt>.
+* Style <tt>'''''C based on B declaring bold and italics'''''</tt>.
+* Style D based on C declaring normal font face.
+* Style '''E based on D, again declaring bold'''.
+
+==== Subscript ====
+Subscript text is especially useful for setting indexes in simple formulas. x<sub>1</sub>, x<sub>2</sub>,..., x<sub>n</sub>.
+
+==== Superscript ====
+Even if a math environment is preferred, the combination of italics style with subscript and superscript is very common for simple formulas in Wikipedia articles: ''f<sub>n</sub>(x) = x<sup>n</sup> – 3x<sup>2</sup> + 2''.
+
+==== Typewriter ====
+When describing programs or algorithms, a common style is to set references to <tt>program elements</tt> such as <tt>variables</tt> or <tt>classes</tt> in typewriter font. The transformation translates all font faces with fixed width into the wiki typewriter style.
+
+=== Footnotes ===
+<nowiki>Note: The transformation uses the new style of footnotes with <ref> and <references> tags that requires the </nowiki>[http://meta.wikimedia.org/wiki/Cite/Cite.php Cite.php] extension to be installed into MediaWiki. If those tags occur as plain text in the transformation result, please install this extension.
+
+Articles may be enriched with footnotes.<ref name="ftn1">A footnote is a piece of text that is taken out of the normal text flow. It usually gives some background information that is not absolutely required for understanding the text.</ref> Footnotes are especially useful for citing the origin of some information.<ref name="ftn2">Please also refer to the [http://en.wikipedia.org/wiki/Wikipedia:Footnotes Wikipedia howto on footnotes].</ref> Referencing the same footnote twice<ref name="ftn1"/> is also supported by the transformation.
+
+=== Images ===
+[[Image:Kreuztor_Ingoldstadt.jpg|thumb|''Abbildung 1: Kreuztor in Ingolstadt, Germany.'']]Images in general cannot be exported by a transformation producing a single file of wiki text. However, if the image is already uploaded to the target wiki domain<ref name="ftn3">The wiki system, to which the result of the transformation is being deployed.</ref> (e.g. [http://commons.wikimedia.org/ WikiMedia Commons]), then the transformation produces a valid image tag that includes the image. Image descriptions are also supported. 
+
+=== Tables ===
+Tables are a natural way of presenting multiple pieces of equally structured information.
+
+==== Table Headers ====
+Simple tables are supported well. Table headers are translated into corresponding wiki-style table headers. However, custom formatting of table borders, column sizes and background colors is ignored.
+
+
+{| style="border-spacing:0;"
+| style="border-top:0.002cm solid #000000;border-bottom:0.002cm solid #000000;border-left:0.002cm solid #000000;border-right:none;padding:0.097cm;"| <center>'''Header 1'''</center>
+| style="border-top:0.002cm solid #000000;border-bottom:0.002cm solid #000000;border-left:0.002cm solid #000000;border-right:none;padding:0.097cm;"| <center>'''Header 2'''</center>
+| style="border:0.002cm solid #000000;padding:0.097cm;"| <center>'''Header 3'''</center>
+
+|-
+| style="border-top:none;border-bottom:0.002cm solid #000000;border-left:0.002cm solid #000000;border-right:none;padding:0.097cm;"| Information 1.1
+| style="border-top:none;border-bottom:0.002cm solid #000000;border-left:0.002cm solid #000000;border-right:none;padding:0.097cm;"| Information 1.2
+| style="border-top:none;border-bottom:0.002cm solid #000000;border-left:0.002cm solid #000000;border-right:0.002cm solid #000000;padding:0.097cm;"| Information 1.3
+
+|-
+| style="border-top:none;border-bottom:0.002cm solid #000000;border-left:0.002cm solid #000000;border-right:none;padding:0.097cm;"| Information 2.1
+| style="border-top:none;border-bottom:0.002cm solid #000000;border-left:0.002cm solid #000000;border-right:none;padding:0.097cm;"| Information 2.2
+| style="border-top:none;border-bottom:0.002cm solid #000000;border-left:0.002cm solid #000000;border-right:0.002cm solid #000000;padding:0.097cm;"| Information 2.3
+
+|}
+==== Joined Cells ====
+OpenDocument and especially OpenOffice.org represent tables that have joined cells that span rows as tables with nested tables. In contrast, the wiki model of table is to declare column and row spans for such joined cells. 
+
+If only columns of the same row are joined, the result of the transformation resembles the source document very well:
+
+
+{| style="border-spacing:0;"
+| colspan="2"  style="border-top:0.002cm solid #000000;border-bottom:0.002cm solid #000000;border-left:0.002cm solid #000000;border-right:none;padding:0.097cm;"| <center>'''Joined header cell 1 and 3'''</center>
+| style="border:0.002cm solid #000000;padding:0.097cm;"| <center>'''Header 3'''</center>
+
+|-
+| style="border-top:none;border-bottom:0.002cm solid #000000;border-left:0.002cm solid #000000;border-right:none;padding:0.097cm;"| Cell 1.1
+| style="border-top:none;border-bottom:0.002cm solid #000000;border-left:0.002cm solid #000000;border-right:none;padding:0.097cm;"| Cells 1.2
+| style="border-top:none;border-bottom:0.002cm solid #000000;border-left:0.002cm solid #000000;border-right:0.002cm solid #000000;padding:0.097cm;"| Cell 1.3
+
+|-
+| style="border-top:none;border-bottom:0.002cm solid #000000;border-left:0.002cm solid #000000;border-right:none;padding:0.097cm;"| Cell 2.1 
+| colspan="2"  style="border-top:none;border-bottom:0.002cm solid #000000;border-left:0.002cm solid #000000;border-right:0.002cm solid #000000;padding:0.097cm;"| Joined cells 2.2 and 2.3
+
+|}
+However, the transformation does not support tables with joined cells that span multiple rows. If the source document uses such tables, nested tables are observed in the result document.
+
+
+{| style="border-spacing:0;"
+| style="border-top:0.002cm solid #000000;border-bottom:0.002cm solid #000000;border-left:0.002cm solid #000000;border-right:none;padding:0.097cm;"| <center>'''Joined header cell with cell 1.1'''</center>
+|| 
+{| style="border-spacing:0;"
+| style="border-top:0.002cm solid #000000;border-bottom:0.002cm solid #000000;border-left:0.002cm solid #000000;border-right:none;padding:0.097cm;"| <center>'''Header 2'''</center>
+
+|-
+| style="border-top:none;border-bottom:0.002cm solid #000000;border-left:0.002cm solid #000000;border-right:none;padding:0.097cm;"| Cell 1.2
+
+|}
+
+| style="border:0.002cm solid #000000;padding:0.097cm;"| <center>'''Joined header cell 3 and cell 1.3'''</center>
+
+|-
+| style="border-top:none;border-bottom:0.002cm solid #000000;border-left:0.002cm solid #000000;border-right:none;padding:0.097cm;"| Cell 2.1
+| style="border-top:none;border-bottom:0.002cm solid #000000;border-left:0.002cm solid #000000;border-right:none;padding:0.097cm;"| Cell 2.2
+| style="border-top:none;border-bottom:0.002cm solid #000000;border-left:0.002cm solid #000000;border-right:0.002cm solid #000000;padding:0.097cm;"| Cell 2.3
+
+|}
+==== Borders ====
+Irrespective of custom table styles for border and background, a table is always exported as “<tt>prettytable</tt>”, which renders in the wiki engine with simple borders and bold header. 
+
+=== Charset and Special Characters ===
+The charset of the transformation result is fixed to UTF-8. Depending on your system, this might not be the default charset. This might cause “special character” to look broken, when viewed with default settings. However, can switch your editor to UTF-8 encoding to fix this. If your editor does not support switching the encoding, you can display the result of the transformation in the [http://www.mozilla.com/en-US/firefox/ Firefox] browser and switch the encoding to UTF-8 there. Now, you can cut and paste the transformation result to your program of choice.
+
+=== Direct Wiki Input ===
+The transformation recognizes some well-known character styles. These styles are used as text markup in an OpenDocument editor and become their special meaning only during the transformation. The concrete display in the OpenDocument editor is not relevant and used only to highlight text sections marked up with those styles.
+
+==== WikiMath ====
+MediaWiki has support for embedding TeX formula markup into documents by surrounding it with <tt><nowiki><math></nowiki></tt> ... <tt><nowiki></math></nowiki></tt> tags. The TeX syntax is a convenient way to easily typeset complex mathematical formulas in a keyboard-only fashion without the need for a bulky formula editor.
+
+However, OpenOffice.org comes with such a bulky formula editor, but using it frequently for creating a document with more than a few formulas is a tedious task. Instead, by using the TeX syntax one can as easily create formulas in OpenOffice.org as in MediaWiki syntax directly. To mark a TeX formula, just format it using the “WikiMath” character style. In OpenOffice.org, it is then displayed as TeX source code with yellow background. During the translation, it is surrounded with <tt><nowiki><math>..</math></nowiki></tt> markup for display as rendered formula in a MediaWiki. 
+
+===== Examples =====
+The following two lines produce essentially the same result after conversion to MediaWiki format:
+
+<math>s_n=\sum_{k=0}^{n}a_0 \cdot q^k = a_0\frac{q^{n+1}-1}{q-1}</math>
+
+<math>{s}_{n}=\sum _{k=0}^{n}{a}_{0}\cdot {q}^{k}={a}_{0}\frac{{q}^{n+1}-1}{q-1}</math>
+
+==== WikiLink ====
+The transformation supports a special character style named “WikiLink”, which marks text that should be converted to a link during the transformation. There are two forms of link syntax: The first form converts to a link that displays the name of the linked page. To produce this sort of link, simply format the target page name with the special character style <nowiki>“WikiLink”. The second form displays an arbitrary text that is linked to a given target location. To use this form, append the link target in braces ('[' and ']') to the link label and format both with the character style “WikiLink”. </nowiki>
+
+===== Examples =====
+The following link points to a wiki page named „OpenOffice.org“ ([[OpenOffice.org]]) that is local to the wiki in which the translation result is being deployed.
+
+This [[http://wikipedia.org|link]] points to Wikipedia through an absolute (external) link after exporting to Mediawiki format. Of cause, this form of link can also be used to refer to a local page but make the link label fit in the sentence grammar as in the following example: Mathematically, [[Circle|circles]] are sets of points with equal distance to a given [[Center|center]] point. 
+
+== Unsupported Features ==
+=== Hyperlinks ===
+==== Document-internal Links ====
+=== Character Styles ===
+==== Smallcaps ====
+==== Underline ====
+==== Strikethrough ====
+=== Horizontal Rules ===
+
+
+----
+<references/>

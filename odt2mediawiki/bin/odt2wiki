@@ -1,0 +1,7 @@
+#!/bin/sh
+
+BASE="$(dirname ${0})"
+
+CP="${BASE}/../build/odt2wiki-all.jar"
+
+java -cp "${CP}" haui.office.wiki.ODT2Wiki "$@"

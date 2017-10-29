@@ -1,0 +1,4 @@
+<math>\begin{array}{c}\text{sin may stand alone:}\\ 
+{\sin }^{2}x+{\cos }^{2}x=1\\ 
+\tan \stackrel{\scriptscriptstyle\mathrm{def}}{=}\frac{\sin }{\cos }\\ 
+{f}_{x}\stackrel{\scriptscriptstyle\mathrm{def}}{=}\frac{\partial f}{\partial x}\end{array}</math>

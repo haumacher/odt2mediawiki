@@ -1,0 +1,7 @@
+<math>\begin{array}{c}\underline{\text{2. Relations}}\\ 
+\\ 
+a=b,a\ne b,a\approx b,a|b,a\nmid b\\ 
+a< b,a> b,a\simeq b,a\parallel b,a\perp b\\ 
+a\le b,a\ge b,a\sim b,a\equiv b\\ 
+a\le b,a\ge b,a\propto b,a\rightarrow b\\ 
+a\Leftarrow b,a\Leftrightarrow b,a\Rightarrow b\end{array}</math>

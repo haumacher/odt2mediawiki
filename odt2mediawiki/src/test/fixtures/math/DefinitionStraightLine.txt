@@ -1,0 +1,8 @@
+<math>\begin{array}{c}\text{Definition of a straight line in}{\mathbb{R}}^{n}\\ 
+\\ 
+\\ 
+v+\mathbb{R}w\stackrel{\scriptscriptstyle\mathrm{def}}{=}\lbrace u\in {\mathbb{R}}^{n}|\exists \lambda \in \mathbb{R}\text{:}u=v+\lambda w\rbrace \text{mit}v\text{,}w\in {\mathbb{R}}^{n}\\ 
+\\ 
+\text{Definition:}A\subseteq {\mathbb{R}}^{n}\text{denotes}\text{straight line}\text{, if there are two vectors}v\text{,}w\in {\mathbb{R}}^{n}\text{with}w\ne 0\text{exist, so that}\\ 
+A=v+\mathbb{R}w\\ 
+\text{is. This is called}\text{parameter representation}\text{of A.}\end{array}</math>

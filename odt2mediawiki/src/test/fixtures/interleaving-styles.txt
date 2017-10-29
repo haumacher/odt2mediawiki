@@ -1,0 +1,5 @@
+Some regular text
+
+Text starting ''with italics style <tt>and continuing'' with code style</tt>.
+
+Text '''starting with bold face, <sub>becoming '''subscript and <tt>slowly</sub> changing to code style</tt>.

@@ -1,0 +1,45 @@
+
+{| style="border-spacing:0;"
+| style="border-top:0.002cm solid #000000;border-bottom:0.002cm solid #000000;border-left:0.002cm solid #000000;border-right:none;padding:0.097cm;"| <center>'''Regular Table'''</center>
+| style="border-top:0.002cm solid #000000;border-bottom:0.002cm solid #000000;border-left:0.002cm solid #000000;border-right:none;padding:0.097cm;"| <center>'''Column 1'''</center>
+| style="border:0.002cm solid #000000;padding:0.097cm;"| <center>'''Column 2'''</center>
+
+|-
+| style="border-top:none;border-bottom:0.002cm solid #000000;border-left:0.002cm solid #000000;border-right:none;padding:0.097cm;"| Row 1
+| style="border-top:none;border-bottom:0.002cm solid #000000;border-left:0.002cm solid #000000;border-right:none;padding:0.097cm;"| Content 1.1
+| style="border-top:none;border-bottom:0.002cm solid #000000;border-left:0.002cm solid #000000;border-right:0.002cm solid #000000;padding:0.097cm;"| Content 1.2
+
+|-
+| style="border-top:none;border-bottom:0.002cm solid #000000;border-left:0.002cm solid #000000;border-right:none;padding:0.097cm;"| Row 2
+| style="border-top:none;border-bottom:0.002cm solid #000000;border-left:0.002cm solid #000000;border-right:none;padding:0.097cm;"| Content 2.1
+| style="border-top:none;border-bottom:0.002cm solid #000000;border-left:0.002cm solid #000000;border-right:0.002cm solid #000000;padding:0.097cm;"| Content 2.2
+
+|-
+| style="border-top:none;border-bottom:0.002cm solid #000000;border-left:0.002cm solid #000000;border-right:none;padding:0.097cm;"| Row 3
+| style="border-top:none;border-bottom:0.002cm solid #000000;border-left:0.002cm solid #000000;border-right:none;padding:0.097cm;"| Content 3.1
+| style="border-top:none;border-bottom:0.002cm solid #000000;border-left:0.002cm solid #000000;border-right:0.002cm solid #000000;padding:0.097cm;"| Content 3.2
+
+|}
+
+{| style="border-spacing:0;"
+| style="background-color:#663300;border:0.002cm solid #4c1900;padding:0cm;"| ''Brown Table''
+| style="background-color:#663300;border-top:0.002cm solid #4c1900;border-bottom:0.002cm solid #4c1900;border-left:none;border-right:0.002cm solid #4c1900;padding:0cm;"| ''Column 1''
+| style="background-color:#663300;border:0.002cm solid #4c1900;padding:0cm;"| ''Column 2''
+
+|-
+| style="background-color:#996633;border:0.002cm solid #4c1900;padding:0cm;"| ''Row 1''
+| style="background-color:#ffcc99;border-top:0.002cm solid #ff6633;border-bottom:0.002cm solid #ff6633;border-left:none;border-right:0.002cm solid #ff6633;padding:0cm;"| Content 1.1
+| style="background-color:#ffcc99;border:0.002cm solid #ff6633;padding:0cm;"| Content 1.2
+
+|-
+| style="background-color:#996633;border-top:none;border-bottom:0.002cm solid #4c1900;border-left:0.002cm solid #4c1900;border-right:0.002cm solid #4c1900;padding:0cm;"| ''Row 2''
+| style="background-color:#ffcc99;border-top:none;border-bottom:0.002cm solid #ff6633;border-left:none;border-right:0.002cm solid #ff6633;padding:0cm;"| Content 2.1
+| style="background-color:#ffcc99;border-top:none;border-bottom:0.002cm solid #ff6633;border-left:0.002cm solid #ff6633;border-right:0.002cm solid #ff6633;padding:0cm;"| Content 2.3
+
+|-
+| style="background-color:#996633;border-top:none;border-bottom:0.002cm solid #4c1900;border-left:0.002cm solid #4c1900;border-right:0.002cm solid #4c1900;padding:0cm;"| ''Row 3''
+| style="background-color:#ffcc99;border-top:none;border-bottom:0.002cm solid #ff6633;border-left:none;border-right:0.002cm solid #ff6633;padding:0cm;"| Content 3.1
+| style="background-color:#ffcc99;border-top:none;border-bottom:0.002cm solid #ff6633;border-left:0.002cm solid #ff6633;border-right:0.002cm solid #ff6633;padding:0cm;"| Content 3.2
+
+|}
+

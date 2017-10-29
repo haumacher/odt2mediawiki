@@ -1,0 +1,1 @@
+<math>\mathrm{is.}\mathrm{This}\mathrm{is}\mathrm{called}\text{ital}\mathrm{parameter}\mathrm{representation}\mathrm{of}\mathrm{A.}</math>

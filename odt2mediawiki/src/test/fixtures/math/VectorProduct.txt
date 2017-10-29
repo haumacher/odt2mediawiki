@@ -1,0 +1,9 @@
+<math>\begin{array}{c}\text{Product of parallelepiped in}{\mathbb{R}}^{3}\\ 
+\\ 
+\\ 
+\text{Definition:}\text{if}u=({u}_{1}\text{,}{u}_{2}\text{,}{u}_{3})\text{,}v=({v}_{1}\text{,}{v}_{2}\text{,}{v}_{3})\text{,}w=({w}_{1}\text{,}{w}_{2}\text{,}{w}_{3})\text{are vectors of}{\mathbb{R}}^{3}\text{.}\\ 
+\text{Then the}\text{parallelepiped product}\langle u\text{,}v\times w\rangle \text{is defined by}\\ 
+\\ 
+\langle u\text{,}v\times w\rangle =\left|\begin{array}{ccc}{u}_{1}& 	{v}_{1}& 	{w}_{1}\\ 
+{u}_{2}& 	{v}_{2}& 	{w}_{2}\\ 
+{u}_{3}& 	{v}_{3}& 	{w}_{3}\end{array}\right|\end{array}</math>

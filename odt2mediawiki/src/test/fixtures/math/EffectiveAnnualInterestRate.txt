@@ -1,0 +1,4 @@
+<math>\begin{array}{c}\text{Effective interest rate}\Rightarrow \text{nominal interest rate:}\\ 
+\mathrm{APR}=\left\lbrack \sqrt[c/\mathrm{yr}]{1+\frac{\mathrm{EFF}}{100}}-1\right\rbrack \ast c/\mathrm{yr}\ast 100\\ 
+\text{where:}\\ 
+c/\mathrm{yr}=\text{number of interest periods for APR}\end{array}</math>

@@ -1,0 +1,7 @@
+<math>\begin{array}{c}\underline{\text{3. Set Operations}}\\ 
+\\ 
+a\in b,a\notin b,a\ni b,\varnothing \\ 
+a\cap b,a\cup b,a\setminus b,a/b,\aleph \\ 
+a\subset b,a\subseteq b,a\supset b,a\supseteq b\\ 
+a\not\subset b,a\nsubseteq b,a\not\supset b,a\nsupseteq b\\ 
+\mathbb{N}\mathbb{Z}\mathbb{Q}\mathbb{R}\mathbb{C}\end{array}</math>
