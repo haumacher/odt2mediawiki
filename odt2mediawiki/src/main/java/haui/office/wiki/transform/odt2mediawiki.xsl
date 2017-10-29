@@ -175,9 +175,9 @@
     -->
 
     <template match="draw:page">
-        <value-of select="concat('&#10;&lt;!-- Page ', @draw:name, '--&gt;&#10;')"/>
+        <value-of select="concat($NL, '&lt;!-- Page ', @draw:name, '--&gt;', $NL)"/>
         <apply-templates/>
-        <value-of select="'&#10;----&#10;&#10;'"/>
+        <value-of select="concat($NL, '----', $NL, $NL)"/>
     </template>
 
 
@@ -335,7 +335,7 @@
      -->
 
     <template match="table:table">
-        <text>&#10;</text>
+        <value-of select="$NL"/>
         <text>{|</text>
 
         <choose>
@@ -351,11 +351,11 @@
             </otherwise>
         </choose>
 
-        <text>&#10;</text>
+        <value-of select="$NL"/>
         <apply-templates/>
-        <text>&#10;</text>
+        <value-of select="$NL"/>
         <text>|}</text>
-        <text>&#10;</text>
+        <value-of select="$NL"/>
     </template>
 
     <template match="table:table-header-rows">
@@ -364,9 +364,9 @@
 
     <template match="table:table-row[position() &lt; last()] | table:table-header-rows/table:table-row">
         <apply-templates/>
-        <text>&#10;</text>
+        <value-of select="$NL"/>
         <text>|-</text>
-        <text>&#10;</text>
+        <value-of select="$NL"/>
     </template>
 
     <template match="table:table-row">
