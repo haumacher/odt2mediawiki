@@ -74,6 +74,7 @@ public class ODT2Wiki {
 		transformationSource.setSystemId(xsltBase.toExternalForm());
 		
 		transformer = transformerFactory.newTransformer(transformationSource);
+		transformer.setOutputProperty("{http://xml.apache.org/xalan}line-separator","\n");
 	}
 	
 	public void toWiki(File odtFile, OutputStream result) throws IOException, ParserConfigurationException, SAXException, TransformerException {
