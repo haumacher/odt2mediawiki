@@ -75,20 +75,39 @@ public class TestODT2Wiki extends TestCase {
 	
 	static Test createTest() {
 		TestSuite suite = new TestSuite();
-		
-		File dir = new File("src/test/fixtures");
-		File[] files = dir.listFiles(new FileFilter() {
+		addAllTests(suite, new File("src/test/fixtures"));
+		return suite;
+	}
+
+	static void addAllTests(TestSuite suite, File fixtureDir) {
+		File[] files = fixtureDir.listFiles(new FileFilter() {
 			@Override
 			public boolean accept(File pathname) {
-				return pathname.getName().endsWith(".odt");
+				String name = pathname.getName();
+				return name.endsWith(".odt") || name.endsWith(".odf");
 			}
 		});
 		assertNotNull(files);
+		addLocalTests(suite, files);
 		
+		
+		File[] subDirs = fixtureDir.listFiles(new FileFilter() {
+			@Override
+			public boolean accept(File pathname) {
+				return pathname.isDirectory() && (!pathname.getName().startsWith("."));
+			}
+		});
+		assertNotNull(subDirs);
+		
+		for (File subDir : subDirs) {
+			addAllTests(suite, subDir);
+		}
+	}
+
+	static void addLocalTests(TestSuite suite, File[] files) {
 		final String outputDir = "tmp/output";
-		
 		for (final File file : files) {
-			suite.addTest(new TestCase(file.getName()) {
+			suite.addTest(new TestCase(file.getPath()) {
 				@Override
 				protected void runTest() throws Throwable {
 					String inputName = file.getName();
@@ -110,8 +129,6 @@ public class TestODT2Wiki extends TestCase {
 				}
 			});
 		}
-		
-		return suite;
 	}
 
 	public static Test suite() {
