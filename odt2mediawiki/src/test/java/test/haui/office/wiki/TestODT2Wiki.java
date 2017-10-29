@@ -69,7 +69,8 @@ public class TestODT2Wiki extends TestCase {
 				result.append(buffer, 0, direct);
 			}
 		}
-		return result.toString();
+		String contents = result.toString();
+		return contents.replace("\r\n", "\n");
 	}
 	
 	static Test createTest() {
