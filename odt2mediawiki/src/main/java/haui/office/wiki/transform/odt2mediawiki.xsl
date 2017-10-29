@@ -392,7 +392,7 @@
 			<text>" </text>
 		</if>
 		<if test="not($USE_DEFAULT_TABLE_CLASS) and boolean(@table:style-name)">
-	 		<variable name="style-element" select="key('style-ref', @table:style-name)"/>
+			<variable name="style-element" select="key('style-ref', @table:style-name)"/>
 
 			<variable name="style">
 				<call-template name="translate-style-property">
@@ -735,38 +735,38 @@
 		== Images ==
 	-->
 
- 	<template match="draw:text-box[boolean(.//draw:image)]">
- 		<variable name="image" select=".//draw:image[1]"/>
+	<template match="draw:text-box[boolean(.//draw:image)]">
+		<variable name="image" select=".//draw:image[1]"/>
  
- 		<variable name="image-description">
- 			<apply-templates/>
- 		</variable>
+		<variable name="image-description">
+			<apply-templates/>
+		</variable>
  
- 		<text>[[</text>
+		<text>[[</text>
 		<call-template name="mk-image-name">
 			<with-param name="image" select="$image"/>
 		</call-template>
- 		<text>|thumb|</text>
+		<text>|thumb|</text>
 		<value-of select="normalize-space($image-description)"/>
- 		<text>]]</text>
- 	</template>
+		<text>]]</text>
+	</template>
  
- 	<template match="draw:image[not(boolean(ancestor::draw:text-box))]">
- 		<text>[[</text>
+	<template match="draw:image[not(boolean(ancestor::draw:text-box))]">
+		<text>[[</text>
 		<call-template name="mk-image-name">
 			<with-param name="image" select="."/>
 		</call-template>
- 		<text>]]</text>
- 	</template>
+		<text>]]</text>
+	</template>
 
 	<template name="mk-image-name">
 		<param name="image"/>
 
- 		<variable name="base-name">
- 			<call-template name="mk-base-name">
- 				<with-param name="href" select="$image/@xlink:href"/>
- 			</call-template>
- 		</variable>
+		<variable name="base-name">
+			<call-template name="mk-base-name">
+				<with-param name="href" select="$image/@xlink:href"/>
+			</call-template>
+		</variable>
  
 		<if test="not(starts-with($base-name, 'Image:'))">
 			<value-of select="'Image:'"/>
@@ -774,42 +774,42 @@
 		<value-of select="$base-name"/>
 	</template>
  
- 	<template name="mk-base-name">
- 		<param name="href"/>
+	<template name="mk-base-name">
+		<param name="href"/>
  
- 		<variable name="result" select="substring-after($href, '/')"/>
- 		<choose>
- 			<when test="boolean($result)">
- 				<call-template name="mk-base-name">
- 					<with-param name="href" select="$result"/>
- 				</call-template>
- 			</when>
- 			<otherwise>
- 				<value-of select="$href"/>
- 			</otherwise>
- 		</choose>
- 	</template>
+		<variable name="result" select="substring-after($href, '/')"/>
+		<choose>
+			<when test="boolean($result)">
+				<call-template name="mk-base-name">
+					<with-param name="href" select="$result"/>
+				</call-template>
+			</when>
+			<otherwise>
+				<value-of select="$href"/>
+			</otherwise>
+		</choose>
+	</template>
  
- 	<!-- Frames -->
+	<!-- Frames -->
  
- 	<template match="draw:frame">
- 		<choose>
- 			<when test="draw:object/math:math">
- 				<apply-templates select="draw:object/math:math[1]"/>
- 			</when>
+	<template match="draw:frame">
+		<choose>
+			<when test="draw:object/math:math">
+				<apply-templates select="draw:object/math:math[1]"/>
+			</when>
 
- 			<when test="draw:image">
- 				<apply-templates select="draw:image[1]"/>
- 			</when>
+			<when test="draw:image">
+				<apply-templates select="draw:image[1]"/>
+			</when>
  
- 			<otherwise>
- 				<apply-templates select="./*[1]"/>
- 			</otherwise>
- 		</choose>
+			<otherwise>
+				<apply-templates select="./*[1]"/>
+			</otherwise>
+		</choose>
  
- 	</template>
+	</template>
  
- 	<!-- Formulas (Objects) -->
+	<!-- Formulas (Objects) -->
  
 	<include href="math/mmltex.xsl"/>
 
@@ -819,67 +819,67 @@
 		<text>&lt;/math&gt;</text>
 	</template>
 
- 	<!--
- 		References
- 	 -->
+	<!--
+		References
+	 -->
  
 	<!-- TODO: text:bibliography-mark -->
 
- 	<template match="text:reference-ref">
- 		<variable name="reference-mark" select="key('reference-resolution', @text:ref-name)"/>
+	<template match="text:reference-ref">
+		<variable name="reference-mark" select="key('reference-resolution', @text:ref-name)"/>
  
- 		<choose>
- 			<when test="boolean($reference-mark)">
-		 		<!--
-		 			In wiki syntax, only a local reference to a heading can be inserted.
-		 			If the link target is a descendant of a heading element, a link can be
-		 			inserted in the result. -->
-		 		<variable name="header-anchor" select="$reference-mark/ancestor::text:h[1]"/>
-		 		<if test="boolean($header-anchor)">
-		 			<text>[[#</text>
-		 			<value-of select="string($header-anchor)"/>
-		 			<text>|</text>
-		 		</if>
+		<choose>
+			<when test="boolean($reference-mark)">
+				<!--
+					In wiki syntax, only a local reference to a heading can be inserted.
+					If the link target is a descendant of a heading element, a link can be
+					inserted in the result. -->
+				<variable name="header-anchor" select="$reference-mark/ancestor::text:h[1]"/>
+				<if test="boolean($header-anchor)">
+					<text>[[#</text>
+					<value-of select="string($header-anchor)"/>
+					<text>|</text>
+				</if>
 		 
-		 		<variable name="reference-text" select="string(.)"/>
+				<variable name="reference-text" select="string(.)"/>
 		 
-		 		<choose>
-		 			<!-- Check, whether the reference text is cached in the document. -->
-		 			<when test="string-length($reference-text) &gt; 0">
-		 				<value-of select="$reference-text"/>
-		 			</when>
+				<choose>
+					<!-- Check, whether the reference text is cached in the document. -->
+					<when test="string-length($reference-text) &gt; 0">
+						<value-of select="$reference-text"/>
+					</when>
 		 
-		 			<otherwise>
-		 				<!--
-		 					TODO: Evaluate the @text:reference-format attribute and
-		 					generate the replacement text (difficult).-->
-		 				<text>(REFERENCE TEXT UNAVAILABLE: "</text>
-		 				<value-of select="@text:ref-name"/>
-		 				<text>")</text>
-		 			</otherwise>
-		 		</choose>
+					<otherwise>
+						<!--
+							TODO: Evaluate the @text:reference-format attribute and
+							generate the replacement text (difficult).-->
+						<text>(REFERENCE TEXT UNAVAILABLE: "</text>
+						<value-of select="@text:ref-name"/>
+						<text>")</text>
+					</otherwise>
+				</choose>
 		 
-		 		<if test="boolean($header-anchor)">
-		 			<text>]]</text>
-		 		</if>
- 			</when>
+				<if test="boolean($header-anchor)">
+					<text>]]</text>
+				</if>
+			</when>
 
- 			<otherwise>
- 				<text>(UNDEFINED REFERENCE: "</text>
- 				<value-of select="@text:ref-name"/>
- 				<text>")</text>
- 			</otherwise>
- 		</choose>
- 	</template>
+			<otherwise>
+				<text>(UNDEFINED REFERENCE: "</text>
+				<value-of select="@text:ref-name"/>
+				<text>")</text>
+			</otherwise>
+		</choose>
+	</template>
  
- 	<template match="text:reference-mark">
- 		<!-- TODO: Output an anchor. -->
- 		<apply-templates/>
- 	</template>
+	<template match="text:reference-mark">
+		<!-- TODO: Output an anchor. -->
+		<apply-templates/>
+	</template>
 
- 	<template match="text:reference-mark-start">
- 		<!-- TODO: Output an anchor. -->
- 	</template>
+	<template match="text:reference-mark-start">
+		<!-- TODO: Output an anchor. -->
+	</template>
 
 	<!--
 		== Plain text ==
