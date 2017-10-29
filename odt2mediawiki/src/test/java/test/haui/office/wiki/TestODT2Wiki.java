@@ -74,11 +74,11 @@ public class TestODT2Wiki extends TestCase {
 	
 	static Test createTest() {
 		TestSuite suite = new TestSuite();
-		addAllTests(suite, new File("src/test/fixtures"));
+		addAllTests(suite, new File("src/test/fixtures"), new File("tmp/output"));
 		return suite;
 	}
 
-	static void addAllTests(TestSuite suite, File fixtureDir) {
+	static void addAllTests(TestSuite suite, File fixtureDir, File outputDir) {
 		File[] files = fixtureDir.listFiles(new FileFilter() {
 			@Override
 			public boolean accept(File pathname) {
@@ -87,7 +87,7 @@ public class TestODT2Wiki extends TestCase {
 			}
 		});
 		assertNotNull(files);
-		addLocalTests(suite, files);
+		addLocalTests(suite, files, outputDir);
 		
 		
 		File[] subDirs = fixtureDir.listFiles(new FileFilter() {
@@ -99,12 +99,11 @@ public class TestODT2Wiki extends TestCase {
 		assertNotNull(subDirs);
 		
 		for (File subDir : subDirs) {
-			addAllTests(suite, subDir);
+			addAllTests(suite, subDir, new File(outputDir, subDir.getName()));
 		}
 	}
 
-	static void addLocalTests(TestSuite suite, File[] files) {
-		final String outputDir = "tmp/output";
+	static void addLocalTests(TestSuite suite, File[] files, final File outputDir) {
 		for (final File file : files) {
 			suite.addTest(new TestCase(file.getPath()) {
 				@Override
@@ -114,6 +113,7 @@ public class TestODT2Wiki extends TestCase {
 					File expectedResult = new File(file.getParentFile(), outputName);
 					assertTrue("Expected result fixture '" + expectedResult + "' does not exist.", expectedResult.exists());
 
+					outputDir.mkdirs();
 					File actualResult = new File(outputDir, outputName);
 					
 					try (OutputStream out = new FileOutputStream(actualResult)) {
