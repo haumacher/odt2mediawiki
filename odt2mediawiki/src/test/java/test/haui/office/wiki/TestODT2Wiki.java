@@ -19,9 +19,10 @@ package test.haui.office.wiki;
 
 import java.io.File;
 import java.io.FileFilter;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.Reader;
 import java.util.Locale;
@@ -63,7 +64,7 @@ public class TestODT2Wiki extends TestCase {
 	public static String load(File textFile) throws IOException {
 		StringBuilder result = new StringBuilder();
 		char[] buffer = new char[4096];
-		try (Reader reader = new FileReader(textFile)) {
+		try (Reader reader = new InputStreamReader(new FileInputStream(textFile), "utf-8")) {
 			int direct;
 			while ((direct = reader.read(buffer)) >= 0) {
 				result.append(buffer, 0, direct);
