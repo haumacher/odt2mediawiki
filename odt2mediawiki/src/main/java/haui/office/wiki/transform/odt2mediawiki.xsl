@@ -737,11 +737,11 @@
 
     <template match="draw:text-box[boolean(.//draw:image)]">
         <variable name="image" select=".//draw:image[1]"/>
- 
+
         <variable name="image-description">
             <apply-templates/>
         </variable>
- 
+
         <text>[[</text>
         <call-template name="mk-image-name">
             <with-param name="image" select="$image"/>
@@ -750,7 +750,7 @@
         <value-of select="normalize-space($image-description)"/>
         <text>]]</text>
     </template>
- 
+
     <template match="draw:image[not(boolean(ancestor::draw:text-box))]">
         <text>[[</text>
         <call-template name="mk-image-name">
@@ -767,16 +767,16 @@
                 <with-param name="href" select="$image/@xlink:href"/>
             </call-template>
         </variable>
- 
+
         <if test="not(starts-with($base-name, 'Image:'))">
             <value-of select="'Image:'"/>
         </if>
         <value-of select="$base-name"/>
     </template>
- 
+
     <template name="mk-base-name">
         <param name="href"/>
- 
+
         <variable name="result" select="substring-after($href, '/')"/>
         <choose>
             <when test="boolean($result)">
@@ -789,9 +789,9 @@
             </otherwise>
         </choose>
     </template>
- 
+
     <!-- Frames -->
- 
+
     <template match="draw:frame">
         <choose>
             <when test="draw:object/math:math">
@@ -801,16 +801,16 @@
             <when test="draw:image">
                 <apply-templates select="draw:image[1]"/>
             </when>
- 
+
             <otherwise>
                 <apply-templates select="./*[1]"/>
             </otherwise>
         </choose>
- 
+
     </template>
- 
+
     <!-- Formulas (Objects) -->
- 
+
     <include href="math/mmltex.xsl"/>
 
     <template match="math:math" priority="1">
@@ -822,12 +822,12 @@
     <!--
         References
      -->
- 
+
     <!-- TODO: text:bibliography-mark -->
 
     <template match="text:reference-ref">
         <variable name="reference-mark" select="key('reference-resolution', @text:ref-name)"/>
- 
+
         <choose>
             <when test="boolean($reference-mark)">
                 <!--
@@ -840,15 +840,15 @@
                     <value-of select="string($header-anchor)"/>
                     <text>|</text>
                 </if>
-         
+
                 <variable name="reference-text" select="string(.)"/>
-         
+
                 <choose>
                     <!-- Check, whether the reference text is cached in the document. -->
                     <when test="string-length($reference-text) &gt; 0">
                         <value-of select="$reference-text"/>
                     </when>
-         
+
                     <otherwise>
                         <!--
                             TODO: Evaluate the @text:reference-format attribute and
@@ -858,7 +858,7 @@
                         <text>")</text>
                     </otherwise>
                 </choose>
-         
+
                 <if test="boolean($header-anchor)">
                     <text>]]</text>
                 </if>
@@ -871,7 +871,7 @@
             </otherwise>
         </choose>
     </template>
- 
+
     <template match="text:reference-mark">
         <!-- TODO: Output an anchor. -->
         <apply-templates/>
