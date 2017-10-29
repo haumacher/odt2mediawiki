@@ -1,0 +1,52 @@
+
+{| style="border-spacing:0;margin:auto;width:17cm;"
+|-
+| style="border-top:0.05pt solid #000000;border-bottom:0.05pt solid #000000;border-left:0.05pt solid #000000;border-right:none;padding:0.097cm;" | 
+* eins
+* zwei
+** zwei – eins
+** zwei – zwei
+* drei
+
+
+| style="border:0.05pt solid #000000;padding:0.097cm;" | 
+# eins
+# zwei
+## zwei – eins
+## zwei – zwei
+# drei
+
+
+|-
+| align=center style="border-top:none;border-bottom:0.05pt solid #000000;border-left:0.05pt solid #000000;border-right:none;padding:0.097cm;" | '''Titel'''
+| align=center style="border-top:none;border-bottom:0.05pt solid #000000;border-left:0.05pt solid #000000;border-right:0.05pt solid #000000;padding:0.097cm;" | Untertitel
+|-
+| style="border-top:none;border-bottom:0.05pt solid #000000;border-left:0.05pt solid #000000;border-right:none;padding:0.097cm;" | 
+= Überschrift 1 =
+
+
+| style="border-top:none;border-bottom:0.05pt solid #000000;border-left:0.05pt solid #000000;border-right:0.05pt solid #000000;padding:0.097cm;" | 
+== Überschrift 2 ==
+
+
+|-
+| style="border-top:none;border-bottom:0.05pt solid #000000;border-left:0.05pt solid #000000;border-right:none;padding:0.097cm;" | 
+=== Überschrift 3 ===
+
+
+| style="border-top:none;border-bottom:0.05pt solid #000000;border-left:0.05pt solid #000000;border-right:0.05pt solid #000000;padding:0.097cm;" | 
+==== Überschrift 4 ====
+
+
+|-
+| style="border-top:none;border-bottom:0.05pt solid #000000;border-left:0.05pt solid #000000;border-right:none;padding:0.097cm;" | 
+===== Überschrift 5 =====
+
+
+| style="border-top:none;border-bottom:0.05pt solid #000000;border-left:0.05pt solid #000000;border-right:0.05pt solid #000000;padding:0.097cm;" | 
+====== Überschrift 6 ======
+
+
+|-
+|}
+

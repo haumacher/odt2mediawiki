@@ -1,11 +1,9 @@
 = Test of inline images =
 
-[[Image:10000000000001E0000002804298C38B.jpg]]This paragraph contains an image at the right.
+[[Image:10000000000001E0000002804298C38B.jpg|right]]This paragraph contains an image at the right.
 
 [[Image:10000000000001E0000002804298C38B.jpg|thumb|]]This paragraph contains an image in a frame at the left.
 
+[[Image:10000000000001E0000002804298C38B.jpg|thumb|right|top|''Abbildung 1: Kreuztor in Ingolstadt, Germany.'']]This paragraph contains an image with description at the right margin. 
 
-[[Image:10000000000001E0000002804298C38B.jpg|thumb|''Abbildung 1: Kreuztor in Ingolstadt, Germany.'']]This paragraph contains an image with description at the right margin. 
-
-
-[[Image:10000000000001E0000002804298C38B.jpg|thumb|''Abbildung 2: Also in Ingolstadt, Germany.'']]This paragraph contains an image with description at the left margin.
+[[Image:10000000000001E0000002804298C38B.jpg|thumb|left|top|''Abbildung 2: Also in Ingolstadt, Germany.'']]This paragraph contains an image with description at the left margin.

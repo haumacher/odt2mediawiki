@@ -1,0 +1,3 @@
+Some <s>deleted</s> added text.
+
+Some <s>really deleted</s> also added text.

@@ -10,19 +10,18 @@ Regular text.
 
 
 {| class="wikitable"
-|| <div style="text-align:center;">'''Centered heading'''</div>
+|-
+| align=center| '''Centered heading'''
 || '''Left justified heading'''
-|| <div style="text-align:right;">'''Right justified heading'''</div>
-
+| align=right| '''Right justified heading'''
 |-
-|| <div style="text-align:center;">Centered content</div>
+| align=center| Centered content
 || Left justified content
-|| <div style="text-align:right;">Right justified content</div>
-
+| align=right| Right justified content
 |-
 || Left justified content
-|| <div style="text-align:right;">Right justified content</div>
-|| <div style="text-align:center;">Centered content</div>
-
+| align=right| Right justified content
+| align=center| Centered content
+|-
 |}
 

@@ -618,11 +618,11 @@
         </call-template>
     </template>
 
-        <template name="translate-style-property">
+    <template name="translate-style-property">
         <param name="style-name"/>
         <param name="style-property"/>
 
-        <if test="boolean($style-property)">
+        <if test="boolean($style-property) and not($style-property = '0cm' and ($style-name = 'padding' or $style-name = 'margin-left' or $style-name = 'margin-right'))">
             <value-of select="$style-name"/>
             <text>:</text>
             <value-of select="string($style-property)"/>
@@ -790,14 +790,17 @@
                             <with-param name="style-name" select="'color'"/>
                             <with-param name="style-property" select="$style-element/style:text-properties/@fo:color"/>
                         </call-template>
-                        <call-template name="translate-style-property">
-                            <with-param name="style-name" select="'margin-left'"/>
-                            <with-param name="style-property" select="$style-element/style:paragraph-properties/@fo:margin-left"/>
-                        </call-template>
-                        <call-template name="translate-style-property">
-                            <with-param name="style-name" select="'margin-right'"/>
-                            <with-param name="style-property" select="$style-element/style:paragraph-properties/@fo:margin-right"/>
-                        </call-template>
+		                <if test="not(parent::text:note-body) and not(parent::text:index-title)">
+		                	<!-- No explicit indentation within footnotes. Otherwise, implicit document styles would be exported to the wiki. -->
+	                        <call-template name="translate-style-property">
+	                            <with-param name="style-name" select="'margin-left'"/>
+	                            <with-param name="style-property" select="$style-element/style:paragraph-properties/@fo:margin-left"/>
+	                        </call-template>
+	                        <call-template name="translate-style-property">
+	                            <with-param name="style-name" select="'margin-right'"/>
+	                            <with-param name="style-property" select="$style-element/style:paragraph-properties/@fo:margin-right"/>
+	                        </call-template>
+		                </if>
                     </if>
                 </when>
                 <otherwise>
@@ -812,6 +815,10 @@
                 </otherwise>
             </choose>
         </variable>
+        
+        <if test="$code">
+        	<text> </text>
+        </if>
 
         <if test="string-length($style) &gt; 0">
             <text>&lt;div style="</text>
@@ -874,13 +881,8 @@
                 </otherwise>
             </choose>
         </when>
-        <when test="not(boolean(ancestor::text:note)) and (boolean(./following::*[1]/self::text:h) or boolean(./following::*[1]/self::table:table) or boolean(./following::*[1]/self::text:bibliography))">
-            <!-- Newline before following heading or table. -->
-            <value-of select="$NL"/>
-            <value-of select="$NL"/>
-        </when>
-        <when test="not(./following-sibling::*[1]) and name(./following::*[1])='text:p' and ancestor::text:list-item">
-            <!-- End of the list -->
+        <when test="not(boolean(ancestor::text:note)) and not(boolean(parent::text:list-item)) and (boolean(./following::*[1]/self::text:h) or boolean(./following-sibling::*[1]/self::text:list) or boolean(./following::*[1]/self::table:table) or boolean(./following::*[1]/self::text:bibliography))">
+            <!-- Newline before following heading, table, or bibliography. -->
             <value-of select="$NL"/>
             <value-of select="$NL"/>
         </when>
@@ -889,6 +891,10 @@
 
     <template match="text:p[string-length(.) = 0 and string-length(preceding-sibling::*[1]/self::text:p) &gt; 0]">
         <value-of select="$NL"/>
+    </template>
+
+    <template match="text:p[count(child::node()) = 0]">
+    	<!-- Drop empty paragraphs. -->
     </template>
 
     <!--
@@ -973,10 +979,16 @@
         <variable name="code"
             select="($style mod (2 * $CODE_BIT)) - ($style mod ($CODE_BIT)) != 0"/>
 
-        <if test="$code">
-            <value-of select="$NL"/>
-            <value-of select="' '"/>
-        </if>
+		<choose>
+			<when test="$code">
+	            <value-of select="$NL"/>
+	            <value-of select="' '"/>
+	        </when>
+	        <otherwise>
+	        	<text>&lt;br/&gt;</text>
+	            <value-of select="$NL"/>
+	        </otherwise>
+		</choose>
     </template>
 
     <!--
@@ -1018,7 +1030,6 @@
             <call-template name="mk-image-name">
                 <with-param name="image" select="$image"/>
                 <with-param name="frame" select="."/>
-                <with-param name="extension" select="'.png'"/>
             </call-template>
             <text>|thumb</text>
         </variable>
@@ -1159,7 +1170,6 @@
     <template name="mk-image-name">
         <param name="image"/>
         <param name="frame"/>
-        <param name="extension"/>
 
         <variable name="base-name">
             <call-template name="mk-base-name">
@@ -1171,8 +1181,6 @@
             <value-of select="'Image:'"/>
         </if>
         <value-of select="$base-name"/>
-        <value-of select="$frame/@draw:name"/>
-        <value-of select="'.png'"/>
     </template>
 
     <template name="mk-base-name">
@@ -1553,17 +1561,18 @@
 
     <template name="render-quoted-text">
         <param name="text"/>
-
+		
+		<variable name="doubleApos">''</variable>
         <choose>
-            <when test="contains($text, '[[') or starts-with($text, '----') or starts-with($text, '=') or starts-with($text, '*')  or starts-with($text, ';')  or starts-with($text, '#')">
+            <when test="contains($text, '[') or contains($text, $doubleApos) or contains($text, '&lt;') or contains($text, '&amp;') or starts-with($text, '----') or starts-with($text, '=') or starts-with($text, '*') or starts-with($text, ':')  or starts-with($text, ';')  or starts-with($text, '#')">
                 <text>&lt;nowiki&gt;</text>
-                    <call-template name="render-encoded-text">
+                    <call-template name="render-escaped-text">
                         <with-param name="text" select="$text"/>
                     </call-template>
                 <text>&lt;/nowiki&gt;</text>
             </when>
             <otherwise>
-                <call-template name="render-encoded-text">
+                <call-template name="render-escaped-text">
                     <with-param name="text" select="$text"/>
                 </call-template>
             </otherwise>
@@ -1573,14 +1582,16 @@
     <template name="render-escaped-text">
         <param name="text"/>
 
+		<variable name="escape" select="'&lt;/nowiki&gt;'"/>
+		
         <choose>
-            <when test="contains($text, '&lt;')">
+            <when test="contains($text, $escape)">
                 <call-template name="render-encoded-text">
-                    <with-param name="text" select="substring-before($text, '&lt;')"/>
+                    <with-param name="text" select="substring-before($text, $escape)"/>
                 </call-template>
-                <value-of select="'&amp;lt;'"/>
+                <value-of select="'&amp;lt;/nowiki&amp;gt;'"/>
                 <call-template name="render-escaped-text">
-                    <with-param name="text" select="substring-after($text, '&lt;')"/>
+                    <with-param name="text" select="substring-after($text, $escape)"/>
                 </call-template>
             </when>
             <otherwise>

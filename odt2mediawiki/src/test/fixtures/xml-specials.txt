@@ -1,3 +1,5 @@
 <nowiki>< This < is < a < paragraph & with & multiple & xml > specials. ></nowiki>
 
-<nowiki>&lt; This &lt; is &lt; another &lt; paragraph & with &lt;/nowiki> & &lt;/nowiki> & multiple & xml > specials. ></nowiki>
+<nowiki>< This < is < another < paragraph & with &lt;/nowiki&gt; <span style="color:red">blue</span> text ></nowiki>
+
+<nowiki>Zeilenumbruch wird durch die Eingabe von <br/> realisiert.</nowiki>

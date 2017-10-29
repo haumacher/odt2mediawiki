@@ -1,1 +1,1 @@
-[[Image:Sehne.png|thumb|''Abbildung 1: Some geometric construction.'']]Some text with an embedded image.
+[[Image:Sehne.png|thumb|right|top|''Abbildung 1: Some geometric construction.'']]Some text with an embedded image.

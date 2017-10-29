@@ -1,6 +1,5 @@
 <div style="text-align:center;">ALL COMMANDS</div>
 
-
 <div style="text-align:center;"><math>\begin{array}{c}\underline{\text{1. Unary/binary operators}}\\ 
 \\ 
 +a,-b,\pm c,\mp d,\neg e\\ 
@@ -79,9 +78,7 @@ b& 	y\end{array}\\
 a\mathrm{small}\mathrm{gap}\\ 
 a\mathrm{gap}\end{array}</math></div>
 
-
 <div style="text-align:center;">A SAMPLE</div>
-
 
 <div style="text-align:center;"><math>\begin{array}{c}\text{When solving the Hamilton Operator for an atom with several electrons:}\\ 
 H(\mathrm{1,2},\cdots N)=\sum _{n=1}^{N}\left(\frac{{p}_{n}^{2}}{\mathrm{2m}}-\frac{Z{\epsilon }^{2}}{{r}_{n}}\right)+\sum _{n< m}^{\mathrm{pairs}}\frac{{\epsilon }^{2}}{|{r}_{n}-{t}_{m}|}\\ 
@@ -92,6 +89,5 @@ H(\mathrm{1,2},\cdots N)=\sum _{n=1}^{N}\left(\frac{{p}_{n}^{2}}{\mathrm{2m}}-\f
 {\Psi }_{{k}_{2}}(1)& 	{\Psi }_{{k}_{2}}(2)& 	\cdots & 	{\Psi }_{{k}_{2}}(N)\\ 
 \vdots & 	\vdots & 	\ddots & 	\vdots \\ 
 {\Psi }_{{k}_{N}}(1)& 	{\Psi }_{{k}_{N}}(2)& 	\cdots & 	{\Psi }_{{k}_{N}}(N)\end{array}\right|\end{array}</math></div>
-
 
 

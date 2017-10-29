@@ -4,7 +4,7 @@ This is an example page for [[#Bookmarks|Bookmarks]], [[#Reference Marks|Referen
 
 == Bookmarks ==
 
-A definition of a bookmark.
+A definition of a {{anchor|r1}} bookmark.
 
 Some regular text.
 

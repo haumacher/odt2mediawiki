@@ -1,0 +1,8 @@
+First paragraph.
+
+Paragraph with explicit line breaks:<br/>
+First line<br/>
+second line<br/>
+third line
+
+Another paragraph.

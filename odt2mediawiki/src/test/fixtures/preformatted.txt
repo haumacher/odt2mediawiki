@@ -1,16 +1,16 @@
 Some regular text.
 
- Some preformatted text.
+ <span style="background-color:#ffffcc;">Some</span> preformatted text.
  
- Another preformatted paragraph
+ Another <span style="background-color:#ffffcc;">preformatted</span> <span style="background-color:#ffffcc;">paragraph</span>
   with
    some
     continued
      lines.
  
-      New paragraphs
+      New <span style="background-color:#ffffcc;">paragraphs</span>
  
-       starting with
+       <span style="background-color:#ffffcc;">starting</span> with
  
         „indentation“!
 
@@ -41,12 +41,12 @@ Some regular text also starting with spaces.
 
 Some regular text.
 
-A paragraph containing a <tt>code fragment in typewriter style</tt>. 
+A paragraph containing a <span style="background-color:#ffffcc;"><tt>code fragment in typewriter style</tt></span>. 
 
-<tt>Some paragraph being completely formatted... </tt>
+<span style="background-color:#ffffcc;"><tt>Some paragraph being completely formatted... </tt></span>
 
-<tt>...in typewriter style, but the format itself is a...</tt>
+<span style="background-color:#ffffcc;"><tt>...in typewriter style, but the format itself is a...</tt></span>
 
-<tt>...character style, not a paragraph style. </tt>
+<span style="background-color:#ffffcc;"><tt>...character style, not a paragraph style. </tt></span>
 
 Some regular text.
