@@ -1,8 +1,7 @@
 package haui.office.wiki;
 
-import haui.office.io.ODF2XML;
-
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -26,8 +25,19 @@ import javax.xml.transform.stream.StreamSource;
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 
+import haui.office.io.ODF2XML;
+
 public class ODT2Wiki {
 
+	public static final String HELP_PARAM = "-help";
+	public static final String OUTPUT_PARAM = "-output";
+	public static final String DIR_PARAM = "-dir";
+	public static final String SUFFIX_PARAM = "-suffix";
+	public static final String ALTERNATIVE_PARAM = "-alternative";
+	public static final String TIME_PARAM = "-time";
+	public static final String VERBOSE_PARAM = "-verbose";
+	public static final String PATH_PARAM = "-path";
+	
 	private static final String ODT_SUFFIX = ".odt";
 	private static final String ODF_SUFFIX = ".odf";
 	private static final String TXT_SUFFIX = ".txt";
@@ -71,7 +81,7 @@ public class ODT2Wiki {
 		transformer.transform(new DOMSource(document), new StreamResult(result));
 	}
 
-	private static File getOutputFile(File odtFile, String wikiSuffix) {
+	private static File getOutputFile(File outputDir, File odtFile, String wikiSuffix) {
 		String odtFileName = odtFile.getName();
 		String suffix = (wikiSuffix.startsWith(".") ? "" : ".") + wikiSuffix;
 		
@@ -84,7 +94,7 @@ public class ODT2Wiki {
 			resultFileName = odtFileName + suffix;
 		}
 		
-		File resultFile = new File(odtFile.getParentFile(), resultFileName);
+		File resultFile = new File(outputDir == null ? odtFile.getParentFile() : outputDir, resultFileName);
 		return resultFile;
 	}
 
@@ -103,23 +113,24 @@ public class ODT2Wiki {
 		boolean time = false;
 		boolean alternative = false;
 		String suffix = TXT_SUFFIX;
+		File dir = null;
 		String output = null;
 		
 		ArrayList<String> srcFilenames = new ArrayList<String>();
 		for (int n = 0, cnt = args.length; n < cnt; n++) {
-			if ("-path".equals(args[n])) {
+			if (PATH_PARAM.equals(args[n])) {
 				srcFilenames.addAll(Arrays.asList(args[++n].split("\\" + File.pathSeparatorChar)));
 			}
-			else if ("-verbose".equals(args[n])) {
+			else if (VERBOSE_PARAM.equals(args[n])) {
 				verbose = true;
 			}
-			else if ("-time".equals(args[n])) {
+			else if (TIME_PARAM.equals(args[n])) {
 				time = true;
 			}
-			else if ("-alternative".equals(args[n])) {
+			else if (ALTERNATIVE_PARAM.equals(args[n])) {
 				alternative = true;
 			}
-			else if ("-suffix".equals(args[n])) {
+			else if (SUFFIX_PARAM.equals(args[n])) {
 				if (n + 1 == args.length) {
 					System.err.println("Missing suffix argument.");
 					usage();
@@ -127,7 +138,7 @@ public class ODT2Wiki {
 				}
 				suffix = args[++n];
 			}
-			else if ("-output".equals(args[n])) {
+			else if (OUTPUT_PARAM.equals(args[n])) {
 				if (n + 1 == args.length) {
 					System.err.println("Missing output argument.");
 					usage();
@@ -135,7 +146,29 @@ public class ODT2Wiki {
 				}
 				output = args[++n];
 			}
-			else if ("-help".equals(args[n])) {
+			else if (DIR_PARAM.equals(args[n])) {
+				if (n + 1 == args.length) {
+					System.err.println("Missing dir argument.");
+					usage();
+					System.exit(1);
+				}
+				dir = new File(args[++n]);
+				if (dir.exists()) {
+					if (!dir.isDirectory()) {
+						System.err.println("Output directory is not a directory: " + dir.getAbsolutePath());
+						usage();
+						System.exit(1);
+					}
+				} else {
+					boolean ok = dir.mkdirs();
+					if (!ok) {
+						System.err.println("Cannot create output directory: " + dir.getAbsolutePath());
+						usage();
+						System.exit(1);
+					}
+				}
+			}
+			else if (HELP_PARAM.equals(args[n])) {
 				usage();
 				System.exit(0);
 			}
@@ -160,9 +193,7 @@ public class ODT2Wiki {
 			System.exit(1);
 		}
 		
-		ODT2Wiki odt2wiki = new ODT2Wiki(alternative ? 
-			ODT2Wiki.class.getResource("OD2MediaWiki.xslt") : 
-			ODT2Wiki.class.getResource("transform/odt2mediawiki.xsl"));
+		ODT2Wiki odt2wiki = createTransformer(alternative);
 		
 		for (String fileName : srcFilenames) {
 			if (verbose || time) {
@@ -171,13 +202,8 @@ public class ODT2Wiki {
 			long elapsed = -System.currentTimeMillis();
 			
 			File odtFile = new File(fileName);
-			if (output == null) {
-				odt2wiki.toWiki(odtFile, new FileOutputStream(getOutputFile(odtFile, suffix)));
-			} else if (output.equals("-")) {
-				odt2wiki.toWiki(odtFile, System.out);
-			} else {
-				odt2wiki.toWiki(odtFile, new FileOutputStream(new File(output)));
-			}
+			OutputStream out = createOutput(dir, output, odtFile, suffix);
+			odt2wiki.toWiki(odtFile, out);
 			
 			if (verbose || time) {
 				if (time) {
@@ -189,10 +215,31 @@ public class ODT2Wiki {
 		}
 	}
 
+	static OutputStream createOutput(File dir, String output, File odtFile,
+			String suffix) throws FileNotFoundException {
+		OutputStream out;
+		if (output == null) {
+			out = new FileOutputStream(getOutputFile(dir, odtFile, suffix));
+		} else if (output.equals("-")) {
+			out = System.out;
+		} else {
+			out = new FileOutputStream(new File(output));
+		}
+		return out;
+	}
+
+	public static ODT2Wiki createTransformer(boolean alternative)
+			throws TransformerConfigurationException, IOException {
+		ODT2Wiki odt2wiki = new ODT2Wiki(alternative ? 
+			ODT2Wiki.class.getResource("OD2MediaWiki.xslt") : 
+			ODT2Wiki.class.getResource("transform/odt2mediawiki.xsl"));
+		return odt2wiki;
+	}
+
 	private static void usage() {
 		System.out.println("odt2wiki" + 
 			" [-path <'" + File.pathSeparatorChar + "'-separated list of filenames>]" + 
-			" [-verbose] [-time] [-help] [-suffix <output file suffix>] [-output <output file>] [<input file>]+"
+			" [-verbose] [-time] [-help] [-suffix <output file suffix>] [-output <output file>] [-dir <output dir>] [<input file>]+"
 		);
 	}
 }
