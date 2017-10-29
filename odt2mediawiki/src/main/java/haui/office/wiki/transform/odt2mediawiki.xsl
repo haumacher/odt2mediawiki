@@ -565,10 +565,10 @@
 
         <choose>
             <when test="$center">
-                <text>&lt;center&gt;</text>
+            	<text>&lt;div style="text-align:center;"&gt;</text>
             </when>
             <when test="$right">
-                <text>&lt;div align="right"&gt;</text>
+            	<text>&lt;div style="text-align:right;"&gt;</text>
             </when>
             <when test="$code">
                 <value-of select="' '"/>
@@ -579,7 +579,7 @@
 
         <choose>
             <when test="$center">
-                <text>&lt;/center&gt;</text>
+                <text>&lt;/div&gt;</text>
             </when>
             <when test="$right">
                 <text>&lt;/div&gt;</text>

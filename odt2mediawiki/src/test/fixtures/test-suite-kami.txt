@@ -23,7 +23,7 @@ Please do not start a link or ''italics'' or '''bold''' on one line and close it
  Put text in a typewriter font. The same font is generally used for computer code.
  Strike out or underline text, or write it in small caps. 
 
-<center>Centered text</center>
+<div style="text-align:center;">Centered text</div>
 
 * Please note the American spelling of "center". 
 
@@ -80,11 +80,11 @@ Start with 2 equals signs not 1 because 1 creates H1 tags which should be reserv
 
 === Level3 ===
 
-<center>'''Center: OpenOffice.org''' is ''a [http://www.openoffice.org/dev_docs/source/sys_reqs.html multiplatfor][http://www.openoffice.org/dev_docs/source/sys_reqs.html m] and''' [http://www.openoffice.org/project/projects/native-lang.html multilingual] [http://www.openoffice.org/product/index.html office suite] and''''' an [http://www.opensource.org/docs/definition.php open-source] project.'' '''Compatible''' with all '''''other''''' '''''major''''' ''office'' ''suites'', the product is free to download, use, and distribute. To help build the community,''''' [http://contributing.openoffice.org/index.html join us]. '''''</center>
+<div style="text-align:center;">'''Center: OpenOffice.org''' is ''a [http://www.openoffice.org/dev_docs/source/sys_reqs.html multiplatfor][http://www.openoffice.org/dev_docs/source/sys_reqs.html m] and''' [http://www.openoffice.org/project/projects/native-lang.html multilingual] [http://www.openoffice.org/product/index.html office suite] and''''' an [http://www.opensource.org/docs/definition.php open-source] project.'' '''Compatible''' with all '''''other''''' '''''major''''' ''office'' ''suites'', the product is free to download, use, and distribute. To help build the community,''''' [http://contributing.openoffice.org/index.html join us]. '''''</div>
 
 = Level1 =
 
-<div align="right">'''Right: OpenOffice.org''' is ''a [http://www.openoffice.org/dev_docs/source/sys_reqs.html multiplatfor][http://www.openoffice.org/dev_docs/source/sys_reqs.html m] and''' [http://www.openoffice.org/project/projects/native-lang.html multilingual] [http://www.openoffice.org/product/index.html office suite] and''''' an [http://www.opensource.org/docs/definition.php open-source] project.'' '''Compatible''' with all '''''other''''' '''''major''''' ''office'' ''suites'', the product is free to download, use, and distribute. To help build the community,''''' [http://contributing.openoffice.org/index.html join us]. '''''</div>
+<div style="text-align:right;">'''Right: OpenOffice.org''' is ''a [http://www.openoffice.org/dev_docs/source/sys_reqs.html multiplatfor][http://www.openoffice.org/dev_docs/source/sys_reqs.html m] and''' [http://www.openoffice.org/project/projects/native-lang.html multilingual] [http://www.openoffice.org/product/index.html office suite] and''''' an [http://www.opensource.org/docs/definition.php open-source] project.'' '''Compatible''' with all '''''other''''' '''''major''''' ''office'' ''suites'', the product is free to download, use, and distribute. To help build the community,''''' [http://contributing.openoffice.org/index.html join us]. '''''</div>
 
 
 Test
@@ -220,12 +220,12 @@ A picture, including alternate text:
 You can put the image in a frame with a caption:
 
 
-<div align="right">[[Image:Wiki.png]]</div>
+<div style="text-align:right;">[[Image:Wiki.png]]</div>
 
-<div align="right">This Wiki's logo</div>
+<div style="text-align:right;">This Wiki's logo</div>
 
 
- [[Image:Wiki.png|thumb|<center></center> <center>This Wiki's logo</center> A link to Wikipedia's page for the image: [http://meta.wikimedia.org/wiki/Image:Wiki.png Image:Wiki.png] Or a link directly to the image itself: [http://upload.wikimedia.org/wikipedia/meta/b/bc/Wiki.png Media:Wiki.png]]]
+ [[Image:Wiki.png|thumb|<div style="text-align:center;"></div> <div style="text-align:center;">This Wiki's logo</div> A link to Wikipedia's page for the image: [http://meta.wikimedia.org/wiki/Image:Wiki.png Image:Wiki.png] Or a link directly to the image itself: [http://upload.wikimedia.org/wikipedia/meta/b/bc/Wiki.png Media:Wiki.png]]]
 
 A link to Wikipedia's page for the image: [http://meta.wikimedia.org/wiki/Image:Wiki.png Image:Wiki.png]
 
@@ -261,7 +261,7 @@ Or a link directly to the image itself: [http://upload.wikimedia.org/wikipedia/m
 
 |-
 | style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:none;padding:0.0382in;"|  Textural 2:1
-| style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:0.0007in solid #000000;padding:0.0382in;"| <center>Textural 2''':2'''</center>
+| style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:0.0007in solid #000000;padding:0.0382in;"| <div style="text-align:center;">Textural 2''':2'''</div>
 
 |}
  Table
@@ -275,20 +275,20 @@ Or a link directly to the image itself: [http://upload.wikimedia.org/wikipedia/m
 
 |-
 | style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:none;padding:0.0382in;"|  Textural 2:1
-| style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:none;padding:0.0382in;"| <center>Textural 2''':2'''</center>
-| style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:none;padding:0.0382in;"| <div align="right">Textural 2'':3''</div>
+| style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:none;padding:0.0382in;"| <div style="text-align:center;">Textural 2''':2'''</div>
+| style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:none;padding:0.0382in;"| <div style="text-align:right;">Textural 2'':3''</div>
 | style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:0.0007in solid #000000;padding:0.0382in;"|  Textural 2:4
 
 |-
 | style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:none;padding:0.0382in;"|  Textural 3:1
-| style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:none;padding:0.0382in;"| <center>'''Textural 3'':2'''''</center>
-| style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:none;padding:0.0382in;"| <div align="right">''Textural 3''':3'''''</div>
+| style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:none;padding:0.0382in;"| <div style="text-align:center;">'''Textural 3'':2'''''</div>
+| style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:none;padding:0.0382in;"| <div style="text-align:right;">''Textural 3''':3'''''</div>
 | style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:0.0007in solid #000000;padding:0.0382in;"|  Textural 3''''':4'''''
 
 |-
 | style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:none;padding:0.0382in;"|  Textural 4:1
-| style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:none;padding:0.0382in;"| <center>Textural 4:2</center>
-| style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:none;padding:0.0382in;"| <div align="right">Textural 4:3</div>
+| style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:none;padding:0.0382in;"| <div style="text-align:center;">Textural 4:2</div>
+| style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:none;padding:0.0382in;"| <div style="text-align:right;">Textural 4:3</div>
 | style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:0.0007in solid #000000;padding:0.0382in;"|  Textural 4:4
 
 |}
@@ -297,27 +297,27 @@ Or a link directly to the image itself: [http://upload.wikimedia.org/wikipedia/m
 
 {| style="border-spacing:0;"
 !  Textural 1:1
-! <center>Textural 1:2</center>
-<div align="right">1:3</div>
+! <div style="text-align:center;">Textural 1:2</div>
+<div style="text-align:right;">1:3</div>
 !  Textural 1:4
 
 |-
 | colspan="2" | 
 {| style="border-spacing:0;"
 | style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:none;padding:0.0382in;"|  Textural 2:1
-| style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:none;padding:0.0382in;"| <center>[http://wikipedia.org/ Textural] 2''':2'''</center>
-| style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:none;padding:0.0382in;"| <div align="right">Textural 2'':3''</div>
+| style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:none;padding:0.0382in;"| <div style="text-align:center;">[http://wikipedia.org/ Textural] 2''':2'''</div>
+| style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:none;padding:0.0382in;"| <div style="text-align:right;">Textural 2'':3''</div>
 
 |-
 | style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:none;padding:0.0382in;"|  Textural 3:1 4:1
 | colspan="2" | 
 {| style="border-spacing:0;"
-| style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:none;padding:0.0382in;"| <center>'''Textural 3'':2'''''</center>
-| style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:none;padding:0.0382in;"| <div align="right">[http://wikipedia.org/ Textural] 3''':3'''''</div>
+| style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:none;padding:0.0382in;"| <div style="text-align:center;">'''Textural 3'':2'''''</div>
+| style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:none;padding:0.0382in;"| <div style="text-align:right;">[http://wikipedia.org/ Textural] 3''':3'''''</div>
 
 |-
-| style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:none;padding:0.0382in;"| <center>Textural 4:2</center>
-| style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:none;padding:0.0382in;"| <div align="right">Textural 4:3</div>
+| style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:none;padding:0.0382in;"| <div style="text-align:center;">Textural 4:2</div>
+| style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:none;padding:0.0382in;"| <div style="text-align:right;">Textural 4:3</div>
 
 |}
 
@@ -334,20 +334,20 @@ Or a link directly to the image itself: [http://upload.wikimedia.org/wikipedia/m
 ! colspan="6" |  Textural 1:1
 ! 
 {| style="border-spacing:0;"
-! <center>Textural 1:2</center>
+! <div style="text-align:center;">Textural 1:2</div>
 
 |-
-! <center>[http://wikipedia.org/ Textural] A</center>
+! <div style="text-align:center;">[http://wikipedia.org/ Textural] A</div>
 
 |}
 
-! colspan="4" | <div align="right">[http://wikipedia.org/ Textural] 1:3</div>
+! colspan="4" | <div style="text-align:right;">[http://wikipedia.org/ Textural] 1:3</div>
 !  Textural 1:4
 
 |-
 | colspan="6"  style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:none;padding:0.0382in;"|  Textural 2:1
-| style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:none;padding:0.0382in;"| <center>Textural 2''':2'''</center>
-| style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:none;padding:0.0382in;"| <div align="right">Textural 2'':3''</div>
+| style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:none;padding:0.0382in;"| <div style="text-align:center;">Textural 2''':2'''</div>
+| style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:none;padding:0.0382in;"| <div style="text-align:right;">Textural 2'':3''</div>
 | style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:none;padding:0.0382in;"|  '''Textural '''
 | style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:none;padding:0.0382in;"|  '''Textural '''
 | style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:none;padding:0.0382in;"|  '''Textural '''
@@ -355,8 +355,8 @@ Or a link directly to the image itself: [http://upload.wikimedia.org/wikipedia/m
 
 |-
 | colspan="6"  style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:none;padding:0.0382in;"|  Textural 3:1
-| style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:none;padding:0.0382in;"| <center>'''Textural 3'':2'''''</center>
-| colspan="4"  style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:none;padding:0.0382in;"| <div align="right">''Textural 3''':3'''''</div>
+| style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:none;padding:0.0382in;"| <div style="text-align:center;">'''Textural 3'':2'''''</div>
+| colspan="4"  style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:none;padding:0.0382in;"| <div style="text-align:right;">''Textural 3''':3'''''</div>
 | style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:0.0007in solid #000000;padding:0.0382in;"|  [http://wikipedia.org/ Textural] 3''''':4'''''
 
 |-
@@ -366,8 +366,8 @@ Or a link directly to the image itself: [http://upload.wikimedia.org/wikipedia/m
 | style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:none;padding:0.0382in;"|  '''Textural '''
 | style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:none;padding:0.0382in;"|  '''Textural '''
 | style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:none;padding:0.0382in;"|  '''Textural '''
-| style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:none;padding:0.0382in;"| <center>Textural 4:2</center>
-| colspan="4"  style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:none;padding:0.0382in;"| <div align="right">Textural 4:3</div>
+| style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:none;padding:0.0382in;"| <div style="text-align:center;">Textural 4:2</div>
+| colspan="4"  style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:none;padding:0.0382in;"| <div style="text-align:right;">Textural 4:3</div>
 || 
 {| style="border-spacing:0;"
 | style="border-top:none;border-bottom:0.0007in solid #000000;border-left:0.0007in solid #000000;border-right:0.0007in solid #000000;padding:0.0382in;"|  Textural 4:4

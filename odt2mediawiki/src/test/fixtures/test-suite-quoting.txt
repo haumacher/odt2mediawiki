@@ -2,11 +2,11 @@
 
 Bitte beachte die [/wiki/Wikipedia:Formatierung Wikipedia-Richtlinien zur Formatierung]<nowiki>, insbesondere: Kleiner- und größergeschriebenen Text, harte Zeilenumbrüche mit <br />-Tags, Absätze durch doppelte oder mehrfache Leerzeilen, </nowiki>[/wiki/Hilfe:Farben Farben] und ähnliche Spezialformatierungen solltest du nicht in Artikeln, sondern nur in [/wiki/Hilfe:Tabellen Tabellen] oder [/wiki/Hilfe:Vorlagen Textbausteinen] verwenden, um ein einheitliches Aussehen der Artikel zu gewährleisten. Ansonsten bietet die Wikiauszeichnungssprache genügend Möglichkeiten, den Text zu formatieren.
 {| style="border-spacing:0;"
-| colspan="2"  style="background-color:#8db6cd;border:none;padding:0.049cm;"| <center>'''Textgestaltung'''</center>
+| colspan="2"  style="background-color:#8db6cd;border:none;padding:0.049cm;"| <div style="text-align:center;">'''Textgestaltung'''</div>
 
 |-
-| style="border:none;padding:0.049cm;"| <center>'''Was du schreibst'''</center>
-| style="border:none;padding:0.049cm;"| <center>'''Wie es dargestellt wird'''</center>
+| style="border:none;padding:0.049cm;"| <div style="text-align:center;">'''Was du schreibst'''</div>
+| style="border:none;padding:0.049cm;"| <div style="text-align:center;">'''Wie es dargestellt wird'''</div>
 
 |-
 | style="border:none;padding:0.049cm;"| <tt>Normaler Text wird so dargestellt, wie du ihn eingibst. Mit einer Leerzeileerzeugst du einen Absatz.</tt>
@@ -129,15 +129,15 @@ Linie
 geschütztes Leerzeichen („no-break-space“): 10&nbsp;kg, 50&nbsp;%, Dr.&nbsp;Best oder geschützten Bindestrich (unicode-Zeichen Nummer 8209 bzw. (hex) 2011): Müller‑Lüdenscheid, Regenhose und ‑jacke verwenden.
 
 |-
-| colspan="2"  style="background-color:#8db6cd;border:none;padding:0.049cm;"| <center>'''Formatierungen, die nicht in normalen Wikipedia-Artikeln verwendet werden sollten'''</center>
+| colspan="2"  style="background-color:#8db6cd;border:none;padding:0.049cm;"| <div style="text-align:center;">'''Formatierungen, die nicht in normalen Wikipedia-Artikeln verwendet werden sollten'''</div>
 
 |-
 | style="border:none;padding:0.049cm;"| <tt><nowiki><div align="center">zentriert</div></nowiki></tt> oder <tt><nowiki><center>zentriert</center></nowiki></tt>
-| style="border:none;padding:0.049cm;"| <center>zentriert</center>
+| style="border:none;padding:0.049cm;"| <div style="text-align:center;">zentriert</div>
 
 |-
 | style="border:none;padding:0.049cm;"| <tt><nowiki><div align="right">rechtsbündig</div></nowiki></tt>
-| style="border:none;padding:0.049cm;"| <div align="right">rechtsbündig</div>
+| style="border:none;padding:0.049cm;"| <div style="text-align:right;">rechtsbündig</div>
 
 |-
 | style="border:none;padding:0.049cm;"| <tt><nowiki><big>groß</big></nowiki></tt>

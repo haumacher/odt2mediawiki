@@ -1,8 +1,8 @@
 
 {| style="border-spacing:0;"
-| style="border-top:0.002cm solid #000000;border-bottom:0.002cm solid #000000;border-left:0.002cm solid #000000;border-right:none;padding:0.097cm;"| <center>'''Regular Table'''</center>
-| style="border-top:0.002cm solid #000000;border-bottom:0.002cm solid #000000;border-left:0.002cm solid #000000;border-right:none;padding:0.097cm;"| <center>'''Column 1'''</center>
-| style="border:0.002cm solid #000000;padding:0.097cm;"| <center>'''Column 2'''</center>
+| style="border-top:0.002cm solid #000000;border-bottom:0.002cm solid #000000;border-left:0.002cm solid #000000;border-right:none;padding:0.097cm;"| <div style="text-align:center;">'''Regular Table'''</div>
+| style="border-top:0.002cm solid #000000;border-bottom:0.002cm solid #000000;border-left:0.002cm solid #000000;border-right:none;padding:0.097cm;"| <div style="text-align:center;">'''Column 1'''</div>
+| style="border:0.002cm solid #000000;padding:0.097cm;"| <div style="text-align:center;">'''Column 2'''</div>
 
 |-
 | style="border-top:none;border-bottom:0.002cm solid #000000;border-left:0.002cm solid #000000;border-right:none;padding:0.097cm;"| Row 1

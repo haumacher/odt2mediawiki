@@ -1,7 +1,7 @@
-<center>ALL COMMANDS</center>
+<div style="text-align:center;">ALL COMMANDS</div>
 
 
-<center><math>\begin{array}{c}\underline{\text{1. Unary/binary operators}}\\ 
+<div style="text-align:center;"><math>\begin{array}{c}\underline{\text{1. Unary/binary operators}}\\ 
 \\ 
 +a,-b,\pm c,\mp d,\neg e\\ 
 a+b,a\cdot b,a\times b,a\ast b\\ 
@@ -77,13 +77,13 @@ r\\
 \begin{array}{cc}a& 	x\\ 
 b& 	y\end{array}\\ 
 a\mathrm{small}\mathrm{gap}\\ 
-a\mathrm{gap}\end{array}</math></center>
+a\mathrm{gap}\end{array}</math></div>
 
 
-<center>A SAMPLE</center>
+<div style="text-align:center;">A SAMPLE</div>
 
 
-<center><math>\begin{array}{c}\text{When solving the Hamilton Operator for an atom with several electrons:}\\ 
+<div style="text-align:center;"><math>\begin{array}{c}\text{When solving the Hamilton Operator for an atom with several electrons:}\\ 
 H(\mathrm{1,2},\cdots N)=\sum _{n=1}^{N}\left(\frac{{p}_{n}^{2}}{\mathrm{2m}}-\frac{Z{\epsilon }^{2}}{{r}_{n}}\right)+\sum _{n< m}^{\mathrm{pairs}}\frac{{\epsilon }^{2}}{|{r}_{n}-{t}_{m}|}\\ 
 \text{the total wave function is made up of products from single particle wave functions (here is a mathematical term).}\\ 
 \Psi (r,s)={\phi }_{\mathrm{nlm}}(r){\chi }_{{m}_{s}}(s)\text{Use the Slater determinants to do this:}\\ 
@@ -91,7 +91,7 @@ H(\mathrm{1,2},\cdots N)=\sum _{n=1}^{N}\left(\frac{{p}_{n}^{2}}{\mathrm{2m}}-\f
 \Psi (\mathrm{1,2},\cdots N)=\frac{1}{\sqrt{N!}}\left|\begin{array}{cccc}{\Psi }_{{k}_{1}}(1)& 	{\Psi }_{{k}_{1}}(2)& 	\cdots & 	{\Psi }_{{k}_{1}}(N)\\ 
 {\Psi }_{{k}_{2}}(1)& 	{\Psi }_{{k}_{2}}(2)& 	\cdots & 	{\Psi }_{{k}_{2}}(N)\\ 
 \vdots & 	\vdots & 	\ddots & 	\vdots \\ 
-{\Psi }_{{k}_{N}}(1)& 	{\Psi }_{{k}_{N}}(2)& 	\cdots & 	{\Psi }_{{k}_{N}}(N)\end{array}\right|\end{array}</math></center>
+{\Psi }_{{k}_{N}}(1)& 	{\Psi }_{{k}_{N}}(2)& 	\cdots & 	{\Psi }_{{k}_{N}}(N)\end{array}\right|\end{array}</math></div>
 
 
 
