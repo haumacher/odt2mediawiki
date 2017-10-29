@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <!--
     odt2mediawiki: OpenDocument to WikiMedia transformation
     Copyright (C) 2007-2013  Bernhard Haumacher (haui at haumacher dot de)
@@ -51,12 +50,16 @@
     <param name="NL" select="'&#10;'"/>
 
     <!-- String that a tabulator is expanded with in preformatted paragraphs. -->
-    <param name="CODE_TAB_REPLACEMENT">
-        <variable name="document-value"
+
+        <variable name="codetabdocument-value"
             select="/office:document/office:meta/meta:user-defined[@meta:name='CODE_TAB_REPLACEMENT']"/>
+
+    <param name="CODE_TAB_REPLACEMENT">
+
         <choose>
-            <when test="boolean($document-value)">
-                <value-of select="$document-value"/>
+
+            <when test="boolean($codetabdocument-value)">
+                <value-of select="$codetabdocument-value"/>
             </when>
 
             <otherwise>
@@ -71,9 +74,11 @@
     <param name="CODE_JOIN_PARAGRAPHS"
         select="boolean(string(/office:document/office:meta/meta:user-defined[@meta:name='CODE_JOIN_PARAGRAPHS']) != 'false')"/>
 
-    <param name="CODE_STYLES">
         <variable name="document-value"
             select="/office:document/office:meta/meta:user-defined[@meta:name='CODE_STYLES']"/>
+
+    <param name="CODE_STYLES">
+
         <choose>
             <when test="boolean($document-value)">
                 <value-of select="$document-value"/>
@@ -85,9 +90,10 @@
         </choose>
     </param>
 
-    <param name="TABLE_CLASS">
         <variable name="table-class"
             select="/office:document/office:meta/meta:user-defined[@meta:name='TABLE_CLASS']"/>
+
+    <param name="TABLE_CLASS">
         <choose>
             <when test="boolean($table-class)">
                 <value-of select="$table-class"/>
@@ -101,6 +107,7 @@
 
     <variable name="USE_DEFAULT_TABLE_CLASS" select="string-length($TABLE_CLASS) &gt; 0"/>
 
+
     <!--
         == Wiki style constants ==
     -->
@@ -111,23 +118,26 @@
     <!-- Italic character style. -->
     <variable name="ITALIC_BIT" select="2"/>
 
+    <!-- Underline character style. -->
+    <variable name="UNDERLINE_BIT" select="4"/>
+
     <!-- Subscript character style. -->
-    <variable name="SUBSCRIPT_BIT" select="4"/>
+    <variable name="SUBSCRIPT_BIT" select="8"/>
 
     <!-- Superscript character style. -->
-    <variable name="SUPERSCRIPT_BIT" select="8"/>
+    <variable name="SUPERSCRIPT_BIT" select="16"/>
 
     <!-- Typewriter character style. -->
-    <variable name="TYPEWRITER_BIT" select="16"/>
+    <variable name="TYPEWRITER_BIT" select="32"/>
 
     <!-- Preformatted text paragraph style. -->
-    <variable name="CODE_BIT" select="32"/>
+    <variable name="CODE_BIT" select="64"/>
 
     <!-- Centered paragraph style. -->
-    <variable name="CENTER_BIT" select="64"/>
+    <variable name="CENTER_BIT" select="128"/>
 
     <!-- Right aligned paragraph style. -->
-    <variable name="RIGHT_BIT" select="128"/>
+    <variable name="RIGHT_BIT" select="256"/>
 
     <!-- Constant defining the empty style. -->
     <variable name="NO_STYLE" select="0"/>
@@ -164,6 +174,12 @@
     />
 
     <key
+        name="text:table-of-content-entry-ref"
+        match="//text:table-of-content-entry-template"
+        use="@text:style-name"
+    />
+
+    <key
         name="reference-resolution"
         match="//text:reference-mark | //text:reference-mark-start"
         use="@text:name"
@@ -175,9 +191,9 @@
     -->
 
     <template match="draw:page">
-        <value-of select="concat($NL, '&lt;!-- Page ', @draw:name, '--&gt;', $NL)"/>
+        <value-of select="concat('&#10;&lt;!-- Page ', @draw:name, '--&gt;&#10;')"/>
         <apply-templates/>
-        <value-of select="concat($NL, '----', $NL, $NL)"/>
+        <value-of select="'&#10;----&#10;&#10;'"/>
     </template>
 
 
@@ -350,13 +366,49 @@
             </when>
 
             <otherwise>
-                <!-- Default setting to translate detailed office table cell styles correctly. -->
-                <text> style="border-spacing:0;"</text>
+                <variable name="style-element" select="key('style-ref', @table:style-name)"/>
+                <variable name="table-align" select="$style-element/style:table-properties/@table:align"/>
+                <!-- Table alignment using align -->
+                <if test="boolean($table-align)">
+                    <variable name="align">
+                        <choose>
+                            <when test="$table-align='center'">
+                                <text>center</text>
+                            </when>
+                        </choose>
+                    </variable>
+                    <if test="string-length($align) &gt; 0">
+                        <text> align="</text>
+                        <value-of select="$align"/>
+                        <text>"</text>
+                    </if>
+                </if>
+                <variable name="style">
+                    <!-- Default setting to translate detailed office table cell styles correctly. -->
+                    <text>border-spacing:0;</text>
+                    <!-- Table alignment using css -->
+                    <if test="boolean($table-align)">
+                        <choose>
+                            <when test="$table-align='margins'">
+                                <text>margin:auto;</text>
+                            </when>
+                        </choose>
+                    </if>
+                    <if test="boolean($style-element/style:table-properties/@style:width)">
+                        <text>width:</text>
+                        <value-of select="$style-element/style:table-properties/@style:width"/>
+                        <text>;</text>
+                    </if>
+                </variable>
+                <text> style="</text>
+                <value-of select="$style"/>
+                <text>"</text>
             </otherwise>
         </choose>
 
         <value-of select="$NL"/>
         <apply-templates/>
+        <text>|-</text>
         <value-of select="$NL"/>
         <text>|}</text>
         <value-of select="$NL"/>
@@ -366,27 +418,88 @@
         <apply-templates/>
     </template>
 
-    <template match="table:table-row[position() &lt; last()] | table:table-header-rows/table:table-row">
-        <apply-templates/>
-        <value-of select="$NL"/>
+        <template match="table:table-row">
         <text>|-</text>
-        <value-of select="$NL"/>
-    </template>
 
-    <template match="table:table-row">
+        <if test="not($USE_DEFAULT_TABLE_CLASS) and boolean(table:table-cell[1]/@table:style-name)">
+            <variable name="style-name" select="table:table-cell[1]/@table:style-name"/>
+            <variable name="total-style-name" select="count(table:table-cell/@table:style-name)"/>
+            <variable name="total-equal-style-name" select="count(table:table-cell[@table:style-name=$style-name])"/>
+
+                        <variable name="style">
+                <if test="$total-equal-style-name=$total-style-name">
+                    <call-template name="translate-table-cell-properties">
+                        <with-param name="style-element" select="key('style-ref', $style-name)"/>
+                    </call-template>
+                </if>
+            </variable>
+
+                        <if test="string-length($style) &gt; 0">
+                <text> style="</text>
+                <value-of select="$style"/>
+                <text>"</text>
+            </if>
+        </if>
+
+                <value-of select="$NL"/>
         <apply-templates/>
     </template>
 
     <template match="table:table-header-rows//table:table-cell">
-        <text>! </text>
+        <text>!</text>
         <if test="@table:number-columns-spanned">
             <text>colspan="</text>
             <value-of select="@table:number-columns-spanned"/>
             <text>" | </text>
         </if>
+
+        <!-- Cell alignment -->
+        <if test="text:p and count(*) = 1">
+            <variable name="style-number">
+                <call-template name="mk-style-set">
+                    <with-param name="node" select="text:p"/>
+                </call-template>
+            </variable>
+
+            <variable name="code"
+                select="($style-number mod (2 * $CODE_BIT)) - ($style-number mod ($CODE_BIT)) != 0"/>
+            <variable name="center"
+                select="($style-number mod (2 * $CENTER_BIT)) - ($style-number mod ($CENTER_BIT)) != 0"/>
+            <variable name="right"
+                select="($style-number mod (2 * $RIGHT_BIT)) - ($style-number mod ($RIGHT_BIT)) != 0"/>
+
+            <choose>
+                <when test="$center">
+                    <text> align=center</text>
+                </when>
+                <when test="$right">
+                    <text> align=right</text>
+                </when>
+            </choose>
+        </if>
+
+        <if test="not($USE_DEFAULT_TABLE_CLASS) and boolean(@table:style-name)">
+            <variable name="style-name" select="@table:style-name"/>
+
+            <variable name="style">
+                <!-- Only if cells have a different style-name -->
+                <if test="count(../table:table-cell/@table:style-name) !=  count(../table:table-cell[@table:style-name=$style-name]) and count(../table:table-cell/@table:style-name) &gt; 0">
+                    <call-template name="translate-table-cell-properties">
+                        <with-param name="style-element" select="key('style-ref', $style-name)"/>
+                    </call-template>
+                </if>
+                        </variable>
+
+            <if test="string-length($style) &gt; 0">
+                <text> style="</text>
+                <value-of select="$style"/>
+                <text>" </text>
+            </if>
+        </if>
+        <text>| </text>
         <apply-templates/>
         <value-of select="$NL"/>
-    </template>
+        </template>
 
     <template match="table:table-cell">
         <text>|</text>
@@ -395,62 +508,59 @@
             <value-of select="@table:number-columns-spanned"/>
             <text>" </text>
         </if>
+
+        <!-- Cell alignment -->
+        <if test="text:p and count(*) = 1">
+            <variable name="style-number">
+                <call-template name="mk-style-set">
+                    <with-param name="node" select="text:p"/>
+                </call-template>
+            </variable>
+
+            <variable name="code"
+                select="($style-number mod (2 * $CODE_BIT)) - ($style-number mod ($CODE_BIT)) != 0"/>
+            <variable name="center"
+                select="($style-number mod (2 * $CENTER_BIT)) - ($style-number mod ($CENTER_BIT)) != 0"/>
+            <variable name="right"
+                select="($style-number mod (2 * $RIGHT_BIT)) - ($style-number mod ($RIGHT_BIT)) != 0"/>
+
+            <choose>
+                <when test="$center">
+                    <text> align=center</text>
+                </when>
+                <when test="$right">
+                    <text> align=right</text>
+                </when>
+            </choose>
+        </if>
+
         <if test="not($USE_DEFAULT_TABLE_CLASS) and boolean(@table:style-name)">
-            <variable name="style-element" select="key('style-ref', @table:style-name)"/>
+            <variable name="style-name" select="@table:style-name"/>
 
-            <variable name="style">
-                <call-template name="translate-style-property">
-                    <with-param name="style-name" select="'background-color'"/>
-                    <with-param name="style-property" select="$style-element/style:table-cell-properties/@fo:background-color"/>
-                </call-template>
+                        <variable name="style">
+                <!-- Only if cells have a different style-name -->
+                <if test="count(../table:table-cell/@table:style-name) !=  count(../table:table-cell[@table:style-name=$style-name]) and count(../table:table-cell/@table:style-name) &gt; 0">
+                    <call-template name="translate-table-cell-properties">
+                        <with-param name="style-element" select="key('style-ref', $style-name)"/>
+                    </call-template>
+                                </if>
+                <!-- Font color -->
+                <if test="text:p and count(*) = 1">
+                    <if test="boolean(text:p/@text:style-name)">
+                        <variable name="style-element" select="key('style-ref', text:p/@text:style-name)"/>
 
-                <call-template name="translate-style-property">
-                    <with-param name="style-name" select="'border'"/>
-                    <with-param name="style-property" select="$style-element/style:table-cell-properties/@fo:border"/>
-                </call-template>
-                <call-template name="translate-style-property">
-                    <with-param name="style-name" select="'border-top'"/>
-                    <with-param name="style-property" select="$style-element/style:table-cell-properties/@fo:border-top"/>
-                </call-template>
-                <call-template name="translate-style-property">
-                    <with-param name="style-name" select="'border-bottom'"/>
-                    <with-param name="style-property" select="$style-element/style:table-cell-properties/@fo:border-bottom"/>
-                </call-template>
-                <call-template name="translate-style-property">
-                    <with-param name="style-name" select="'border-left'"/>
-                    <with-param name="style-property" select="$style-element/style:table-cell-properties/@fo:border-left"/>
-                </call-template>
-                <call-template name="translate-style-property">
-                    <with-param name="style-name" select="'border-right'"/>
-                    <with-param name="style-property" select="$style-element/style:table-cell-properties/@fo:border-right"/>
-                </call-template>
-
-                <call-template name="translate-style-property">
-                    <with-param name="style-name" select="'padding'"/>
-                    <with-param name="style-property" select="$style-element/style:table-cell-properties/@fo:padding"/>
-                </call-template>
-                <call-template name="translate-style-property">
-                    <with-param name="style-name" select="'padding-top'"/>
-                    <with-param name="style-property" select="$style-element/style:table-cell-properties/@fo:padding-top"/>
-                </call-template>
-                <call-template name="translate-style-property">
-                    <with-param name="style-name" select="'padding-bottom'"/>
-                    <with-param name="style-property" select="$style-element/style:table-cell-properties/@fo:padding-bottom"/>
-                </call-template>
-                <call-template name="translate-style-property">
-                    <with-param name="style-name" select="'padding-left'"/>
-                    <with-param name="style-property" select="$style-element/style:table-cell-properties/@fo:padding-left"/>
-                </call-template>
-                <call-template name="translate-style-property">
-                    <with-param name="style-name" select="'padding-right'"/>
-                    <with-param name="style-property" select="$style-element/style:table-cell-properties/@fo:padding-right"/>
-                </call-template>
+                        <call-template name="translate-style-property">
+                            <with-param name="style-name" select="'color'"/>
+                            <with-param name="style-property" select="$style-element/style:text-properties/@fo:color"/>
+                        </call-template>
+                    </if>
+                </if>
             </variable>
 
             <if test="string-length($style) &gt; 0">
                 <text> style="</text>
                 <value-of select="$style"/>
-                <text>"</text>
+                <text>" </text>
             </if>
         </if>
         <text>| </text>
@@ -458,7 +568,57 @@
         <value-of select="$NL"/>
     </template>
 
-    <template name="translate-style-property">
+    <template name="translate-table-cell-properties">
+        <param name="style-element"/>
+        <call-template name="translate-style-property">
+            <with-param name="style-name" select="'background-color'"/>
+            <with-param name="style-property" select="$style-element/style:table-cell-properties/@fo:background-color"/>
+        </call-template>
+
+        <call-template name="translate-style-property">
+            <with-param name="style-name" select="'border'"/>
+            <with-param name="style-property" select="$style-element/style:table-cell-properties/@fo:border"/>
+        </call-template>
+        <call-template name="translate-style-property">
+            <with-param name="style-name" select="'border-top'"/>
+            <with-param name="style-property" select="$style-element/style:table-cell-properties/@fo:border-top"/>
+        </call-template>
+        <call-template name="translate-style-property">
+            <with-param name="style-name" select="'border-bottom'"/>
+            <with-param name="style-property" select="$style-element/style:table-cell-properties/@fo:border-bottom"/>
+        </call-template>
+        <call-template name="translate-style-property">
+            <with-param name="style-name" select="'border-left'"/>
+            <with-param name="style-property" select="$style-element/style:table-cell-properties/@fo:border-left"/>
+        </call-template>
+        <call-template name="translate-style-property">
+            <with-param name="style-name" select="'border-right'"/>
+            <with-param name="style-property" select="$style-element/style:table-cell-properties/@fo:border-right"/>
+        </call-template>
+
+        <call-template name="translate-style-property">
+            <with-param name="style-name" select="'padding'"/>
+            <with-param name="style-property" select="$style-element/style:table-cell-properties/@fo:padding"/>
+        </call-template>
+        <call-template name="translate-style-property">
+            <with-param name="style-name" select="'padding-top'"/>
+            <with-param name="style-property" select="$style-element/style:table-cell-properties/@fo:padding-top"/>
+        </call-template>
+        <call-template name="translate-style-property">
+            <with-param name="style-name" select="'padding-bottom'"/>
+            <with-param name="style-property" select="$style-element/style:table-cell-properties/@fo:padding-bottom"/>
+        </call-template>
+        <call-template name="translate-style-property">
+            <with-param name="style-name" select="'padding-left'"/>
+            <with-param name="style-property" select="$style-element/style:table-cell-properties/@fo:padding-left"/>
+        </call-template>
+        <call-template name="translate-style-property">
+            <with-param name="style-name" select="'padding-right'"/>
+            <with-param name="style-property" select="$style-element/style:table-cell-properties/@fo:padding-right"/>
+        </call-template>
+    </template>
+
+        <template name="translate-style-property">
         <param name="style-name"/>
         <param name="style-property"/>
 
@@ -475,30 +635,29 @@
      -->
 
     <!--
-        Make sure to join sibling node that are all formated with WikiMath style without repeating
-        the <math>..</math> markup.
+       Make sure to join sibling node that are all formatted with WikiMath style without repeating
+       the <math>..</math> markup.
 
-        Do not apply any transformation to the contents marked as WikiMath.
-    -->
-
+       Do not apply any transformation to the contents marked as WikiMath.
+   -->
     <template match="text:span[@text:style-name='WikiMath']">
         <value-of select="'&lt;math&gt;'"/>
         <value-of select="string(.)"/>
         <value-of select="'&lt;/math&gt;'"/>
     </template>
 
-    <template match="text:span[@text:style-name='WikiMath' and boolean(preceding-sibling::node()[position()=1 and local-name(.)='span' and @text:style-name='WikiMath'])]">
-        <value-of select="string(.)"/>
-        <value-of select="'&lt;/math&gt;'"/>
-    </template>
+   <template match="text:span[@text:style-name='WikiMath' and boolean(preceding-sibling::node()[position()=1 and local-name(.)='span' and @text:style-name='WikiMath'])]">
+       <value-of select="string(.)"/>
+       <value-of select="'&lt;/math&gt;'"/>
+   </template>
 
-    <template match="text:span[@text:style-name='WikiMath' and boolean(following-sibling::node()[position()=1 and local-name(.)='span' and @text:style-name='WikiMath'])]">
-        <value-of select="'&lt;math&gt;'"/>
-        <value-of select="string(.)"/>
-    </template>
+   <template match="text:span[@text:style-name='WikiMath' and boolean(following-sibling::node()[position()=1 and local-name(.)='span' and @text:style-name='WikiMath'])]">
+       <value-of select="'&lt;math&gt;'"/>
+       <value-of select="string(.)"/>
+   </template>
 
-    <template match="text:span[@text:style-name='WikiMath' and boolean(following-sibling::node()[position()=1 and local-name(.)='span' and @text:style-name='WikiMath']) and boolean(preceding-sibling::node()[position()=1 and local-name(.)='span' and @text:style-name='WikiMath'])]">
-        <value-of select="string(.)"/>
+   <template match="text:span[@text:style-name='WikiMath' and boolean(following-sibling::node()[position()=1 and local-name(.)='span' and @text:style-name='WikiMath']) and boolean(preceding-sibling::node()[position()=1 and local-name(.)='span' and @text:style-name='WikiMath'])]">
+       <value-of select="string(.)"/>
     </template>
 
     <!--
@@ -509,12 +668,37 @@
         <variable name="link-ref" select="@xlink:href"/>
         <choose>
             <when test="string-length($link-ref) &gt; 0">
-                <variable name="link-label" select="string(.)"/>
-                <text>[</text>
-                <value-of select="$link-ref"/>
-                <text> </text>
-                <value-of select="$link-label"/>
-                <text>]</text>
+                <choose>
+                    <when test="starts-with($link-ref, '#')">
+                        <text>[[</text>
+                        <choose>
+                            <when test="contains($link-ref, '_')">
+                                <value-of select="translate($link-ref,'_','')"/>
+                            </when>
+                            <otherwise>
+                                <value-of select="$link-ref"/>
+                            </otherwise>
+                        </choose>
+                        <text>|</text>
+                        <choose>
+                            <when test="text:tab and ancestor::text:index-body">
+                                <value-of select="node()[1]"/>
+                            </when>
+                            <otherwise>
+                                <value-of select="string(.)"/>
+                            </otherwise>
+                        </choose>
+                        <text>]]</text>
+                    </when>
+
+                                        <otherwise>
+                        <text>[</text>
+                        <value-of select="$link-ref"/>
+                        <text> </text>
+                        <value-of select="string(.)"/>
+                        <text>]</text>
+                    </otherwise>
+                </choose>
             </when>
 
             <otherwise>
@@ -523,6 +707,21 @@
         </choose>
     </template>
 
+        <!--
+        Function for generating tabulations in TOC entries.
+
+        @param style
+            The style of the TOC entry
+    -->
+    <template name="mk-tab-toc">
+        <param name="style"/>
+        <if test="number($style/@text:outline-level) &gt; 0">
+            <call-template name="mk-token">
+                <with-param name="level" select="number($style/@text:outline-level) - 1"/>
+                <with-param name="char" select="':'"/>
+            </call-template>
+        </if>
+    </template>
 
     <!--
         == WikiLink ==
@@ -549,42 +748,82 @@
         == Paragraphs ==
      -->
 
-    <template match="text:p[string-length(.) &gt; 0]">
-        <variable name="style">
+    <template match="text:p">
+        <!-- TOC tabs -->
+        <if test="ancestor::text:index-body and boolean(@text:style-name)">
+            <variable name="style" select="key('style-ref', @text:style-name)"/>
+            <if test="boolean($style/@style:parent-style-name)">
+                <call-template name="mk-tab-toc">
+                    <with-param name="style" select="key('text:table-of-content-entry-ref', $style/@style:parent-style-name)"/>
+                </call-template>
+            </if>
+        </if>
+
+        <variable name="alignment">
             <call-template name="mk-style-set">
                 <with-param name="node" select="."/>
             </call-template>
         </variable>
 
         <variable name="code"
-            select="($style mod (2 * $CODE_BIT)) - ($style mod ($CODE_BIT)) != 0"/>
+            select="($alignment mod (2 * $CODE_BIT)) - ($alignment mod ($CODE_BIT)) != 0"/>
         <variable name="center"
-            select="($style mod (2 * $CENTER_BIT)) - ($style mod ($CENTER_BIT)) != 0"/>
+            select="($alignment mod (2 * $CENTER_BIT)) - ($alignment mod ($CENTER_BIT)) != 0"/>
         <variable name="right"
-            select="($style mod (2 * $RIGHT_BIT)) - ($style mod ($RIGHT_BIT)) != 0"/>
+            select="($alignment mod (2 * $RIGHT_BIT)) - ($alignment mod ($RIGHT_BIT)) != 0"/>
 
-        <choose>
-            <when test="$center">
-            	<text>&lt;div style="text-align:center;"&gt;</text>
-            </when>
-            <when test="$right">
-            	<text>&lt;div style="text-align:right;"&gt;</text>
-            </when>
-            <when test="$code">
-                <value-of select="' '"/>
-            </when>
-        </choose>
+        <variable name="style">
+            <choose>
+                <when test="name(parent::*) != 'table:table-cell'">
+                    <choose>
+                        <when test="$center">
+                            <text>text-align:center;</text>
+                        </when>
+                        <when test="$right">
+                            <text>text-align:right;</text>
+                        </when>
+                    </choose>
+                    <if test="boolean(@text:style-name)">
+                        <variable name="style-element" select="key('style-ref', @text:style-name)"/>
+
+                        <call-template name="translate-style-property">
+                            <with-param name="style-name" select="'color'"/>
+                            <with-param name="style-property" select="$style-element/style:text-properties/@fo:color"/>
+                        </call-template>
+                        <call-template name="translate-style-property">
+                            <with-param name="style-name" select="'margin-left'"/>
+                            <with-param name="style-property" select="$style-element/style:paragraph-properties/@fo:margin-left"/>
+                        </call-template>
+                        <call-template name="translate-style-property">
+                            <with-param name="style-name" select="'margin-right'"/>
+                            <with-param name="style-property" select="$style-element/style:paragraph-properties/@fo:margin-right"/>
+                        </call-template>
+                    </if>
+                </when>
+                <otherwise>
+                    <if test="count(../text:p) &gt; 1 and boolean(@text:style-name)">
+                        <variable name="style-element" select="key('style-ref', @text:style-name)"/>
+
+                                                <call-template name="translate-style-property">
+                            <with-param name="style-name" select="'color'"/>
+                            <with-param name="style-property" select="$style-element/style:text-properties/@fo:color"/>
+                        </call-template>
+                    </if>
+                </otherwise>
+            </choose>
+        </variable>
+
+        <if test="string-length($style) &gt; 0">
+            <text>&lt;div style="</text>
+            <value-of select="$style"/>
+            <text>"&gt;</text>
+        </if>
 
         <apply-templates/>
 
-        <choose>
-            <when test="$center">
-                <text>&lt;/div&gt;</text>
-            </when>
-            <when test="$right">
-                <text>&lt;/div&gt;</text>
-            </when>
-        </choose>
+        <if test="string-length($style) &gt; 0">
+            <text>&lt;/div&gt;</text>
+        </if>
 
         <variable name="paragraph-right"
             select="./following-sibling::*[1]/self::text:p"/>
@@ -597,7 +836,7 @@
             -->
             <choose>
                 <when test="boolean(ancestor::text:list-item)">
-                    <text>&lt;br/&gt; </text>
+                    <text>&lt;br/&gt;</text>
                 </when>
                 <when test="$code">
                     <variable name="style-right">
@@ -635,12 +874,13 @@
                 </otherwise>
             </choose>
         </when>
-        <when test="boolean(./following-sibling::*[1]/self::text:h) or boolean(./following-sibling::*[1]/self::table:table) or boolean(./following-sibling::*[1]/self::text:bibliography)">
+        <when test="not(boolean(ancestor::text:note)) and (boolean(./following::*[1]/self::text:h) or boolean(./following::*[1]/self::table:table) or boolean(./following::*[1]/self::text:bibliography))">
             <!-- Newline before following heading or table. -->
             <value-of select="$NL"/>
             <value-of select="$NL"/>
         </when>
-        <when test="./following-sibling::*[1]/self::text:list and not(ancestor::text:list-item)">
+        <when test="not(./following-sibling::*[1]) and name(./following::*[1])='text:p' and ancestor::text:list-item">
+            <!-- End of the list -->
             <value-of select="$NL"/>
             <value-of select="$NL"/>
         </when>
@@ -650,7 +890,6 @@
     <template match="text:p[string-length(.) = 0 and string-length(preceding-sibling::*[1]/self::text:p) &gt; 0]">
         <value-of select="$NL"/>
     </template>
-
 
     <!--
         == Preformatted text ==
@@ -678,6 +917,34 @@
                     <value-of select="' '"/>
                 </otherwise>
             </choose>
+        </if>
+    </template>
+
+    <template match="text:span[string-length(.) &gt; 0]">
+        <if test="boolean(@text:style-name)">
+            <variable name="style-element" select="key('style-ref', @text:style-name)"/>
+            <variable name="style">
+                <call-template name="translate-style-property">
+                    <with-param name="style-name" select="'background-color'"/>
+                    <with-param name="style-property" select="$style-element/style:text-properties/@fo:background-color"/>
+                </call-template>
+                <call-template name="translate-style-property">
+                    <with-param name="style-name" select="'color'"/>
+                    <with-param name="style-property" select="$style-element/style:text-properties/@fo:color"/>
+                </call-template>
+            </variable>
+
+            <if test="string-length($style) &gt; 0">
+                <text>&lt;span style="</text>
+                <value-of select="$style"/>
+                <text>"&gt;</text>
+            </if>
+
+            <apply-templates/>
+
+            <if test="string-length($style) &gt; 0">
+                <text>&lt;/span&gt;</text>
+            </if>
         </if>
     </template>
 
@@ -746,25 +1013,153 @@
             <apply-templates/>
         </variable>
 
-        <text>[[</text>
-        <call-template name="mk-image-name">
-            <with-param name="image" select="$image"/>
+        <variable name="picture">
+            <text>[[</text>
+            <call-template name="mk-image-name">
+                <with-param name="image" select="$image"/>
+                <with-param name="frame" select="."/>
+                <with-param name="extension" select="'.png'"/>
+            </call-template>
+            <text>|thumb</text>
+        </variable>
+
+        <!-- Picture markup + Horizontal & Vertical align -->
+        <call-template name="mk-image-align">
+            <with-param name="picture" select="$picture"/>
         </call-template>
-        <text>|thumb|</text>
+
+                <!-- Image caption -->
+                <text>|</text>
         <value-of select="normalize-space($image-description)"/>
-        <text>]]</text>
+
+                <text>]]</text>
     </template>
 
     <template match="draw:image[not(boolean(ancestor::draw:text-box))]">
-        <text>[[</text>
-        <call-template name="mk-image-name">
-            <with-param name="image" select="."/>
+        <variable name="picture">
+            <text>[[</text>
+            <call-template name="mk-image-name">
+                <with-param name="image" select="."/>
+                <with-param name="frame" select="parent::node()"/>
+            </call-template>
+        </variable>
+
+        <!-- Picture markup + Horizontal & Vertical align -->
+        <call-template name="mk-image-align">
+            <with-param name="picture" select="$picture"/>
         </call-template>
+
+        <!-- Image alt -->
+        <if test="name(following-sibling::*)='svg:title'">
+            <text>|alt="</text>
+            <value-of select="following-sibling::*/text()"/>
+            <text>"</text>
+        </if>
+
         <text>]]</text>
+    </template>
+
+    <template name="mk-image-align">
+        <param name="picture"/>
+
+        <choose>
+        <when test="name(..)='draw:frame' and boolean(../@draw:style-name)">
+            <variable name="style-element" select="key('style-ref', ../@draw:style-name)"/>
+            <choose>
+                <when test="boolean($style-element/style:graphic-properties/@style:wrap)">
+                    <choose>
+                        <!-- wrap=none -->
+                        <when test="$style-element/style:graphic-properties/@style:wrap='none'">
+                            <text>{{clear}}</text>
+                            <value-of select="$NL"/>
+                            <value-of select="$picture"/>
+                            <choose>
+                                <when test="boolean($style-element/style:graphic-properties/@style:horizontal-pos)">
+                                    <choose>
+                                        <when test="$style-element/style:graphic-properties/@style:horizontal-pos='center'">
+                                            <text>|center</text>
+                                        </when>
+                                        <otherwise>
+                                            <text>|none</text>
+                                        </otherwise>
+                                    </choose>
+                                </when>
+                                <otherwise>
+                                    <text>|none</text>
+                                </otherwise>
+                            </choose>
+                        </when>
+                        <!-- wrap != none -->
+                        <otherwise>
+                            <value-of select="$picture"/>
+                            <!-- Horizontal align -->
+                            <call-template name="mk-image-horizontal-align">
+                                <with-param name="style-element" select="$style-element"/>
+                            </call-template>
+                            <!-- Vertical align -->
+                            <call-template name="mk-image-vertical-align">
+                                <with-param name="style-element" select="$style-element"/>
+                            </call-template>
+                        </otherwise>
+                    </choose>
+                </when>
+                <!-- without wrap -->
+                <otherwise>
+                    <value-of select="$picture"/>
+                    <!-- Horizontal align -->
+                    <call-template name="mk-image-horizontal-align">
+                        <with-param name="style-element" select="$style-element"/>
+                    </call-template>
+                    <!-- Vertical align -->
+                    <call-template name="mk-image-vertical-align">
+                        <with-param name="style-element" select="$style-element"/>
+                    </call-template>
+                </otherwise>
+            </choose>
+        </when>
+        <otherwise>
+            <value-of select="$picture"/>
+        </otherwise>
+        </choose>
+    </template>
+
+    <template name="mk-image-horizontal-align">
+        <param name="style-element"/>
+
+        <if test="boolean($style-element/style:graphic-properties/@style:horizontal-pos)">
+            <choose>
+                <when test="$style-element/style:graphic-properties/@style:horizontal-pos='right'">
+                    <text>|right</text>
+                </when>
+                <when test="$style-element/style:graphic-properties/@style:horizontal-pos='left'">
+                    <text>|left</text>
+                </when>
+            </choose>
+        </if>
+    </template>
+
+    <template name="mk-image-vertical-align">
+        <param name="style-element"/>
+
+        <if test="boolean($style-element/style:graphic-properties/@style:vertical-pos)">
+            <choose>
+                <when test="$style-element/style:graphic-properties/@style:vertical-pos='top'">
+                    <text>|top</text>
+                </when>
+                <when test="$style-element/style:graphic-properties/@style:vertical-pos='middle'">
+                    <text>|middle</text>
+                </when>
+                <when test="$style-element/style:graphic-properties/@style:vertical-pos='below'">
+                    <text>|below</text>
+                </when>
+            </choose>
+        </if>
     </template>
 
     <template name="mk-image-name">
         <param name="image"/>
+        <param name="frame"/>
+        <param name="extension"/>
 
         <variable name="base-name">
             <call-template name="mk-base-name">
@@ -776,6 +1171,8 @@
             <value-of select="'Image:'"/>
         </if>
         <value-of select="$base-name"/>
+        <value-of select="$frame/@draw:name"/>
+        <value-of select="'.png'"/>
     </template>
 
     <template name="mk-base-name">
@@ -822,6 +1219,7 @@
         <apply-templates/>
         <text>&lt;/math&gt;</text>
     </template>
+
 
     <!--
         References
@@ -885,13 +1283,32 @@
         <!-- TODO: Output an anchor. -->
     </template>
 
+    <template match="text:bookmark-start">
+        <if test="boolean(@text:name)">
+            <variable name="bookmark">
+                <choose>
+                    <when test="contains(@text:name,'_')">
+                        <value-of select="translate(@text:name,'_','')"/>
+                    </when>
+                    <otherwise>
+                        <value-of select="@text:name"/>
+                    </otherwise>
+                </choose>
+            </variable>
+            <text>{{anchor|</text>
+            <value-of select="$bookmark"/>
+            <text>}} </text>
+        </if>
+        <apply-templates/>
+    </template>
+
     <!--
         == Plain text ==
     -->
 
     <template match="text:p/text() | text:h/text() | text:span/text() | text:sequence/text() | text:sequence-ref/text() | text:a/text() | text:bookmark-ref/text() | text:reference-mark/text() | text:date/text() | text:time/text() | text:page-number/text() | text:sender-firstname/text() | text:sender-lastname/text() | text:sender-initials/text() | text:sender-title/text() | text:sender-position/text() | text:sender-email/text() | text:sender-phone-private/text() | text:sender-fax/text() | text:sender-company/text() | text:sender-phone-work/text() | text:sender-street/text() | text:sender-city/text() | text:sender-postal-code/text() | text:sender-country/text() | text:sender-state-or-province/text() | text:author-name/text() | text:author-initials/text() | text:chapter/text() | text:file-name/text() | text:template-name/text() | text:sheet-name/text() | text:variable-get/text() | text:variable-input/text() | text:user-field-get/text() | text:user-field-input/text() | text:expression/text() | text:text-input/text() | text:initial-creator/text() | text:creation-date/text() | text:creation-time/text() | text:description/text() | text:user-defined/text() | text:print-date/text() | text:printed-by/text() | text:title/text() | text:subject/text() | text:keywords/text() | text:editing-cycles/text() | text:editing-duration/text() | text:modification-date/text() | text:creator/text() | text:modification-time/text() | text:page-count/text() | text:paragraph-count/text() | text:word-count/text() | text:character-count/text() | text:table-count/text() | text:image-count/text() | text:object-count/text() | text:database-display/text() | text:database-row-number/text() | text:database-name/text() | text:page-variable-get/text() | text:placeholder/text() | text:conditional-text/text() | text:hidden-text/text() | text:execute-macro/text() | text:dde-connection/text() | text:measure/text() | text:table-formula/text()">
         <choose>
-            <when test="boolean(./ancestor::table:table-header-rows | ./ancestor::text:h)">
+            <when test="boolean(./ancestor::table:table-header-rows) or boolean(./ancestor::text:h)">
                 <!--
                     No explicit styles within table headings or section headings,
                     because those styles are consistently declared by the Wiki engine. -->
@@ -901,7 +1318,7 @@
             <when test="string-length(.) &gt; 0">
                 <variable name="style">
                     <call-template name="mk-style-set">
-                        <with-param name="node" select="."/>
+                        <with-param name="node" select="./parent::node()"/>
                     </call-template>
                 </variable>
 
@@ -973,6 +1390,8 @@
                     select="($style mod (2 * $BOLD_BIT)) != 0"/>
                 <variable name="italic"
                     select="($style mod (2 * $ITALIC_BIT)) - ($style mod ($ITALIC_BIT)) != 0"/>
+                <variable name="underline"
+                    select="($style mod (2 * $UNDERLINE_BIT)) - ($style mod ($UNDERLINE_BIT)) != 0"/>
                 <variable name="superscript"
                     select="($style mod (2 * $SUPERSCRIPT_BIT)) - ($style mod ($SUPERSCRIPT_BIT)) != 0"/>
                 <variable name="subscript"
@@ -986,6 +1405,8 @@
                     select="($style-left mod (2 * $BOLD_BIT)) != 0"/>
                 <variable name="italic-left"
                     select="($style-left mod (2 * $ITALIC_BIT)) - ($style-left mod ($ITALIC_BIT)) != 0"/>
+                <variable name="underline-left"
+                    select="($style-left mod (2 * $UNDERLINE_BIT)) - ($style-left mod ($UNDERLINE_BIT)) != 0"/>
                 <variable name="superscript-left"
                     select="($style-left mod (2 * $SUPERSCRIPT_BIT)) - ($style-left mod ($SUPERSCRIPT_BIT)) != 0"/>
                 <variable name="subscript-left"
@@ -997,6 +1418,8 @@
                     select="($style-right mod (2 * $BOLD_BIT)) != 0"/>
                 <variable name="italic-right"
                     select="($style-right mod (2 * $ITALIC_BIT)) - ($style-right mod ($ITALIC_BIT)) != 0"/>
+                <variable name="underline-right"
+                    select="($style-right mod (2 * $UNDERLINE_BIT)) - ($style-right mod ($UNDERLINE_BIT)) != 0"/>
                 <variable name="superscript-right"
                     select="($style-right mod (2 * $SUPERSCRIPT_BIT)) - ($style-right mod ($SUPERSCRIPT_BIT)) != 0"/>
                 <variable name="subscript-right"
@@ -1015,7 +1438,7 @@
                 <value-of select="'}'"/>
                  -->
 
-                <if test="$superscript and not($superscript-left)">
+                <if test="$superscript and not($superscript-left) and not(boolean(ancestor::text:note))">
                     <text>&lt;sup&gt;</text>
                 </if>
                 <if test="$subscript and not($subscript-left)">
@@ -1023,6 +1446,9 @@
                 </if>
                 <if test="not($code) and $typewriter and not($typewriter-left)">
                     <text>&lt;tt&gt;</text>
+                </if>
+                <if test="$underline and not($underline-left)">
+                    <text>&lt;u&gt;</text>
                 </if>
                 <if test="$bold and not($bold-left)">
                     <text>'''</text>
@@ -1041,13 +1467,16 @@
                 <if test="$bold and not($bold-right)">
                     <text>'''</text>
                 </if>
+                <if test="$underline and not($underline-right)">
+                    <text>&lt;/u&gt;</text>
+                </if>
                 <if test="not($code) and $typewriter and not($typewriter-right)">
                     <text>&lt;/tt&gt;</text>
                 </if>
                 <if test="$subscript and not($subscript-right)">
                     <text>&lt;/sub&gt;</text>
                 </if>
-                <if test="$superscript and not($superscript-right)">
+                <if test="$superscript and not($superscript-right) and not(boolean(ancestor::text:note))">
                     <text>&lt;/sup&gt;</text>
                 </if>
 
@@ -1068,7 +1497,7 @@
         Function for looking up the position of a node identified by the given
         'current-id' within a node set 'context'.
 
-        The search starts with the the index 'test-index'. The search is recursive
+        The search starts with the index 'test-index'. The search is recursive
         in the 'test-index' argument. To save recursion depth, each recursive call
         iteratively tests a fixed number of indexes (by loop unrolling).
      -->
@@ -1126,20 +1555,11 @@
         <param name="text"/>
 
         <choose>
-            <when test="contains($text, '&lt;') or contains($text, '[') or starts-with($text, '----') or starts-with($text, '=') or starts-with($text, '*')  or starts-with($text, ';')  or starts-with($text, '#')">
+            <when test="contains($text, '[[') or starts-with($text, '----') or starts-with($text, '=') or starts-with($text, '*')  or starts-with($text, ';')  or starts-with($text, '#')">
                 <text>&lt;nowiki&gt;</text>
-                <choose>
-                    <when test="contains($text, '&lt;/nowiki&gt;')">
-                        <call-template name="render-escaped-text">
-                            <with-param name="text" select="$text"/>
-                        </call-template>
-                    </when>
-                    <otherwise>
-                        <call-template name="render-encoded-text">
-                            <with-param name="text" select="$text"/>
-                        </call-template>
-                    </otherwise>
-                </choose>
+                    <call-template name="render-encoded-text">
+                        <with-param name="text" select="$text"/>
+                    </call-template>
                 <text>&lt;/nowiki&gt;</text>
             </when>
             <otherwise>
@@ -1195,30 +1615,12 @@
     <template name="mk-style-set">
         <param name="node"/>
 
-        <variable
-            name="context"
-            select="$node/ancestor-or-self::*[@text:style-name][1]"
-        />
-
         <choose>
-            <when test="boolean($context)">
-                <variable
-                    name="style"
-                    select="key('style-ref', $context/@text:style-name)"
-                />
-
-                <!-- Debugging: Print inspected styles. -->
-                <!--
-                <message>
-                    <value-of select="'=== '"/>
-                    <value-of select="$style/@style:name"/>
-                    <value-of select="' ==='"/>
-                </message>
-                 -->
-
+            <when test="$node/ancestor-or-self::*[@text:style-name]">
+                <variable name="context" select="$node/ancestor-or-self::*[@text:style-name][1]"/>
                 <call-template name="mk-style-set-internal">
                     <with-param name="node" select="$context"/>
-                    <with-param name="style" select="$style"/>
+                    <with-param name="style" select="key('style-ref', $context/@text:style-name)"/>
                     <with-param name="style-set" select="$NO_STYLE"/>
                     <with-param name="style-mask" select="$NO_STYLE"/>
                 </call-template>
@@ -1261,6 +1663,8 @@
             select="($style-mask mod (2 * $BOLD_BIT)) = 0"/>
         <variable name="italic-requested"
             select="($style-mask mod (2 * $ITALIC_BIT)) - ($style-mask mod ($ITALIC_BIT)) = 0"/>
+        <variable name="underline-requested"
+            select="($style-mask mod (2 * $UNDERLINE_BIT)) - ($style-mask mod ($UNDERLINE_BIT)) = 0"/>
         <variable name="superscript-requested"
             select="($style-mask mod (2 * $SUPERSCRIPT_BIT)) - ($style-mask mod ($SUPERSCRIPT_BIT)) = 0"/>
         <variable name="subscript-requested"
@@ -1320,6 +1724,32 @@
                         italic and no parent style must be considered.
                     -->
                     <value-of select="$ITALIC_BIT"/>
+                </when>
+                <otherwise>
+                    <value-of select="$NO_STYLE"/>
+                </otherwise>
+            </choose>
+        </variable>
+
+        <variable name="underline-style">
+            <choose>
+                <when test="$underline-requested and boolean($text-properties/@style:text-underline-style='solid')">
+                    <!-- Underline found in current style. -->
+                    <value-of select="$UNDERLINE_BIT"/>
+                </when>
+                <otherwise>
+                    <value-of select="$NO_STYLE"/>
+                </otherwise>
+            </choose>
+        </variable>
+        <variable name="underline-mask">
+            <choose>
+                <when test="$underline-requested and boolean($text-properties/@style:text-underline-style='solid')">
+                    <!--
+                        Other value than "underline" means that the character style is not
+                        underline and no parent style must be considered.
+                    -->
+                    <value-of select="$UNDERLINE_BIT"/>
                 </when>
                 <otherwise>
                     <value-of select="$NO_STYLE"/>
@@ -1479,9 +1909,9 @@
             guaranteed to be disjoint, therefore, addition can be use instead
             of bitwise or (which is missing in XPath). -->
         <variable name="updated-style"
-            select="$style-set + $bold-style + $italic-style + $superscript-style + $subscript-style + $code-style + $typewriter-style + $center-style + $right-style"/>
+            select="$style-set + $bold-style + $italic-style + $underline-style + $superscript-style + $subscript-style + $code-style + $typewriter-style + $center-style + $right-style"/>
         <variable name="updated-mask"
-            select="$style-mask + $bold-mask + $italic-mask + $superscript-mask + $subscript-mask + $code-mask + $typewriter-mask + $center-mask + $right-mask"/>
+            select="$style-mask + $bold-mask + $italic-mask + $underline-mask + $superscript-mask + $subscript-mask + $code-mask + $typewriter-mask + $center-mask + $right-mask"/>
 
         <!-- Inspect linked and nested styles. -->
         <choose>
